@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limba și literatura română – Test pentru exersare Nr. 2, Clasa a IX-a (februarie 2026) | MEC / ANCE</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-mid: #2563eb;
+    --primary-light: #eff6ff;
+    --accent: #0f766e;
+    --accent-light: #f0fdfa;
+    --source-bg: #f8fafc;
+    --source-border: #3b82f6;
+    --dex-bg: #fefce8;
+    --dex-border: #ca8a04;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --border: #cbd5e1;
+    --text: #0f172a;
+    --muted: #475569;
+    --ok-bg: #dcfce7;
+    --ok-border: #16a34a;
+    --ok-text: #14532d;
+    --part-bg: #fef3c7;
+    --part-border: #d97706;
+    --part-text: #78350f;
+    --err-bg: #fee2e2;
+    --err-border: #dc2626;
+    --err-text: #7f1d1d;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.58;
+  }
+
+  /* Topbar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 18px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  }
+  .topbar-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .brand { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge-mec { background: #2563eb; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+  .controls { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .timer-box {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-sm {
+    background: #334155;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 8px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .btn-sm:hover { background: #475569; }
+  .btn-tool {
+    background: #1d4ed8;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn-tool:hover { background: #2563eb; }
+  .btn-tool.alt { background: #334155; }
+  .btn-tool.alt:hover { background: #475569; }
+
+  .nav-pills {
+    max-width: 1080px;
+    margin: 8px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+  }
+  .pill {
+    min-width: 32px;
+    height: 26px;
+    padding: 0 7px;
+    border-radius: 5px;
+    border: 1px solid #475569;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .pill:hover { background: #2563eb; border-color: #2563eb; color: #fff; }
+  .pill.checked-ok { background: #16a34a; border-color: #16a34a; color: #fff; }
+  .pill.checked-part { background: #d97706; border-color: #d97706; color: #fff; }
+  .pill.checked-err { background: #dc2626; border-color: #dc2626; color: #fff; }
+
+  .container {
+    max-width: 1080px;
+    margin: 20px auto 60px;
+    padding: 0 16px;
+  }
+
+  /* Exam Header */
+  .exam-header {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--primary);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .exam-header-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+  }
+  .ministry { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+  .exam-title { font-size: 21px; font-weight: 800; color: var(--primary); margin: 4px 0; }
+  .exam-meta { font-size: 13.5px; color: var(--muted); }
+  .note-strip {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary-mid);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    color: #1e3a8a;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .student-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .student-grid input {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13.5px;
+  }
+
+  .domain-banner {
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15.5px;
+    margin: 26px 0 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .domain-banner span.pts {
+    background: rgba(255, 255, 255, 0.22);
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* Literary Reading Text Box */
+  .reading-panel {
+    background: #fff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid var(--primary-mid);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 1px 4px rgba(30, 58, 138, 0.06);
+  }
+  .reading-panel h3 {
+    margin: 0 0 12px;
+    color: var(--primary);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .reading-body p {
+    margin: 0 0 11px;
+    text-indent: 22px;
+    font-size: 14.8px;
+    line-height: 1.72;
+    color: #1e293b;
+  }
+  .reading-body p.highlight-last {
+    background: #eff6ff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid #60a5fa;
+  }
+  .para-num {
+    display: inline-block;
+    text-indent: 0;
+    font-size: 11px;
+    font-weight: 800;
+    color: #2563eb;
+    background: #dbeafe;
+    padding: 0 5px;
+    border-radius: 4px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .reading-author {
+    text-align: right;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--primary);
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .reading-footnote {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed #cbd5e1;
+    font-size: 13.2px;
+    color: var(--muted);
+  }
+
+  /* DEX & Legend Boxes */
+  .dex-box {
+    background: var(--dex-bg);
+    border: 1px solid #fde047;
+    border-left: 4px solid var(--dex-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    font-size: 13.8px;
+    line-height: 1.65;
+    color: #1e293b;
+  }
+  .legend-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--primary-mid);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .quote-box {
+    background: #fff;
+    border: 1.5px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0 12px;
+    font-size: 15px;
+    color: #1e293b;
+    font-style: italic;
+  }
+
+  /* Item Cards */
+  .item-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    scroll-margin-top: 102px;
+  }
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed #e2e8f0;
+    padding-bottom: 10px;
+  }
+  .item-num {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid #bfdbfe;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+  .item-prompt { font-weight: 600; font-size: 15.3px; flex: 1; }
+  .item-score-badge {
+    font-size: 13px;
+    font-weight: 700;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* Step Boxes */
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: 10px;
+  }
+  .step-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid var(--accent);
+    padding: 12px 14px;
+    border-radius: 7px;
+    font-size: 14.3px;
+  }
+  .step-label {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid #99f6e4;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-right: 6px;
+  }
+  .step-pts {
+    float: right;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+
+  /* Inputs & Selects */
+  select {
+    padding: 6px 10px;
+    border: 1.5px solid #94a3b8;
+    border-radius: 6px;
+    font-size: 13.8px;
+    background: #fff;
+    color: var(--text);
+    max-width: 100%;
+  }
+  select:focus {
+    outline: 2px solid var(--primary-mid);
+    border-color: var(--primary-mid);
+  }
+  .input-ok { background: var(--ok-bg) !important; border-color: var(--ok-border) !important; color: var(--ok-text) !important; }
+  .input-err { background: var(--err-bg) !important; border-color: var(--err-border) !important; color: var(--err-text) !important; }
+
+  .match-row {
+    display: grid;
+    grid-template-columns: minmax(215px, 0.95fr) 1.3fr;
+    gap: 10px;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px dashed #e2e8f0;
+  }
+  .match-row:last-child { border-bottom: none; }
+
+  /* Choice Cards */
+  .opt-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 8px;
+  }
+  .opt-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .opt-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 9px 12px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 7px;
+    background: #fff;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .opt-label:hover { background: var(--primary-light); border-color: #93c5fd; }
+  .opt-label input { accent-color: var(--primary); margin-top: 3px; flex-shrink: 0; }
+  .opt-label.opt-correct { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+  .opt-label.opt-part { background: var(--part-bg); border-color: var(--part-border); color: var(--part-text); }
+  .opt-label.opt-wrong { background: var(--err-bg); border-color: var(--err-border); color: var(--err-text); }
+
+  /* Letter / Dialogue Preview inside radio */
+  .dlg-block {
+    display: block;
+    line-height: 1.55;
+  }
+  .dlg-line { display: block; margin-bottom: 2px; }
+
+  /* Actions & Feedback */
+  .item-actions {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn-check {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13.5px;
+  }
+  .btn-check:hover { background: #1d4ed8; }
+  .btn-reset {
+    background: #e2e8f0;
+    color: #1e293b;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .btn-reset:hover { background: #cbd5e1; }
+
+  .feedback-box {
+    margin-top: 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+    line-height: 1.65;
+  }
+  .feedback-box.show { display: block; }
+  .feedback-box.ok { background: var(--ok-bg); border-left: 4px solid var(--ok-border); color: var(--ok-text); }
+  .feedback-box.part { background: var(--part-bg); border-left: 4px solid var(--part-border); color: var(--part-text); }
+  .feedback-box.err { background: var(--err-bg); border-left: 4px solid var(--err-border); color: var(--err-text); }
+
+  .essay-preview {
+    margin-top: 14px;
+    padding: 16px 18px;
+    background: #eff6ff;
+    border: 1.5px solid #60a5fa;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.65;
+    display: none;
+  }
+  .essay-preview.show { display: block; }
+  .essay-preview h4 { margin: 0 0 8px; color: var(--primary); }
+  .essay-preview p { margin: 0 0 8px; text-indent: 18px; }
+  .essay-preview p:last-child { margin-bottom: 0; }
+
+  /* Modals */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.76);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-box {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 760px;
+    width: 100%;
+    max-height: 86vh;
+    overflow-y: auto;
+    padding: 18px 22px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+  .modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+  }
+  .scratch-area {
+    width: 100%;
+    min-height: 210px;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    resize: vertical;
+    background: #f8fafc;
+  }
+
+  /* Final Panel */
+  .final-panel {
+    background: var(--card);
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 28px;
+    text-align: center;
+  }
+  .btn-final {
+    background: #16a34a;
+    color: #fff;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-size: 15.5px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
+  }
+  .btn-final:hover { background: #15803d; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+    text-align: left;
+  }
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .stat-val { font-size: 20px; font-weight: 800; color: var(--primary); }
+
+  @media (max-width: 780px) {
+    .match-row { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .topbar, .item-actions, .final-panel button, .btn-tool, .modal-backdrop { display: none !important; }
+    .item-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="badge-mec">MEC / ANCE • 2026</span>
+      <span>Limba și literatura română — Test Nr. 2 (Clasa a IX-a)</span>
+    </div>
+    <div class="controls">
+      <button class="btn-tool" type="button" onclick="openModal('textModal')">📖 Text suport</button>
+      <button class="btn-tool" type="button" onclick="openModal('dexModal')">📚 Articol DEX</button>
+      <button class="btn-tool alt" type="button" onclick="openModal('scratchModal')">📝 Ciornă</button>
+      <div class="timer-box">
+        <span>⏱ <span id="timerDisplay">120:00</span></span>
+        <button class="btn-sm" onclick="toggleTimer()" id="timerBtn">Pauză</button>
+      </div>
+      <span style="font-size:13.5px;font-weight:700;">Scor: <span id="liveScore">0</span> / 50 p.</span>
+    </div>
+  </div>
+  <div class="nav-pills" id="navPills">
+    <span style="font-size:12px;color:#94a3b8;margin-right:4px;">Itemi:</span>
+  </div>
+</div>
+
+<!-- Modal Text Suport -->
+<div class="modal-backdrop" id="textModal" onclick="if(event.target===this) closeModal('textModal')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <strong style="color:var(--primary);">📖 Text suport — Gabriel Liiceanu, „Scrisori către fiul meu”</strong>
+      <button type="button" class="btn-reset" onclick="closeModal('textModal')">✕ Închide</button>
+    </div>
+    <div id="modalTextContent"></div>
+  </div>
+</div>
+
+<!-- Modal Articol DEX -->
+<div class="modal-backdrop" id="dexModal" onclick="if(event.target===this) closeModal('dexModal')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <strong style="color:var(--primary);">📚 Articol lexicografic — substantivul „prag” (DEX 2009)</strong>
+      <button type="button" class="btn-reset" onclick="closeModal('dexModal')">✕ Închide</button>
+    </div>
+    <div id="modalDexContent"></div>
+  </div>
+</div>
+
+<!-- Modal Ciornă -->
+<div class="modal-backdrop" id="scratchModal" onclick="if(event.target===this) closeModal('scratchModal')">
+  <div class="modal-box" style="max-width:580px;">
+    <div class="modal-head">
+      <strong style="color:var(--primary);">📝 Ciornă de lucru (plan de rezumat, argumente, scrisoare, dialog)</strong>
+      <button type="button" class="btn-reset" onclick="closeModal('scratchModal')">✕ Închide</button>
+    </div>
+    <textarea id="scratchText" class="scratch-area" placeholder="Notează aici ideile, numărul de cuvinte pentru rezumat, analiza frazei sau scrisoarea..."></textarea>
+    <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:12.5px;color:var(--muted);">Cuvinte în ciornă: <strong id="scratchWords">0</strong></span>
+      <button type="button" class="btn-reset" onclick="document.getElementById('scratchText').value=''; updateScratchCount();">Curăță ciorna</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="exam-header">
+    <div class="exam-header-top">
+      <div>
+        <div class="ministry">Ministerul Educației și Cercetării al Republicii Moldova • Agenția Națională pentru Curriculum și Evaluare</div>
+        <div class="exam-title">LIMBA ȘI LITERATURA ROMÂNĂ — TEST PENTRU EXERSARE Nr. 2</div>
+        <div class="exam-meta">Ciclul gimnazial (Clasa a IX-a) • februarie 2026 • 13 itemi • Timp alocat: <strong>120 de minute</strong></div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:12px;color:var(--muted);">Punctaj maxim</div>
+        <div style="font-size:26px;font-weight:800;color:var(--primary);">50 puncte</div>
+      </div>
+    </div>
+    <div class="note-strip">
+      <span><strong>Instrucțiuni:</strong> Citește cu atenție textul suport și rezolvă fiecare item. Poți reciti oricând textul sau articolul de dicționar din bara de sus.</span>
+      <span style="display:flex;gap:6px;">
+        <button class="btn-tool" type="button" onclick="openModal('textModal')">📖 Text suport</button>
+        <button class="btn-tool" type="button" onclick="openModal('dexModal')">📚 Articol DEX</button>
+      </span>
+    </div>
+    <div class="student-grid">
+      <input type="text" id="st_raion" placeholder="Raionul / Municipiul">
+      <input type="text" id="st_localitate" placeholder="Localitatea">
+      <input type="text" id="st_scoala" placeholder="Instituția de învățământ">
+      <input type="text" id="st_nume" placeholder="Numele și prenumele elevului">
+    </div>
+  </div>
+
+  <!-- TEXT SUPORT -->
+  <div class="reading-panel" id="readingPanel">
+    <h3>📖 Citește textul și realizează sarcinile propuse</h3>
+    <div class="reading-body">
+      <p><span class="para-num">1</span>Aveam 29 de ani și, după tribulații de tot soiul, reușisem să ies pentru prima oară din țară cu o bursă de trei luni oferită de nemți. Proiectul meu în acea perioadă era legat de învățarea limbilor care-mi erau necesare pentru un studiu mai acătării al filozofiei. Făceam greaca veche și latina și acum venise rândul germanei. Șansa îmi scosese în cale un curs intensiv de trei luni. Limbile în care mă descurcam până atunci, mai ales pentru citit și vorbit, erau franceza și engleza. Prilejurile de vorbit erau rare pe vremea aceea, pentru că nu mulți străini ne călcau țara, iar să putem ieși noi, cu atât mai puțin. Pentru engleză, când mai sosea câte un sârb sau un polonez în vizită la Institutul de Filozofie la care lucram, se întâmpla să fac și pe translatorul.</p>
+      <p><span class="para-num">2</span>Am ajuns așadar la Universitatea din Aachen pus pe fapte mari. Grupa din care făceam parte era compusă din treizeci de studenți încadrați la „treapta medie” de studiu al germanei, iar la sfârșitul cursului se presupunea că voi trece pragul către cei „avansați”. Ros de complexele românității mele și ale izolării comuniste de-o viață, eram cât se poate de apt pentru isprăvi ieșite din comun. Aveam ceva de demonstrat întregii lumi: profesorilor, colegilor veniți din paisprezece țări, secretarelor de la facultate, portarului de la cămin. Mi se părea că toată lumea e cu ochii pe mine să vadă cum vorbește un român germana.</p>
+      <p class="highlight-last"><span class="para-num">3</span>Zilnic aveam șase ore de curs, seminar și laborator, dar tot zilnic – și la începutul fiecărei ore – câte un test, „un extemporal”, cum se spunea în școlile românești. Timpul rămas de-abia îmi ajungea pentru pregătirea orelor de a doua zi. Era dur, era foarte dur. Cea mai mică scăpare, de pildă, lipsa virgulei între principală și subordonată sau omiterea regimului tranzitiv al verbului <em>fahren</em> era penalizată cu strășnicie. Trebuia, dacă aveai vise de mărire, să fii pur și simplu perfect. Inutil să-ți mai spun că, bântuit cum eram de complexele amintite și ros de amintiri apocaliptice, am terminat primul, presat până în ultima clipă de o egipteancă și de o americancă.</p>
+      <p class="highlight-last"><span class="para-num">4</span>Fapt e că, la sfârșitul acelui curs intensiv, nu mai aveam în minte altă limbă decât germana și, pentru că o obținusem cu atâtea chinuri și în condiții de competiție atât de dure, eram foarte mândru de ea. După terminarea cursului, am fost oprit la facultate peste vară ca să fac meditații cu studenții care nu luaseră examenul.</p>
+    </div>
+    <div class="reading-author">(Gabriel Liiceanu, Scrisori către fiul meu)</div>
+    <div class="reading-footnote">
+      <strong>Notă:</strong> <em>Tribulație</em> – zbucium sufletesc, frământare, necaz; agitație. <em>(Alineatele 3 și 4, evidențiate cu albastru deschis, constituie suportul pentru rezumatul de la Itemul 3.)</em>
+    </div>
+  </div>
+
+  <!-- ===================== PARTEA I: ÎNȚELEGEREA TEXTULUI, REZUMAT, DEX ===================== -->
+  <div class="domain-banner">
+    <span>Înțelegerea textului, noțiuni literare, rezumat și analiza lexicografică (Itemii 1–4)</span>
+    <span class="pts">15 puncte</span>
+  </div>
+
+  <!-- ITEM 1 -->
+  <div class="item-card" id="item-1">
+    <div class="item-head">
+      <span class="item-num">Item 1</span>
+      <div class="item-prompt">
+        Răspunde, <strong>în enunțuri complete</strong>, la întrebările de mai jos (pe baza textului):
+      </div>
+      <span class="item-score-badge" id="badge-1">0 / 3 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">a)</span> Cât timp avea să dureze cursul intensiv de limbă germană?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i1_a">
+          <label class="opt-label"><input type="radio" name="i1_a" value="1"> <span>Cursul intensiv de limbă germană avea să dureze trei luni.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_a" value="0"> <span>Trei luni. <em>(răspuns incomplet, nu este enunț complet)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i1_a" value="0"> <span>Cursul intensiv de limbă germană avea să dureze șase luni.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_a" value="0"> <span>Cursul intensiv de limbă germană avea să dureze paisprezece săptămâni.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">b)</span> La ce nivel de cunoaștere a limbii germane se află naratorul la începutul cursului intensiv?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i1_b">
+          <label class="opt-label"><input type="radio" name="i1_b" value="1"> <span>La începutul cursului intensiv de limbă germană, naratorul se află la nivel mediu („treapta medie”).</span></label>
+          <label class="opt-label"><input type="radio" name="i1_b" value="0"> <span>Nivel mediu. <em>(răspuns incomplet, nu este enunț complet)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i1_b" value="0"> <span>La începutul cursului intensiv, naratorul se află deja la nivelul „avansați”.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_b" value="0"> <span>La începutul cursului intensiv, naratorul este încadrat în grupa de începători absoluți.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">c)</span> Ce înseamnă pentru narator „lumea întreagă”?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i1_c">
+          <label class="opt-label"><input type="radio" name="i1_c" value="1"> <span>Pentru narator, „lumea întreagă” înseamnă profesorii, colegii veniți din paisprezece țări, secretarele de la facultate și portarul de la cămin.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_c" value="0"> <span>Profesorii, colegii, secretarele, portarul. <em>(răspuns incomplet, nu este enunț complet)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i1_c" value="0"> <span>Pentru narator, „lumea întreagă” înseamnă doar o egipteancă și o americancă din grupa sa.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_c" value="0"> <span>Pentru narator, „lumea întreagă” înseamnă vizitatorii sârbi și polonezi de la Institutul de Filozofie.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(1)">Verifică Itemul 1</button>
+    </div>
+    <div class="feedback-box" id="fb-1"></div>
+  </div>
+
+  <!-- ITEM 2 -->
+  <div class="item-card" id="item-2">
+    <div class="item-head">
+      <span class="item-num">Item 2</span>
+      <div class="item-prompt">
+        Definește <strong>povestirea</strong> ca specie literară, aducând ca exemplu un titlu și numele autorului.
+      </div>
+      <span class="item-score-badge" id="badge-2">0 / 2 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Definiția</span> Selectați definiția corectă a povestirii (conținând termenii-cheie: specie, proză, personaj, întâmplare):
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i2_def">
+          <label class="opt-label"><input type="radio" name="i2_def" value="1"> <span>Povestirea este o specie narativă (epică) în proză, având de obicei un singur personaj principal sau câteva, în care se relatează o întâmplare sau un șir de întâmplări semnificative din perspectiva unui narator.</span></label>
+          <label class="opt-label"><input type="radio" name="i2_def" value="0"> <span>Povestirea este o specie a genului liric, în versuri, prin care poetul își exprimă direct sentimentele de melancolie.</span></label>
+          <label class="opt-label"><input type="radio" name="i2_def" value="0"> <span>Povestirea este o specie dramatică destinată exclusiv reprezentării pe scenă, construită numai din dialoguri și didascalii.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Exemplul (titlu exact și autor)</span> Selectați exemplul pertinent de povestire literară românească:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i2_ex">
+          <label class="opt-label"><input type="radio" name="i2_ex" value="1"> <span><em>Lostrița</em> de Vasile Voiculescu (sau <em>Hanu Ancuței</em> de Mihail Sadoveanu).</span></label>
+          <label class="opt-label"><input type="radio" name="i2_ex" value="0"> <span><em>Luceafărul</em> de Mihai Eminescu <em>(poem lirico-epic în versuri)</em>.</span></label>
+          <label class="opt-label"><input type="radio" name="i2_ex" value="0"> <span><em>O scrisoare pierdută</em> de Ion Luca Caragiale <em>(comedie / specie dramatică)</em>.</span></label>
+          <label class="opt-label"><input type="radio" name="i2_ex" value="0"> <span><em>Ion</em> de Liviu Rebreanu <em>(roman realist)</em>.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(2)">Verifică Itemul 2</button>
+    </div>
+    <div class="feedback-box" id="fb-2"></div>
+  </div>
+
+  <!-- ITEM 3 -->
+  <div class="item-card" id="item-3">
+    <div class="item-head">
+      <span class="item-num">Item 3</span>
+      <div class="item-prompt">
+        Rezumă, în limita a <strong>55–60 de cuvinte</strong>, ultimele două alineate ale textului (alineatele 3 și 4).
+      </div>
+      <span class="item-score-badge" id="badge-3">0 / 5 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Criteriul 1 • Fidelitatea informației</span> Alegeți enunțul care redă fidel rigorile cursului intensiv (fără distorsiuni față de text):
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c1">
+          <label class="opt-label"><input type="radio" name="i3_c1" value="1"> <span>Programul zilnic avea șase ore și teste la începutul fiecărei ore, iar orice greșeală gramaticală sau de punctuație era penalizată sever.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c1" value="0"> <span>Studenții aveau cursuri doar o dată pe săptămână și profesorii nu penalizau micile greșeli de punctuație.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c1" value="0"> <span>Timpul liber era suficient pentru excursii, deoarece nu existau teste zilnice la curs.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Criteriul 2 • Secvențele esențiale</span> Alegeți enunțul care surprinde rezultatul și urmarea directă din alineatul 4:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c2">
+          <label class="opt-label"><input type="radio" name="i3_c2" value="1"> <span>Naratorul a terminat pe primul loc, mândru că stăpânea bine germana, și a fost oprit la facultate peste vară pentru a face meditații cu studenții restanțieri.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c2" value="0"> <span>Naratorul a pierdut primul loc în fața unei colege și a revenit imediat în țară fără să susțină examenul.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c2" value="0"> <span>După curs, naratorul a renunțat la germană și a început să studieze franceza și engleza.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Criteriul 3 • Omiterea detaliilor nesemnificative</span> Ce secvență din alineatul 3 este un detaliu ilustrativ secundar care trebuie OMIS din rezumat?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c3">
+          <label class="opt-label"><input type="radio" name="i3_c3" value="1"> <span>Exemplele punctuale privind „lipsa virgulei între principală și subordonată”, „regimul tranzitiv al verbului <em>fahren</em>” și comparația cu „extemporalul” românesc.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c3" value="0"> <span>Faptul că naratorul a terminat cursul pe primul loc după o competiție foarte dură.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c3" value="0"> <span>Faptul că a fost reținut peste vară la facultate pentru a pregăti studenții care nu luaseră examenul.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Criteriul 4 • Coerență gramaticală și rigorile rezumatului</span> Care principiu asigură redactarea corectă a rezumatului?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c4">
+          <label class="opt-label"><input type="radio" name="i3_c4" value="1"> <span>Relatarea obiectivă la persoana a III-a, fără adresări directe („Inutil să-ți mai spun...”) și fără expresii emoționale personale.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c4" value="0"> <span>Păstrarea persoanei I și a adresării către fiu („Inutil să-ți mai spun că am terminat primul...”).</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c4" value="0"> <span>Includerea unor aprecieri subiective de tipul „Mi se pare extraordinar cât de ambițios era autorul!”.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Criteriul 5 • Limita exactă de 55–60 de cuvinte</span> Selectați varianta de rezumat complet care respectă exact limita de <strong>55–60 de cuvinte</strong>:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c5">
+          <label class="opt-label"><input type="radio" name="i3_c5" value="1"> <span>Programul zilnic cuprindea șase ore și teste la începutul fiecărei lecții, unde orice greșeală era penalizată sever. După un studiu intens și o competiție strânsă, naratorul a terminat primul. La finalul cursului, el gândea doar în limba germană și era foarte mândru de reușita sa, fiind reținut la facultate peste vară pentru a pregăti studenții restanțieri.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c5" value="0"> <span>Naratorul a urmat un curs foarte dur de germană, a terminat primul și a rămas la facultate să facă meditații peste vară.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c5" value="0"> <span>Zilnic naratorul avea șase ore de curs, seminar și laborator și dădea câte un test numit extemporal la începutul fiecărei ore, iar timpul liber abia îi ajungea pentru teme. Orice greșeală precum lipsa virgulei între principală și subordonată sau regimul verbului fahren era penalizată cu strășnicie. Bântuit de complexe și presat de o egipteancă și de o americancă, el a terminat pe primul loc, mândru că știa bine germana, motiv pentru care a fost oprit la facultate toată vara ca să facă meditații cu studenții care picaseră examenul.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(3)">Verifică Itemul 3</button>
+    </div>
+    <div class="feedback-box" id="fb-3"></div>
+  </div>
+
+  <!-- ITEM 4 -->
+  <div class="item-card" id="item-4">
+    <div class="item-head">
+      <span class="item-num">Item 4</span>
+      <div class="item-prompt">
+        Analizează articolul lexicografic al cuvântului <strong>prag</strong>, selectând în spațiile libere informațiile solicitate.
+      </div>
+      <span class="item-score-badge" id="badge-4">0 / 5 p.</span>
+    </div>
+
+    <div class="dex-box" id="dexPanel">
+      <strong>PRAG, praguri</strong>, <em>s. n.</em> <strong>1.</strong> Partea de jos, orizontală, a unui toc de ușă sau a unei porți, puțin mai ridicată de la pământ, peste care se trece la intrare și ieșire. ◊ <em>Expr. A călca</em> (sau <em>a trece, a păși</em>) <em>pragul (casei)</em> = a) a ieși din casă; b) a intra în casa cuiva, a vizita pe cineva. <em>A se pune prag</em> = a se așeza în calea cuiva; a se împotrivi, a se opune acțiunilor cuiva. <em>A pune piciorul în prag</em> = a se opune cu dârzenie la ceva, a avea o atitudine intransigentă, a soma pe cineva să facă ceva. ♦ Mică ridicătură special amenajată pe terenul de sport, pentru a marca limita de la care se efectuează săriturile atletice. ♦ Partea de sus, orizontală, a tocului ușii. ◊ <em>Expr. A da</em> (sau <em>a se lovi, a se izbi</em>) <em>cu capul de pragul de sus</em> = a se convinge de unele adevăruri în urma unei triste experiențe. ♦ <em>Fig.</em> Treaptă socială, rang. <strong>2.</strong> Ușă, poartă; <em>p. ext.</em> casă, locuință; cămin, familie. ◊ <em>Expr. Din prag în prag</em> = din casă în casă. <em>A bate pragurile</em> = a umbla pe la multe case, a hoinări, a colinda. ♦ Porțiune de teren din fața ușii de la ieșirea dintr-o casă. ♦ (<em>Rar</em>) Temelie. <strong>3.</strong> <em>Fig.</em> Început al unei situații noi, limită care desparte două situații, perioade etc. diferite. <em>În pragul verii.</em> <strong>4.</strong> Ridicătură naturală a fundului albiei unei ape curgătoare; banc de depuneri format din materialele transportate de apă; treaptă mai înaltă pe fundul unui bazin oceanic sau marin. ♦ Ridicătură de teren în formă de prag (1); treaptă de stâncă greu de trecut. ♦ Perete de piatră, stâncă peste care trece o apă, formând o cascadă. <strong>5.</strong> Proeminență în formă de treaptă pe suprafața unei piese de lemn, care intră într-o scobitură făcută în altă piesă îmbinată cu aceasta, pentru a împiedica deplasarea celor două piese una față de alta. <em>P. gener.</em> Proeminență în formă de treaptă executată sau formată (în urma uzurii) pe suprafața unei piese. <strong>6.</strong> (<em>Fiz.</em>) Valoarea maximă sau minimă a unei mărimi caracteristice unui fenomen dat, deasupra sau dedesubtul căreia fenomenul nu se mai poate petrece. ♦ (<em>Med.</em>) Valoare minimă a unui factor necesară pentru a determina apariția unui fenomen fiziologic sau patologic. <em>Prag de excitabilitate</em> = intensitatea minimă a unui excitant capabilă să provoace o stare de excitație într-o celulă sau într-un complex de celule nervoase. <em>Prag senzorial absolut</em> = minimul de intensitate al unui stimul la care este posibilă percepția sa. <strong>7.</strong> Bucățică de lemn (de abanos) sau de os de elefant care se fixează perpendicular pe capătul superior al corpului unor instrumente muzicale și pe care se sprijină coardele.
+      <div style="text-align:right;font-style:italic;margin-top:4px;">Sursa: DEX 2009</div>
+    </div>
+
+    <div class="step-box">
+      <div class="match-row">
+        <strong>1) Conform acestui articol lexicografic, substantivul <em>prag</em> are:</strong>
+        <select id="i4_1">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">7 (șapte) sensuri</option>
+          <option value="no1">5 (cinci) sensuri</option>
+          <option value="no2">6 (șase) sensuri</option>
+          <option value="no3">8 (opt) sensuri</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>2) Sensul actualizat în text („voi trece pragul către cei «avansați»”) este:</strong>
+        <select id="i4_2">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">sensul al treilea (3) – „început al unei situații noi, limită care desparte două situații, perioade etc. diferite”</option>
+          <option value="no1">primul sens (1) – „partea de jos, orizontală, a unui toc de ușă sau a unei porți”</option>
+          <option value="no2">al patrulea sens (4) – „ridicătură naturală a fundului albiei unei ape curgătoare”</option>
+          <option value="no3">al șaptelea sens (7) – „bucățică de lemn pe care se sprijină coardele unui instrument muzical”</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>3) Ca termen din domeniul fizicii, cuvântul <em>prag</em> înseamnă:</strong>
+        <select id="i4_3">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">„valoarea maximă sau minimă a unei mărimi caracteristice unui fenomen dat, deasupra sau dedesubtul căreia fenomenul nu se mai poate petrece”</option>
+          <option value="no1">„valoare minimă a unui factor necesară pentru a determina apariția unui fenomen fiziologic sau patologic”</option>
+          <option value="no2">„proeminență în formă de treaptă pe suprafața unei piese de lemn”</option>
+          <option value="no3">„mică ridicătură special amenajată pe terenul de sport pentru săriturile atletice”</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>4) Sensul expresiei <em>a bate pragurile</em> este:</strong>
+        <select id="i4_4">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">„a umbla pe la multe case, a hoinări, a colinda”</option>
+          <option value="no1">„a se opune cu dârzenie la ceva, a avea o atitudine intransigentă”</option>
+          <option value="no2">„a se convinge de unele adevăruri în urma unei triste experiențe”</option>
+          <option value="no3">„a se așeza în calea cuiva, a se împotrivi acțiunilor cuiva”</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>5) Informațiile gramaticale din acest articol lexicografic sunt:</strong>
+        <select id="i4_5">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">substantiv neutru (s. n.), forma de plural „praguri”</option>
+          <option value="no1">substantiv masculin (s. m.), forma de plural „pragi”</option>
+          <option value="no2">substantiv feminin (s. f.), invariabil la plural</option>
+          <option value="no3">verb tranzitiv, conjugarea a IV-a</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(4)">Verifică Itemul 4</button>
+    </div>
+    <div class="feedback-box" id="fb-4"></div>
+  </div>
+
+  <!-- ===================== PARTEA II: ARGUMENTARE, SCRISOARE ȘI GRAMATICĂ ===================== -->
+  <div class="domain-banner">
+    <span>Text argumentativ, scrisoare oficială și cunoștințe de limbă (Itemii 5–10)</span>
+    <span class="pts">22 de puncte</span>
+  </div>
+
+  <!-- ITEM 5 -->
+  <div class="item-card" id="item-5">
+    <div class="item-head">
+      <span class="item-num">Item 5</span>
+      <div class="item-prompt">
+        Exprimă-ți opinia despre necesitatea de a cunoaște câteva limbi străine, aducând <strong>trei argumente</strong>.
+      </div>
+      <span class="item-score-badge" id="badge-5">0 / 6 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Opinia (atitudinea)</span> Selectați formularea clară a opiniei despre cunoașterea limbilor străine:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i5_op">
+          <label class="opt-label"><input type="radio" name="i5_op" value="1"> <span>Consider că în lumea contemporană cunoașterea câtorva limbi străine este o necesitate reală, deoarece deschide uși spre educație, carieră și dialog intercultural.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_op" value="0"> <span>În școli se predau mai multe limbi străine, precum engleza, franceza și germana. <em>(enunț constatativ, fără opinie)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i5_op" value="0"> <span>Nu există niciun motiv să învățăm limbi străine, deoarece toată lumea vorbește aceeași limbă.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Argumentul 1</span> Selectați primul argument valid:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i5_a1">
+          <label class="opt-label"><input type="radio" name="i5_a1" value="1"> <span>În primul rând, stăpânirea limbilor străine oferă acces direct la studii universitare, burse internaționale și surse științifice de vârf, așa cum demonstrează și experiența naratorului plecat cu bursă la Universitatea din Aachen pentru studiul filozofiei.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a1" value="0"> <span>În primul rând, limbile străine se învață numai dacă locuiești într-un cămin din Germania.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a1" value="0"> <span>În primul rând, limbile străine ne ajută să uităm regulile limbii noastre materne.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Argumentul 2</span> Selectați al doilea argument valid:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i5_a2">
+          <label class="opt-label"><input type="radio" name="i5_a2" value="1"> <span>În al doilea rând, poliglotismul crește semnificativ șansele pe piața muncii, permițând colaborarea în proiecte internaționale, traducerea și ocuparea unor profesii competitive.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a2" value="0"> <span>În al doilea rând, cunoașterea unei limbi străine înlocuiește complet pregătirea profesională într-un domeniu.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a2" value="0"> <span>În al doilea rând, este bine să știm limbi străine pentru că așa ne cere textul.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Argumentul 3</span> Selectați al treilea argument valid:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i5_a3">
+          <label class="opt-label"><input type="radio" name="i5_a3" value="1"> <span>Nu în ultimul rând, învățarea mai multor limbi dezvoltă memoria, flexibilitatea gândirii și facilitează comunicarea autentică în călătorii, ajutându-ne să cunoaștem alte culturi fără bariere.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a3" value="0"> <span>Nu în ultimul rând, limbile străine sunt necesare doar portarilor de la căminele studențești.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a3" value="0"> <span>Nu în ultimul rând, cine învață o limbă străină nu mai are niciodată emoții la examene.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Coerență și rigorile textului argumentativ</span> Selectați concluzia logică și structura corectă a textului argumentativ:
+        <span class="step-pts">1 p. + 1 p.</span>
+        <div class="match-row">
+          <strong>Concluzie coerentă (1 p.):</strong>
+          <select id="i5_coh">
+            <option value="">-- Selectați concluzia --</option>
+            <option value="ok">Prin urmare, efortul de a învăța câteva limbi străine reprezintă o investiție valoroasă în dezvoltarea personală, profesională și culturală a fiecărui tânăr.</option>
+            <option value="no1">Așadar, cursul de germană al naratorului a durat trei luni și a fost foarte greu.</option>
+            <option value="no2">În concluzie, am terminat cele trei argumente cerute de item.</option>
+          </select>
+        </div>
+        <div class="match-row">
+          <strong>Rigorile textului argumentativ (1 p.):</strong>
+          <select id="i5_rig">
+            <option value="">-- Selectați structura corectă --</option>
+            <option value="ok">Ipoteză clară + 3 argumente susținute cu conectori logici + concluzie coerentă în spațiul rezervat</option>
+            <option value="no1">Enumerare de verbe la modul indicativ și conjunctiv, fără opinie și fără concluzie</option>
+            <option value="no2">Scrisoare oficială către o comisie de admitere, fără argumente personale</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(5)">Verifică Itemul 5</button>
+    </div>
+    <div class="feedback-box" id="fb-5"></div>
+    <div class="essay-preview" id="i5Preview"></div>
+  </div>
+
+  <!-- ITEM 6 -->
+  <div class="item-card" id="item-6">
+    <div class="item-head">
+      <span class="item-num">Item 6</span>
+      <div class="item-prompt">
+        Redactează, în spațiul rezervat, o <strong>scrisoare</strong> conform legendei date.
+      </div>
+      <span class="item-score-badge" id="badge-6">0 / 4 p.</span>
+    </div>
+
+    <div class="legend-box">
+      <strong>Legendă:</strong> Te numești <strong>Ion/Ionela Armanu</strong>, ai adresa electronică <strong>armanu_2010@gmail.com</strong> și intenționezi să-ți continui studiile după absolvirea gimnaziului la <strong>Liceul Academic de Arte Plastice „Igor Vieru”</strong>. Te interesează <strong>condițiile de admitere</strong>, <strong>durata studiilor</strong>, <strong>posibilitatea de a obține o bursă</strong> și <strong>de a locui la cămin</strong>. Adresezi scrisoarea <strong>secretarului responsabil al comisiei de admitere</strong>. Semnezi scrisoarea cu <strong>data de astăzi</strong>.
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Structura scrisorii oficiale</span> Selectați elementele structurale obligatorii ale scrisorii conform baremului:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i6_str">
+          <label class="opt-label"><input type="radio" name="i6_str" value="1"> <span>Data și localitatea, formula politicoasă de adresare („Stimate domnule / Stimată doamnă secretar responsabil al comisiei de admitere,”), corpul scrisorii cu solicitarea informațiilor, formula de încheiere, semnătura și datele de contact.</span></label>
+          <label class="opt-label"><input type="radio" name="i6_str" value="0"> <span>Un text continuu fără formulă de adresare, fără dată și fără semnătură, scris la persoana a III-a.</span></label>
+          <label class="opt-label"><input type="radio" name="i6_str" value="0"> <span>O formulă familiară („Salut, ce mai faci?”) urmată de un dialog din patru replici.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Respectarea integrală a datelor legendei</span> Alegeți varianta de scrisoare care include absolut TOATE datele din legendă:
+        <span class="step-pts">2 p.</span>
+        <div class="opt-stack opt-list" id="i6_leg">
+          <label class="opt-label"><input type="radio" name="i6_leg" value="2">
+            <span class="dlg-block">
+              <span class="dlg-line"><em>Data de astăzi (ex. 25 noiembrie 2026)</em></span>
+              <span class="dlg-line">Stimate domnule / Stimată doamnă secretar responsabil al comisiei de admitere,</span>
+              <span class="dlg-line">Mă numesc Ionela Armanu, sunt elevă în clasa a IX-a și intenționez să îmi continui studiile, după absolvirea gimnaziului, la Liceul Academic de Arte Plastice „Igor Vieru”.</span>
+              <span class="dlg-line">Vă rog respectuos să îmi oferiți informații privind condițiile de admitere, durata studiilor, posibilitatea de a obține o bursă și condițiile pentru a locui la cămin. Vă mulțumesc anticipat și aștept răspunsul dumneavoastră la adresa electronică armanu_2010@gmail.com.</span>
+              <span class="dlg-line">Cu respect, Ionela Armanu</span>
+            </span>
+          </label>
+          <label class="opt-label"><input type="radio" name="i6_leg" value="1">
+            <span class="dlg-block">
+              <span class="dlg-line">Stimată comisie de admitere,</span>
+              <span class="dlg-line">Mă numesc Ion Armanu și vreau să vin la Liceul „Igor Vieru”. Vă rog să îmi spuneți condițiile de admitere și durata studiilor.</span>
+              <span class="dlg-line">Cu respect, Ion Armanu <em>(parțial: lipsesc adresa electronică, bursa, căminul și data)</em></span>
+            </span>
+          </label>
+          <label class="opt-label"><input type="radio" name="i6_leg" value="0">
+            <span>Bună ziua! Vreau să mă înscriu la un liceu de arte din capitală anul viitor. Aștept să mă sunați cât mai repede. <em>(nu respectă legenda și nici formula oficială)</em></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Întindere și aranjare în pagină</span> Care regulă de punere în pagină este corectă pentru o scrisoare oficială?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i6_lay">
+          <label class="opt-label"><input type="radio" name="i6_lay" value="1"> <span>Data plasată în colțul din dreapta sus, formula de adresare pe rând separat, corpul scrisorii structurat cu alineate clare, iar formula de încheiere și semnătura în dreapta jos, încadrate în spațiul rezervat.</span></label>
+          <label class="opt-label"><input type="radio" name="i6_lay" value="0"> <span>Scrierea tuturor elementelor (dată, adresare, conținut, semnătură) pe un singur rând continuu, fără alineate.</span></label>
+          <label class="opt-label"><input type="radio" name="i6_lay" value="0"> <span>Plasarea semnăturii la începutul scrisorii și a formulei de adresare la sfârșit.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(6)">Verifică Itemul 6</button>
+    </div>
+    <div class="feedback-box" id="fb-6"></div>
+  </div>
+
+  <!-- ITEM 7 -->
+  <div class="item-card" id="item-7">
+    <div class="item-head">
+      <span class="item-num">Item 7</span>
+      <div class="item-prompt">
+        Numește <strong>trei dicționare ale limbii române</strong> pe care le utilizezi pentru documentare.
+      </div>
+      <span class="item-score-badge" id="badge-7">0 / 3 p.</span>
+    </div>
+
+    <div class="step-box">
+      <span class="step-label">Selectați exact 3 opțiuni</span> Bifați cele trei dicționare ale limbii române (denumiri/tipuri valide pentru documentare lingvistică):
+      <span class="step-pts">1 p. &times; 3</span>
+      <div class="opt-grid-2 opt-list" id="i7_opts">
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="1"> <strong>DEX (Dicționarul explicativ al limbii române)</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="1"> <strong>DOOM-3 (Dicționarul ortografic, ortoepic și morfologic)</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="1"> <strong>Dicționarul de sinonime al limbii române</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="0"> <strong>Atlasul geografic școlar</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="0"> <strong>Ghidul turistic al Europei</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="0"> <strong>Culegerea de probleme de fizică</strong></label>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(7)">Verifică Itemul 7</button>
+    </div>
+    <div class="feedback-box" id="fb-7"></div>
+  </div>
+
+  <!-- ITEM 8 -->
+  <div class="item-card" id="item-8">
+    <div class="item-head">
+      <span class="item-num">Item 8</span>
+      <div class="item-prompt">
+        Ilustrează regula citată mai jos prin <strong>două exemple</strong>:
+        <em>„Substantivele compuse nesudate care denumesc substanțe chimice distincte și specii distincte de plante sau de animale (cu nume științifice diferite) se scriu cu cratimă.”</em>
+      </div>
+      <span class="item-score-badge" id="badge-8">0 / 2 p.</span>
+    </div>
+
+    <div class="step-box">
+      <span class="step-label">Selectați exact 2 opțiuni</span> Bifați cele două substantive compuse nesudate care ilustrează corect regula și sunt ortografiate corect:
+      <span class="step-pts">1 p. &times; 2</span>
+      <div class="opt-grid-2 opt-list" id="i8_opts">
+        <label class="opt-label"><input type="checkbox" name="i8_chk" value="1"> <strong>broască-țestoasă</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i8_chk" value="1"> <strong>arbore-de-cafea</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i8_chk" value="0"> <strong>bine-cunoscut</strong> <em>(adjectiv compus)</em></label>
+        <label class="opt-label"><input type="checkbox" name="i8_chk" value="0"> <strong>untdelemn</strong> <em>(substantiv compus sudat)</em></label>
+        <label class="opt-label"><input type="checkbox" name="i8_chk" value="0"> <strong>de-a dura</strong> <em>(locuțiune adverbială)</em></label>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(8)">Verifică Itemul 8</button>
+    </div>
+    <div class="feedback-box" id="fb-8"></div>
+  </div>
+
+  <!-- ITEM 9 -->
+  <div class="item-card" id="item-9">
+    <div class="item-head">
+      <span class="item-num">Item 9</span>
+      <div class="item-prompt">
+        Delimitează, prin bare oblice și cifre, propozițiile din fraza dată.
+      </div>
+      <span class="item-score-badge" id="badge-9">0 / 4 p.</span>
+    </div>
+
+    <div class="quote-box">
+      „Pentru engleză, când mai sosea câte un sârb sau un polonez în vizită la Institutul de Filozofie la care lucram, se întâmpla să fac și pe translatorul.”
+    </div>
+
+    <div class="step-box">
+      <span class="step-label">Delimitarea frazei</span> Identificați exact fiecare dintre cele 4 propoziții ale frazei (atenție la propoziția principală intercalată 1- ... -1!):
+      <span class="step-pts">1 p. &times; 4</span>
+      <div class="match-row">
+        <strong>Propoziția 1 (1- ... -1, principală):</strong>
+        <select id="i9_p1">
+          <option value="">-- Selectați propoziția 1 --</option>
+          <option value="ok">Pentru engleză /1- ... se întâmpla /-1</option>
+          <option value="no1">Pentru engleză, când mai sosea câte un sârb /1</option>
+          <option value="no2">se întâmpla să fac și pe translatorul /1</option>
+          <option value="no3">în vizită la Institutul de Filozofie /1</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>Propoziția 2 (subordonată):</strong>
+        <select id="i9_p2">
+          <option value="">-- Selectați propoziția 2 --</option>
+          <option value="ok">când mai sosea câte un sârb sau un polonez în vizită la Institutul de Filozofie /2</option>
+          <option value="no1">sau un polonez în vizită la Institutul de Filozofie la care lucram /2</option>
+          <option value="no2">când mai sosea câte un sârb /2</option>
+          <option value="no3">la care lucram, se întâmpla /2</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>Propoziția 3 (subordonată):</strong>
+        <select id="i9_p3">
+          <option value="">-- Selectați propoziția 3 --</option>
+          <option value="ok">la care lucram /3</option>
+          <option value="no1">la Institutul de Filozofie la care lucram /3</option>
+          <option value="no2">la care lucram, se întâmpla /3</option>
+          <option value="no3">și pe translatorul /3</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>Propoziția 4 (subordonată):</strong>
+        <select id="i9_p4">
+          <option value="">-- Selectați propoziția 4 --</option>
+          <option value="ok">să fac și pe translatorul /4</option>
+          <option value="no1">se întâmpla să fac și pe translatorul /4</option>
+          <option value="no2">pe translatorul /4</option>
+          <option value="no3">să fac /4</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(9)">Verifică Itemul 9</button>
+    </div>
+    <div class="feedback-box" id="fb-9"></div>
+  </div>
+
+  <!-- ITEM 10 -->
+  <div class="item-card" id="item-10">
+    <div class="item-head">
+      <span class="item-num">Item 10</span>
+      <div class="item-prompt">
+        Extrage <strong>primele trei verbe din text</strong>, indicând modul și timpul fiecăruia.
+        <em>(„<u>Aveam</u> 29 de ani și, după tribulații de tot soiul, <u>reușisem</u> <u>să ies</u> pentru prima oară din țară...”)</em>
+      </div>
+      <span class="item-score-badge" id="badge-10">0 / 3 p.</span>
+    </div>
+
+    <div class="step-box">
+      <span class="step-label">Analiza verbelor</span> Selectați modul și timpul corect pentru fiecare dintre primele trei verbe din text:
+      <span class="step-pts">1 p. &times; 3</span>
+      <div class="match-row">
+        <strong>1. Aveam:</strong>
+        <select id="i10_1">
+          <option value="">-- Selectați modul și timpul --</option>
+          <option value="ok">modul indicativ, timpul trecut (imperfect)</option>
+          <option value="no1">modul indicativ, timpul prezent</option>
+          <option value="no2">modul conjunctiv, timpul perfect</option>
+          <option value="no3">modul condițional-optativ, timpul prezent</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>2. reușisem:</strong>
+        <select id="i10_2">
+          <option value="">-- Selectați modul și timpul --</option>
+          <option value="ok">modul indicativ, timpul trecut (mai-mult-ca-perfect)</option>
+          <option value="no1">modul indicativ, timpul viitor</option>
+          <option value="no2">modul conjunctiv, timpul prezent</option>
+          <option value="no3">modul imperativ, timpul trecut</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>3. să ies:</strong>
+        <select id="i10_3">
+          <option value="">-- Selectați modul și timpul --</option>
+          <option value="ok">modul conjunctiv, timpul prezent</option>
+          <option value="no1">modul indicativ, timpul prezent</option>
+          <option value="no2">modul conjunctiv, timpul perfect</option>
+          <option value="no3">modul condițional-optativ, timpul prezent</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(10)">Verifică Itemul 10</button>
+    </div>
+    <div class="feedback-box" id="fb-10"></div>
+  </div>
+
+  <!-- ===================== PARTEA III: REDACTARE ȘI CORECTITUDINE ===================== -->
+  <div class="domain-banner">
+    <span>Producere de text (dialog, narațiune) și corectitudine lingvistică (Itemii 11–13)</span>
+    <span class="pts">13 puncte</span>
+  </div>
+
+  <!-- ITEM 11 -->
+  <div class="item-card" id="item-11">
+    <div class="item-head">
+      <span class="item-num">Item 11</span>
+      <div class="item-prompt">
+        Construiește un <strong>dialog din patru replici</strong>, ce ar putea avea loc între <strong>doi adolescenți</strong> care s-au înscris la un curs de limbă germană.
+      </div>
+      <span class="item-score-badge" id="badge-11">0 / 4 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Statutul interlocutorilor și tema</span> Selectați situația de comunicare care respectă cerința:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i11_stat">
+          <label class="opt-label"><input type="radio" name="i11_stat" value="1"> <span>O discuție colegială între doi adolescenți (de vârstă apropiată) despre înscrierea, emoțiile și așteptările lor legate de cursul de limbă germană.</span></label>
+          <label class="opt-label"><input type="radio" name="i11_stat" value="0"> <span>O discuție între un profesor universitar și un portar despre reparația căminului.</span></label>
+          <label class="opt-label"><input type="radio" name="i11_stat" value="0"> <span>O conversație între doi adulți despre rezultatele unui concurs sportiv.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Rigorile dialogului (3–4 caracteristici distincte)</span> Alegeți dialogul care respectă toate normele de redactare (linie de dialog, adresare directă, replici legate logic, punctuație expresivă):
+        <span class="step-pts">2 p.</span>
+        <div class="opt-stack opt-list" id="i11_rig">
+          <label class="opt-label"><input type="radio" name="i11_rig" value="2">
+            <span class="dlg-block">
+              <span class="dlg-line">— Salut, Andrei! Am auzit că te-ai înscris și tu la cursul de germană de la centru.</span>
+              <span class="dlg-line">— Da, Elena! Vreau să învăț bine germana, poate reușesc peste câțiva ani să obțin o bursă de studii.</span>
+              <span class="dlg-line">— Ce idee grozavă! Nu ți-e teamă că gramatica și testele zilnice vor fi prea grele?</span>
+              <span class="dlg-line">— Puțin, recunosc, dar dacă ne pregătim împreună după ore, sigur ne vom descurca de minune!</span>
+            </span>
+          </label>
+          <label class="opt-label"><input type="radio" name="i11_rig" value="1">
+            <span class="dlg-block">
+              <span class="dlg-line">Doi prieteni vorbesc despre germană.</span>
+              <span class="dlg-line">— Faci germană?</span>
+              <span class="dlg-line">— Da.</span>
+              <span class="dlg-line">Ei merg acasă. <em>(parțial: doar 1–2 caracteristici ale dialogului)</em></span>
+            </span>
+          </label>
+          <label class="opt-label"><input type="radio" name="i11_rig" value="0">
+            <span>Doi adolescenți s-au înscris la un curs intensiv de limbă germană pentru că își doresc să studieze în străinătate și să cunoască colegi din alte țări. <em>(text narativ, fără caracteristici ale dialogului)</em></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Limita de întindere</span> Ce condiție asigură respectarea exactă a limitei de întindere cerute?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i11_lim">
+          <label class="opt-label"><input type="radio" name="i11_lim" value="1"> <span>Dialogul conține exact 4 replici (câte 2 replici ale fiecărui adolescent), scrise fiecare la alineat nou cu linie de dialog.</span></label>
+          <label class="opt-label"><input type="radio" name="i11_lim" value="0"> <span>Dialogul cuprinde 2 replici sau 7 replici, indiferent de numărul cerut în enunț.</span></label>
+          <label class="opt-label"><input type="radio" name="i11_lim" value="0"> <span>Replicile sunt comasate într-o singură propoziție fără linii de dialog.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(11)">Verifică Itemul 11</button>
+    </div>
+    <div class="feedback-box" id="fb-11"></div>
+  </div>
+
+  <!-- ITEM 12 -->
+  <div class="item-card" id="item-12">
+    <div class="item-head">
+      <span class="item-num">Item 12</span>
+      <div class="item-prompt">
+        Relatează, în spațiul rezervat, <strong>cum îți faci temele la limba și literatura română</strong>.
+      </div>
+      <span class="item-score-badge" id="badge-12">0 / 4 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Situația solicitată</span> Ce acțiune trebuie să fie prezentată în text pentru a respecta cerința?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i12_sit">
+          <label class="opt-label"><input type="radio" name="i12_sit" value="1"> <span>Succesiunea etapelor reale prin care elevul își pregătește temele la limba și literatura română (lectura textului, verificarea în dicționar, rezolvarea exercițiilor de gramatică și redactarea compunerilor).</span></label>
+          <label class="opt-label"><input type="radio" name="i12_sit" value="0"> <span>Descrierea unei vacanțe petrecute la mare împreună cu prietenii.</span></label>
+          <label class="opt-label"><input type="radio" name="i12_sit" value="0"> <span>Prezentarea regulilor unui curs de germană de la Universitatea din Aachen.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Rigorile textului narativ (3–4 caracteristici distincte)</span> Alegeți textul care respectă toate exigențele unei narațiuni (înlănțuire cronologică a acțiunilor, indicatori temporali, verbe de acțiune, coerență la persoana I):
+        <span class="step-pts">2 p.</span>
+        <div class="opt-stack opt-list" id="i12_rig">
+          <label class="opt-label"><input type="radio" name="i12_rig" value="2"> <span>După ce revin de la școală și iau o scurtă pauză, îmi deschid caietul și manualul de limba și literatura română la birou. Mai întâi recitesc cu atenție notițele din clasă și textul literar, subliniind cuvintele necunoscute pe care le caut imediat în DEX. Apoi rezolv pe ciornă exercițiile de gramatică și schițez ideile pentru compunere, verificând ortografia în DOOM-3. La final, transcriu tema curat în caiet și recitesc totul încă o dată pentru a fi sigur că nu mi-a scăpat nicio virgulă.</span></label>
+          <label class="opt-label"><input type="radio" name="i12_rig" value="1"> <span>Îmi fac temele la română seara. Citesc lecția și scriu în caiet. <em>(parțial: doar 1–2 caracteristici ale narațiunii)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i12_rig" value="0"> <span>Manualul meu de română are copertă albastră, hârtie netedă și litere negre clare. <em>(descriere, nu narațiune)</em></span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Limita de întindere și organizare</span> Selectați criteriul care confirmă respectarea limitei de întindere:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i12_lim">
+          <label class="opt-label"><input type="radio" name="i12_lim" value="1"> <span>Relatare coerentă de 4–6 enunțuri dezvoltate, ordonate cronologic (început–desfășurare–final), încadrată exact în spațiul rezervat.</span></label>
+          <label class="opt-label"><input type="radio" name="i12_lim" value="0"> <span>O singură propoziție simplă („Fac tema la birou.”), fără desfășurarea acțiunilor.</span></label>
+          <label class="opt-label"><input type="radio" name="i12_lim" value="0"> <span>O listă de cumpărături cu rechizite școlare, fără verbe narative.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(12)">Verifică Itemul 12</button>
+    </div>
+    <div class="feedback-box" id="fb-12"></div>
+  </div>
+
+  <!-- ITEM 13 -->
+  <div class="item-card" id="item-13">
+    <div class="item-head">
+      <span class="item-num">Item 13</span>
+      <div class="item-prompt">
+        <strong>Corectitudinea limbii (ortografie, punctuație, stil)</strong> — Selectați variantele impecabile ortografic, punctuațional și stilistic pentru a obține cele 5 puncte prevăzute de barem.
+      </div>
+      <span class="item-score-badge" id="badge-13">0 / 5 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">1. Cratima și formele pronominale</span> Alegeți enunțul ortografiat corect:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_1">
+          <label class="opt-label"><input type="radio" name="i13_1" value="1"> <span>Nu-ți fie teamă că te-ai înscris la un curs greu; dacă te pregătești zilnic, vei reuși.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_1" value="0"> <span>Nuți fie teamă că teai înscris la un curs greu; dacă te pregătești zilnic, vei reuși.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_1" value="0"> <span>Nu-ți fi teamă că te-ai înscris la un curs greu; dacă te pregătești zilnic, vei reușii.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">2. Ortografia substantivelor compuse (DOOM-3)</span> Alegeți seria scrisă integral corect:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_2">
+          <label class="opt-label"><input type="radio" name="i13_2" value="1"> <span>broască-țestoasă, gândac-de-Colorado, arbore-de-cafea, urs-brun.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_2" value="0"> <span>broască țestoasă, gândac de Colorado, arbore de cafea, urs brun.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_2" value="0"> <span>broascățestoasă, gândac-de Colorado, arborede-cafea, ursbrun.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">3. Punctuația frazei și a enumerării</span> Alegeți enunțul punctat corect:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_3">
+          <label class="opt-label"><input type="radio" name="i13_3" value="1"> <span>Aveam ceva de demonstrat întregii lumi: profesorilor, colegilor veniți din paisprezece țări, secretarelor de la facultate și portarului de la cămin.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_3" value="0"> <span>Aveam ceva de demonstrat întregii lumi profesorilor colegilor veniți din paisprezece țări secretarelor de la facultate, și portarului de la cămin.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_3" value="0"> <span>Aveam, ceva de demonstrat întregii lumi; profesorilor, colegilor, veniți din paisprezece țări, secretarelor și, portarului.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">4. Scrierea corectă în scrisoarea oficială</span> Alegeți formula fără greșeli ortografice și de punctuație:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_4">
+          <label class="opt-label"><input type="radio" name="i13_4" value="1"> <span>Stimată doamnă secretar responsabil, vă rog să-mi comunicați condițiile de admitere la Liceul Academic de Arte Plastice „Igor Vieru”.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_4" value="0"> <span>Stimată doamnă secretar responsabil vă rog sămi comunicați condițiile de admitere la liceul academic de arte plastice igor vieru.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_4" value="0"> <span>Stimată, doamnă secretar responsabil! Vă rog să-mi comunica-ți condițiile de admitere la Liceul Academic de Arte Plastice „Igor Vieru”.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">5. Corectitudine stilistică și gramaticală</span> Alegeți enunțul impecabil stilistic (fără pleonasme, cacofonii sau dezacorduri):
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_5">
+          <label class="opt-label"><input type="radio" name="i13_5" value="1"> <span>Cunoașterea limbilor străine oferă tinerilor oportunități valoroase de studiu și de dialog intercultural.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_5" value="0"> <span>Cunoașterea limbilor străine oferă tinerilor șanse și posibilități noi de a cunoaște și a ști alte culturi străine.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_5" value="0"> <span>Fiecare dintre studenții care s-au înscris la cursul de germană au primit câte un manual nou.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(13)">Verifică Itemul 13</button>
+    </div>
+    <div class="feedback-box" id="fb-13"></div>
+  </div>
+
+  <!-- FINAL SUMMARY -->
+  <div class="final-panel" id="finalPanel">
+    <h2 style="margin-top:0;color:var(--primary);">Evaluare finală și rezultatul testului</h2>
+    <p style="color:var(--muted);max-width:700px;margin:0 auto 16px;">
+      Apăsați butonul de mai jos pentru a verifica toți cei 13 itemi conform baremului oficial al Testului pentru exersare Nr. 2 la Limba și literatura română (clasa a IX-a, februarie 2026) și a calcula punctajul total din 50 de puncte.
+    </p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-final" onclick="gradeAll()">Finalizează și calculează punctajul total</button>
+      <button class="btn-reset" style="padding:12px 16px;font-size:14px;" onclick="resetAndReshuffle()">Reamestecă și resetează testul</button>
+      <button class="btn-reset" style="padding:12px 16px;font-size:14px;" onclick="window.print()">Tipărește / Salvează PDF</button>
+      <button class="btn-reset" style="padding:12px 16px;font-size:14px;" onclick="downloadReport()">Descarcă raportul (.txt)</button>
+    </div>
+
+    <div id="finalResults" style="display:none;margin-top:20px;">
+      <div class="summary-grid">
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Punctaj total acumulat</div>
+          <div class="stat-val" id="resTotal">0 / 50 p.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Notă orientativă (și procent)</div>
+          <div class="stat-val" id="resGrade">-</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Înțelegere, rezumat, DEX (1–4)</div>
+          <div class="stat-val" id="resP1">0 / 15 p.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Argumentare, scrisoare, limbă (5–10)</div>
+          <div class="stat-val" id="resP2">0 / 22 p.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Redactare și corectitudine (11–13)</div>
+          <div class="stat-val" id="resP3">0 / 13 p.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Modals & Content Mirroring
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    ['textModal', 'dexModal', 'scratchModal'].forEach(closeModal);
+  }
+});
+
+function updateScratchCount() {
+  const txt = document.getElementById('scratchText').value.trim();
+  const count = txt ? txt.split(/\s+/).length : 0;
+  document.getElementById('scratchWords').textContent = count;
+}
+
+// Fisher-Yates shuffle
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function shuffleAllChoices() {
+  document.querySelectorAll('.opt-list').forEach(list => {
+    const labels = Array.from(list.querySelectorAll('.opt-label'));
+    shuffleArray(labels);
+    labels.forEach(lbl => list.appendChild(lbl));
+  });
+  document.querySelectorAll('select').forEach(sel => {
+    const allOpts = Array.from(sel.querySelectorAll('option'));
+    const placeholder = allOpts.filter(o => o.value === '' || o.disabled);
+    const choices = allOpts.filter(o => o.value !== '' && !o.disabled);
+    shuffleArray(choices);
+    sel.innerHTML = '';
+    placeholder.forEach(o => sel.appendChild(o));
+    choices.forEach(o => sel.appendChild(o));
+    sel.selectedIndex = 0;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('modalTextContent').innerHTML = document.getElementById('readingPanel').innerHTML;
+  document.getElementById('modalDexContent').innerHTML = document.getElementById('dexPanel').innerHTML;
+  document.getElementById('scratchText').addEventListener('input', updateScratchCount);
+  shuffleAllChoices();
+});
+
+// Timer (120 minutes)
+let secondsLeft = 120 * 60;
+let timerRunning = true;
+setInterval(() => {
+  if (!timerRunning || secondsLeft <= 0) return;
+  secondsLeft--;
+  const m = Math.floor(secondsLeft / 60);
+  const s = secondsLeft % 60;
+  document.getElementById('timerDisplay').textContent =
+    String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}, 1000);
+
+function toggleTimer() {
+  timerRunning = !timerRunning;
+  document.getElementById('timerBtn').textContent = timerRunning ? 'Pauză' : 'Continuă';
+}
+
+// Nav pills & official barem points (sum = 50 p.)
+// Part 1 (1-4): 3+2+5+5 = 15p
+// Part 2 (5-10): 6+4+3+2+4+3 = 22p
+// Part 3 (11-13): 4+4+5 = 13p
+const maxPts = {1:3, 2:2, 3:5, 4:5, 5:6, 6:4, 7:3, 8:2, 9:4, 10:3, 11:4, 12:4, 13:5};
+const scores = {};
+const navPillsEl = document.getElementById('navPills');
+for (let i = 1; i <= 13; i++) {
+  scores[i] = 0;
+  const a = document.createElement('a');
+  a.className = 'pill';
+  a.id = 'pill-' + i;
+  a.href = '#item-' + i;
+  a.textContent = i;
+  navPillsEl.appendChild(a);
+}
+
+function markSelect(el, isOk) {
+  el.classList.remove('input-ok', 'input-err');
+  el.classList.add(isOk ? 'input-ok' : 'input-err');
+}
+
+function highlightRadioGroup(containerId, maxCorrectVal) {
+  const container = document.getElementById(containerId);
+  if (!container) return 0;
+  let earned = 0;
+  const labels = Array.from(container.querySelectorAll('.opt-label'));
+  labels.forEach(lbl => {
+    lbl.classList.remove('opt-correct', 'opt-part', 'opt-wrong');
+    const inp = lbl.querySelector('input');
+    const v = parseInt(inp.value, 10) || 0;
+    if (inp.checked) {
+      earned = v;
+      if (v === maxCorrectVal && v > 0) lbl.classList.add('opt-correct');
+      else if (v > 0) lbl.classList.add('opt-part');
+      else lbl.classList.add('opt-wrong');
+    } else if (v === maxCorrectVal && v > 0) {
+      lbl.classList.add('opt-correct');
+    }
+  });
+  return earned;
+}
+
+function gradeCheckboxGroup(containerId, maxCorrect) {
+  const container = document.getElementById(containerId);
+  const labels = Array.from(container.querySelectorAll('.opt-label'));
+  let okCount = 0, wrongCount = 0;
+  labels.forEach(lbl => {
+    lbl.classList.remove('opt-correct', 'opt-wrong');
+    const inp = lbl.querySelector('input');
+    const isTrue = inp.value === '1';
+    if (inp.checked) {
+      if (isTrue) { okCount++; lbl.classList.add('opt-correct'); }
+      else { wrongCount++; lbl.classList.add('opt-wrong'); }
+    } else if (isTrue) {
+      lbl.classList.add('opt-correct');
+    }
+  });
+  return Math.max(0, Math.min(maxCorrect, okCount - wrongCount));
+}
+
+function setFeedback(itemNum, pts, text) {
+  scores[itemNum] = pts;
+  const max = maxPts[itemNum];
+  document.getElementById('badge-' + itemNum).textContent = `${pts} / ${max} p.`;
+  const fb = document.getElementById('fb-' + itemNum);
+  fb.className = 'feedback-box show ' + (pts === max ? 'ok' : (pts > 0 ? 'part' : 'err'));
+  fb.innerHTML = `<strong>Rezultat Item ${itemNum}: ${pts} / ${max} puncte.</strong><br>${text}`;
+  const pill = document.getElementById('pill-' + itemNum);
+  pill.className = 'pill ' + (pts === max ? 'checked-ok' : (pts > 0 ? 'checked-part' : 'checked-err'));
+  updateLiveScore();
+}
+
+function updateLiveScore() {
+  let sum = 0;
+  for (let i = 1; i <= 13; i++) sum += scores[i];
+  document.getElementById('liveScore').textContent = sum;
+}
+
+function getCheckedLabelText(name) {
+  const inp = document.querySelector(`input[name="${name}"]:checked`);
+  if (!inp) return '<em>(neselectat)</em>';
+  return inp.parentElement.querySelector('span').innerHTML;
+}
+
+function gradeItem(n) {
+  if (n === 1) {
+    const pts = highlightRadioGroup('i1_a', 1) +
+                highlightRadioGroup('i1_b', 1) +
+                highlightRadioGroup('i1_c', 1);
+    setFeedback(1, pts,
+      'Barem (3 p., 1 p. &times; 3 — doar pentru enunțuri complete): ' +
+      'a) <em>Cursul intensiv de limbă germană avea să dureze trei luni.</em> ' +
+      'b) <em>La începutul cursului intensiv de limbă germană, naratorul se află la nivel mediu.</em> ' +
+      'c) <em>Pentru narator, „lumea întreagă” înseamnă profesorii, colegii (veniți din paisprezece țări), secretarele (de la facultate) și portarul (de la cămin).</em>'
+    );
+  }
+  else if (n === 2) {
+    const pts = highlightRadioGroup('i2_def', 1) +
+                highlightRadioGroup('i2_ex', 1);
+    setFeedback(2, pts,
+      'Barem (2 p., 1 p. + 1 p.): 1 p. pentru definiția corectă (cuvinte-cheie: <em>specie, proză, personaj, întâmplare</em>) + 1 p. pentru un exemplu pertinent cu titlu exact și autor (de ex., <em>Lostrița</em> de Vasile Voiculescu).'
+    );
+  }
+  else if (n === 3) {
+    const pts = highlightRadioGroup('i3_c1', 1) +
+                highlightRadioGroup('i3_c2', 1) +
+                highlightRadioGroup('i3_c3', 1) +
+                highlightRadioGroup('i3_c4', 1) +
+                highlightRadioGroup('i3_c5', 1);
+    setFeedback(3, pts,
+      'Barem (5 p., câte 1 p. pentru fiecare criteriu): prezentare fidelă a informației, cuprinderea secvențelor esențiale, omiterea detaliilor nesemnificative, coerență gramaticală și respectarea limitei de 55–60 de cuvinte. ' +
+      'Varianta model de la Criteriul 5 are exact <strong>56 de cuvinte</strong> (varianta scurtă are 22, iar cea lungă 88).'
+    );
+  }
+  else if (n === 4) {
+    let pts = 0;
+    ['i4_1', 'i4_2', 'i4_3', 'i4_4', 'i4_5'].forEach(id => {
+      const el = document.getElementById(id);
+      const ok = el.value === 'ok';
+      if (ok) pts++;
+      markSelect(el, ok);
+    });
+    setFeedback(4, pts,
+      'Barem (5 p., 1 p. &times; 5): 1) <strong>7 (șapte) sensuri</strong>; ' +
+      '2) <strong>al treilea (3)</strong> – „început al unei situații noi, limită care desparte două situații, perioade etc. diferite”; ' +
+      '3) <strong>„valoarea maximă sau minimă a unei mărimi caracteristice unui fenomen dat...”</strong>; ' +
+      '4) <strong>„a umbla pe la multe case, a hoinări, a colinda”</strong>; ' +
+      '5) <strong>substantiv neutru (s. n.), forma de plural „praguri”</strong>.'
+    );
+  }
+  else if (n === 5) {
+    let pts = highlightRadioGroup('i5_op', 1) +
+              highlightRadioGroup('i5_a1', 1) +
+              highlightRadioGroup('i5_a2', 1) +
+              highlightRadioGroup('i5_a3', 1);
+    ['i5_coh', 'i5_rig'].forEach(id => {
+      const el = document.getElementById(id);
+      const ok = el.value === 'ok';
+      if (ok) pts++;
+      markSelect(el, ok);
+    });
+    setFeedback(5, pts,
+      'Barem (6 p. = 1 + 3 + 1 + 1): 1 p. exprimarea clară a opiniei, 3 p. (3 &times; 1 p.) pentru cele trei argumente valide, 1 p. coerență și logică, 1 p. respectarea rigorilor textului argumentativ.'
+    );
+    const conclSel = document.getElementById('i5_coh');
+    const conclTxt = conclSel.value ? conclSel.options[conclSel.selectedIndex].text : '<em>(neselectat)</em>';
+    const preview = document.getElementById('i5Preview');
+    preview.className = 'essay-preview show';
+    preview.innerHTML =
+      `<h4>📄 Previzualizarea textului tău argumentativ</h4>` +
+      `<p>${getCheckedLabelText('i5_op')}</p>` +
+      `<p>${getCheckedLabelText('i5_a1')} ${getCheckedLabelText('i5_a2')} ${getCheckedLabelText('i5_a3')}</p>` +
+      `<p>${conclTxt}</p>`;
+  }
+  else if (n === 6) {
+    const pts = highlightRadioGroup('i6_str', 1) +
+                highlightRadioGroup('i6_leg', 2) +
+                highlightRadioGroup('i6_lay', 1);
+    setFeedback(6, pts,
+      'Barem (4 p. = 1 + 2 + 1): 1 p. corespunderea structurii de scrisoare (formulă de adresare, solicitarea informațiilor, dată, semnătură); ' +
+      '2 p. respectarea integrală a datelor legendei (nume Ion/Ionela Armanu, email armanu_2010@gmail.com, Liceul „Igor Vieru”, condiții admitere, durată, bursă, cămin, secretarul responsabil al comisiei, data de astăzi — 1 p. pentru respectare parțială); ' +
+      '1 p. respectarea limitei de întindere și aranjarea în pagină.'
+    );
+  }
+  else if (n === 7) {
+    const pts = gradeCheckboxGroup('i7_opts', 3);
+    setFeedback(7, pts,
+      'Barem (3 p., 1 p. &times; 3): Sunt acceptate oricare trei dicționare ale limbii române (denumiri sau tipuri), de ex.: ' +
+      '<strong>DEX (Dicționarul explicativ), DOOM-3 (Dicționarul ortografic), Dicționarul de sinonime, DEXI</strong> etc.'
+    );
+  }
+  else if (n === 8) {
+    const pts = gradeCheckboxGroup('i8_opts', 2);
+    setFeedback(8, pts,
+      'Barem (2 p., 1 p. &times; 2): Exemple corecte conform regulii: <strong>broască-țestoasă, arbore-de-cafea, brad-negru, brad-roșu, pătlăgică-roșie, gândac-de-Colorado, urs-brun, gaz-ilariant, verde-de-Paris</strong> etc.'
+    );
+  }
+  else if (n === 9) {
+    let pts = 0;
+    ['i9_p1', 'i9_p2', 'i9_p3', 'i9_p4'].forEach(id => {
+      const el = document.getElementById(id);
+      const ok = el.value === 'ok';
+      if (ok) pts++;
+      markSelect(el, ok);
+    });
+    setFeedback(9, pts,
+      'Barem (4 p., 1 p. &times; 4): Delimitarea corectă din barem:<br>' +
+      '<strong>Pentru engleză/<sup>1-</sup>, când mai sosea câte un sârb sau un polonez în vizită la Institutul de Filozofie/<sup>2</sup> la care lucram/<sup>3</sup>, se întâmpla/<sup>-1</sup> să fac și pe translatorul/<sup>4</sup>.</strong>'
+    );
+  }
+  else if (n === 10) {
+    let pts = 0;
+    ['i10_1', 'i10_2', 'i10_3'].forEach(id => {
+      const el = document.getElementById(id);
+      const ok = el.value === 'ok';
+      if (ok) pts++;
+      markSelect(el, ok);
+    });
+    setFeedback(10, pts,
+      'Barem (3 p., 1 p. &times; 3): ' +
+      '1) <strong>Aveam</strong> – modul indicativ, timpul trecut (imperfect); ' +
+      '2) <strong>reușisem</strong> – modul indicativ, timpul trecut (mai-mult-ca-perfect); ' +
+      '3) <strong>să ies</strong> – modul conjunctiv, timpul prezent.'
+    );
+  }
+  else if (n === 11) {
+    const pts = highlightRadioGroup('i11_stat', 1) +
+                highlightRadioGroup('i11_rig', 2) +
+                highlightRadioGroup('i11_lim', 1);
+    setFeedback(11, pts,
+      'Barem (4 p. = 1 + 2 + 1): 1 p. respectarea statutului interlocutorilor (doi adolescenți) și a subiectului (cursul de germană); ' +
+      '2 p. respectarea rigorilor dialogului (3–4 caracteristici distincte; 1 p. pentru 1–2 caracteristici); 1 p. respectarea limitei de 4 replici.'
+    );
+  }
+  else if (n === 12) {
+    const pts = highlightRadioGroup('i12_sit', 1) +
+                highlightRadioGroup('i12_rig', 2) +
+                highlightRadioGroup('i12_lim', 1);
+    setFeedback(12, pts,
+      'Barem (4 p. = 1 + 2 + 1): 1 p. prezentarea exactă a situației solicitate (cum îți faci temele la română); ' +
+      '2 p. respectarea rigorilor narațiunii (3–4 caracteristici distincte; 1 p. pentru 1–2 caracteristici); 1 p. respectarea limitei de întindere.'
+    );
+  }
+  else if (n === 13) {
+    const pts = highlightRadioGroup('i13_1', 1) +
+                highlightRadioGroup('i13_2', 1) +
+                highlightRadioGroup('i13_3', 1) +
+                highlightRadioGroup('i13_4', 1) +
+                highlightRadioGroup('i13_5', 1);
+    setFeedback(13, pts,
+      'Barem (5 p. pentru corectitudine ortografică, punctuațională și stilistică): ' +
+      '1) cratima corectă (<em>nu-ți, te-ai</em>); 2) ortografia substantivelor compuse nesudate cu cratimă; ' +
+      '3) punctuația enumerării (două puncte + virgule + <em>și</em> fără virgulă înainte); 4) formula oficială cu majuscule și ghilimele corecte; 5) evitarea pleonasmelor și a dezacordului (<em>fiecare... a primit</em>).'
+    );
+  }
+}
+
+function calcGrade(pts) {
+  const pct = Math.round((pts / 50) * 100);
+  let nota = 1;
+  if (pts >= 47) nota = 10;
+  else if (pts >= 42) nota = 9;
+  else if (pts >= 35) nota = 8;
+  else if (pts >= 28) nota = 7;
+  else if (pts >= 21) nota = 6;
+  else if (pts >= 13) nota = 5;
+  else if (pts >= 8) nota = 4;
+  else if (pts >= 4) nota = 3;
+  else if (pts >= 1) nota = 2;
+  return `Nota ${nota} (${pct}%)`;
+}
+
+function gradeAll() {
+  for (let i = 1; i <= 13; i++) gradeItem(i);
+  const p1 = scores[1] + scores[2] + scores[3] + scores[4];
+  const p2 = scores[5] + scores[6] + scores[7] + scores[8] + scores[9] + scores[10];
+  const p3 = scores[11] + scores[12] + scores[13];
+  const total = p1 + p2 + p3;
+
+  document.getElementById('resTotal').textContent = `${total} / 50 p.`;
+  document.getElementById('resGrade').textContent = calcGrade(total);
+  document.getElementById('resP1').textContent = `${p1} / 15 p.`;
+  document.getElementById('resP2').textContent = `${p2} / 22 p.`;
+  document.getElementById('resP3').textContent = `${p3} / 13 p.`;
+  document.getElementById('finalResults').style.display = 'block';
+  document.getElementById('finalResults').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetAndReshuffle() {
+  document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
+  document.querySelectorAll('select').forEach(el => {
+    el.selectedIndex = 0;
+    el.classList.remove('input-ok', 'input-err');
+  });
+  document.querySelectorAll('.opt-label').forEach(lbl => lbl.classList.remove('opt-correct', 'opt-part', 'opt-wrong'));
+  document.querySelectorAll('.feedback-box').forEach(fb => { fb.className = 'feedback-box'; fb.innerHTML = ''; });
+  document.getElementById('i5Preview').className = 'essay-preview';
+  document.getElementById('i5Preview').innerHTML = '';
+
+  for (let i = 1; i <= 13; i++) {
+    scores[i] = 0;
+    document.getElementById('badge-' + i).textContent = `0 / ${maxPts[i]} p.`;
+    document.getElementById('pill-' + i).className = 'pill';
+  }
+  updateLiveScore();
+  document.getElementById('finalResults').style.display = 'none';
+  shuffleAllChoices();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function downloadReport() {
+  gradeAll();
+  const nume = document.getElementById('st_nume').value || 'Nespecificat';
+  const scoala = document.getElementById('st_scoala').value || 'Nespecificat';
+  const localitate = document.getElementById('st_localitate').value || 'Nespecificat';
+  const raion = document.getElementById('st_raion').value || 'Nespecificat';
+  let total = 0;
+  let lines = [
+    'RAPORT EVALUARE - LIMBA ȘI LITERATURA ROMÂNĂ, TEST Nr. 2, CLASA A IX-A (februarie 2026)',
+    '=======================================================================================',
+    `Elev: ${nume}`,
+    `Instituția: ${scoala} (${localitate}, r-nul ${raion})`,
+    '---------------------------------------------------------------------------------------'
+  ];
+  for (let i = 1; i <= 13; i++) {
+    total += scores[i];
+    lines.push(`Item ${String(i).padStart(2, '0')}: ${scores[i]} / ${maxPts[i]} puncte`);
+  }
+  lines.push('---------------------------------------------------------------------------------------');
+  lines.push(`PUNCTAJ TOTAL: ${total} / 50 puncte`);
+  lines.push(`NOTĂ ORIENTATIVĂ: ${calcGrade(total)}`);
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `Rezultat_Limba_Romana_Clasa9_Test2_2026_${nume.replace(/\s+/g, '_')}.txt`;
+  a.click();
+}
+</script>
+</body>
+</html>
