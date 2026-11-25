@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limba și literatura română – Test pentru exersare Nr. 1, Clasa a IX-a (februarie 2026) | MEC / ANCE</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-mid: #2563eb;
+    --primary-light: #eff6ff;
+    --accent: #0f766e;
+    --accent-light: #f0fdfa;
+    --source-bg: #f8fafc;
+    --source-border: #3b82f6;
+    --dex-bg: #fefce8;
+    --dex-border: #ca8a04;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --border: #cbd5e1;
+    --text: #0f172a;
+    --muted: #475569;
+    --ok-bg: #dcfce7;
+    --ok-border: #16a34a;
+    --ok-text: #14532d;
+    --part-bg: #fef3c7;
+    --part-border: #d97706;
+    --part-text: #78350f;
+    --err-bg: #fee2e2;
+    --err-border: #dc2626;
+    --err-text: #7f1d1d;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.58;
+  }
+
+  /* Topbar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 18px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  }
+  .topbar-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .brand { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge-mec { background: #2563eb; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+  .controls { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .timer-box {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-sm {
+    background: #334155;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 8px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .btn-sm:hover { background: #475569; }
+  .btn-tool {
+    background: #1d4ed8;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn-tool:hover { background: #2563eb; }
+  .btn-tool.alt { background: #334155; }
+  .btn-tool.alt:hover { background: #475569; }
+
+  .nav-pills {
+    max-width: 1080px;
+    margin: 8px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+  }
+  .pill {
+    min-width: 32px;
+    height: 26px;
+    padding: 0 7px;
+    border-radius: 5px;
+    border: 1px solid #475569;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .pill:hover { background: #2563eb; border-color: #2563eb; color: #fff; }
+  .pill.checked-ok { background: #16a34a; border-color: #16a34a; color: #fff; }
+  .pill.checked-part { background: #d97706; border-color: #d97706; color: #fff; }
+  .pill.checked-err { background: #dc2626; border-color: #dc2626; color: #fff; }
+
+  .container {
+    max-width: 1080px;
+    margin: 20px auto 60px;
+    padding: 0 16px;
+  }
+
+  /* Exam Header */
+  .exam-header {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--primary);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .exam-header-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+  }
+  .ministry { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+  .exam-title { font-size: 21px; font-weight: 800; color: var(--primary); margin: 4px 0; }
+  .exam-meta { font-size: 13.5px; color: var(--muted); }
+  .note-strip {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary-mid);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    color: #1e3a8a;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .student-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .student-grid input {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13.5px;
+  }
+
+  .domain-banner {
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15.5px;
+    margin: 26px 0 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .domain-banner span.pts {
+    background: rgba(255, 255, 255, 0.22);
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* Literary Reading Text Box */
+  .reading-panel {
+    background: #fff;
+    border: 1px solid #bfdbfe;
+    border-left: 5px solid var(--primary-mid);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 1px 4px rgba(30, 58, 138, 0.06);
+  }
+  .reading-panel h3 {
+    margin: 0 0 12px;
+    color: var(--primary);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .reading-body p {
+    margin: 0 0 11px;
+    text-indent: 22px;
+    font-size: 14.8px;
+    line-height: 1.72;
+    color: #1e293b;
+  }
+  .reading-body p.highlight-last {
+    background: #eff6ff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid #60a5fa;
+  }
+  .para-num {
+    display: inline-block;
+    text-indent: 0;
+    font-size: 11px;
+    font-weight: 800;
+    color: #2563eb;
+    background: #dbeafe;
+    padding: 0 5px;
+    border-radius: 4px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .reading-author {
+    text-align: right;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--primary);
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .reading-footnote {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed #cbd5e1;
+    font-size: 13.2px;
+    color: var(--muted);
+  }
+
+  /* DEX Box */
+  .dex-box {
+    background: var(--dex-bg);
+    border: 1px solid #fde047;
+    border-left: 4px solid var(--dex-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    font-size: 13.8px;
+    line-height: 1.65;
+    color: #1e293b;
+  }
+
+  /* Item Cards */
+  .item-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    scroll-margin-top: 102px;
+  }
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed #e2e8f0;
+    padding-bottom: 10px;
+  }
+  .item-num {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid #bfdbfe;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+  .item-prompt { font-weight: 600; font-size: 15.3px; flex: 1; }
+  .item-score-badge {
+    font-size: 13px;
+    font-weight: 700;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* Step Boxes */
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: 10px;
+  }
+  .step-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid var(--accent);
+    padding: 12px 14px;
+    border-radius: 7px;
+    font-size: 14.3px;
+  }
+  .step-label {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid #99f6e4;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-right: 6px;
+  }
+  .step-pts {
+    float: right;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+
+  /* Inline Sentence Cloze */
+  .cloze-sentence {
+    background: #fff;
+    border: 1.5px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 15px;
+    line-height: 2.3;
+    margin-top: 8px;
+  }
+  .u-word {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* Inputs & Selects */
+  select {
+    padding: 6px 10px;
+    border: 1.5px solid #94a3b8;
+    border-radius: 6px;
+    font-size: 13.8px;
+    background: #fff;
+    color: var(--text);
+    max-width: 100%;
+  }
+  select.inline-sel {
+    margin: 0 4px;
+    padding: 4px 8px;
+    font-size: 13.5px;
+    vertical-align: baseline;
+  }
+  select:focus {
+    outline: 2px solid var(--primary-mid);
+    border-color: var(--primary-mid);
+  }
+  .input-ok { background: var(--ok-bg) !important; border-color: var(--ok-border) !important; color: var(--ok-text) !important; }
+  .input-err { background: var(--err-bg) !important; border-color: var(--err-border) !important; color: var(--err-text) !important; }
+
+  .match-row {
+    display: grid;
+    grid-template-columns: minmax(210px, 0.95fr) 1.3fr;
+    gap: 10px;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px dashed #e2e8f0;
+  }
+  .match-row:last-child { border-bottom: none; }
+
+  /* Choice Cards */
+  .opt-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 8px;
+  }
+  .opt-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .opt-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 9px 12px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 7px;
+    background: #fff;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .opt-label:hover { background: var(--primary-light); border-color: #93c5fd; }
+  .opt-label input { accent-color: var(--primary); margin-top: 3px; flex-shrink: 0; }
+  .opt-label.opt-correct { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+  .opt-label.opt-part { background: var(--part-bg); border-color: var(--part-border); color: var(--part-text); }
+  .opt-label.opt-wrong { background: var(--err-bg); border-color: var(--err-border); color: var(--err-text); }
+
+  /* Dialogue Preview inside radio */
+  .dlg-block {
+    display: block;
+    line-height: 1.55;
+  }
+  .dlg-line { display: block; margin-bottom: 2px; }
+
+  /* Actions & Feedback */
+  .item-actions {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn-check {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13.5px;
+  }
+  .btn-check:hover { background: #1d4ed8; }
+  .btn-reset {
+    background: #e2e8f0;
+    color: #1e293b;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .btn-reset:hover { background: #cbd5e1; }
+
+  .feedback-box {
+    margin-top: 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+    line-height: 1.65;
+  }
+  .feedback-box.show { display: block; }
+  .feedback-box.ok { background: var(--ok-bg); border-left: 4px solid var(--ok-border); color: var(--ok-text); }
+  .feedback-box.part { background: var(--part-bg); border-left: 4px solid var(--part-border); color: var(--part-text); }
+  .feedback-box.err { background: var(--err-bg); border-left: 4px solid var(--err-border); color: var(--err-text); }
+
+  .essay-preview {
+    margin-top: 14px;
+    padding: 16px 18px;
+    background: #eff6ff;
+    border: 1.5px solid #60a5fa;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.65;
+    display: none;
+  }
+  .essay-preview.show { display: block; }
+  .essay-preview h4 { margin: 0 0 8px; color: var(--primary); }
+  .essay-preview p { margin: 0 0 8px; text-indent: 18px; }
+  .essay-preview p:last-child { margin-bottom: 0; }
+
+  /* Modals */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.76);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-box {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 760px;
+    width: 100%;
+    max-height: 86vh;
+    overflow-y: auto;
+    padding: 18px 22px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  }
+  .modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+  }
+  .scratch-area {
+    width: 100%;
+    min-height: 210px;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    resize: vertical;
+    background: #f8fafc;
+  }
+
+  /* Final Panel */
+  .final-panel {
+    background: var(--card);
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 28px;
+    text-align: center;
+  }
+  .btn-final {
+    background: #16a34a;
+    color: #fff;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-size: 15.5px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
+  }
+  .btn-final:hover { background: #15803d; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+    text-align: left;
+  }
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .stat-val { font-size: 20px; font-weight: 800; color: var(--primary); }
+
+  @media (max-width: 780px) {
+    .match-row { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .topbar, .item-actions, .final-panel button, .btn-tool, .modal-backdrop { display: none !important; }
+    .item-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="badge-mec">MEC / ANCE • 2026</span>
+      <span>Limba și literatura română — Test Nr. 1 (Clasa a IX-a)</span>
+    </div>
+    <div class="controls">
+      <button class="btn-tool" type="button" onclick="openModal('textModal')">📖 Text suport</button>
+      <button class="btn-tool" type="button" onclick="openModal('dexModal')">📚 Articol DEX</button>
+      <button class="btn-tool alt" type="button" onclick="openModal('scratchModal')">📝 Ciornă</button>
+      <div class="timer-box">
+        <span>⏱ <span id="timerDisplay">120:00</span></span>
+        <button class="btn-sm" onclick="toggleTimer()" id="timerBtn">Pauză</button>
+      </div>
+      <span style="font-size:13.5px;font-weight:700;">Scor: <span id="liveScore">0</span> / 50 p.</span>
+    </div>
+  </div>
+  <div class="nav-pills" id="navPills">
+    <span style="font-size:12px;color:#94a3b8;margin-right:4px;">Itemi:</span>
+  </div>
+</div>
+
+<!-- Modal Text Suport -->
+<div class="modal-backdrop" id="textModal" onclick="if(event.target===this) closeModal('textModal')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <strong style="color:var(--primary);">📖 Text suport — Alexandru N. Stermin</strong>
+      <button type="button" class="btn-reset" onclick="closeModal('textModal')">✕ Închide</button>
+    </div>
+    <div id="modalTextContent"></div>
+  </div>
+</div>
+
+<!-- Modal Articol DEX -->
+<div class="modal-backdrop" id="dexModal" onclick="if(event.target===this) closeModal('dexModal')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <strong style="color:var(--primary);">📚 Articol lexicografic — substantivul „joc”</strong>
+      <button type="button" class="btn-reset" onclick="closeModal('dexModal')">✕ Închide</button>
+    </div>
+    <div id="modalDexContent"></div>
+  </div>
+</div>
+
+<!-- Modal Ciornă -->
+<div class="modal-backdrop" id="scratchModal" onclick="if(event.target===this) closeModal('scratchModal')">
+  <div class="modal-box" style="max-width:580px;">
+    <div class="modal-head">
+      <strong style="color:var(--primary);">📝 Ciornă de lucru (plan de rezumat, argumente, replici de dialog)</strong>
+      <button type="button" class="btn-reset" onclick="closeModal('scratchModal')">✕ Închide</button>
+    </div>
+    <textarea id="scratchText" class="scratch-area" placeholder="Notează aici ideile, numărul de cuvinte pentru rezumat, argumentele sau descrierea..."></textarea>
+    <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:12.5px;color:var(--muted);">Cuvinte în ciornă: <strong id="scratchWords">0</strong></span>
+      <button type="button" class="btn-reset" onclick="document.getElementById('scratchText').value=''; updateScratchCount();">Curăță ciorna</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="exam-header">
+    <div class="exam-header-top">
+      <div>
+        <div class="ministry">Ministerul Educației și Cercetării al Republicii Moldova • Agenția Națională pentru Curriculum și Evaluare</div>
+        <div class="exam-title">LIMBA ȘI LITERATURA ROMÂNĂ — TEST PENTRU EXERSARE Nr. 1</div>
+        <div class="exam-meta">Ciclul gimnazial (Clasa a IX-a) • februarie 2026 • 13 itemi • Timp alocat: <strong>120 de minute</strong></div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:12px;color:var(--muted);">Punctaj maxim</div>
+        <div style="font-size:26px;font-weight:800;color:var(--primary);">50 puncte</div>
+      </div>
+    </div>
+    <div class="note-strip">
+      <span><strong>Instrucțiuni:</strong> Citește cu atenție textul suport și rezolvă fiecare item. Poți reciti oricând textul sau articolul de dicționar din bara de sus.</span>
+      <span style="display:flex;gap:6px;">
+        <button class="btn-tool" type="button" onclick="openModal('textModal')">📖 Text suport</button>
+        <button class="btn-tool" type="button" onclick="openModal('dexModal')">📚 Articol DEX</button>
+      </span>
+    </div>
+    <div class="student-grid">
+      <input type="text" id="st_raion" placeholder="Raionul / Municipiul">
+      <input type="text" id="st_localitate" placeholder="Localitatea">
+      <input type="text" id="st_scoala" placeholder="Instituția de învățământ">
+      <input type="text" id="st_nume" placeholder="Numele și prenumele elevului">
+    </div>
+  </div>
+
+  <!-- TEXT SUPORT -->
+  <div class="reading-panel" id="readingPanel">
+    <h3>📖 Citește textul și realizează sarcinile propuse</h3>
+    <div class="reading-body">
+      <p><span class="para-num">1</span>Am copilărit într-un sat din sudul Transilvaniei. Acolo e buricul pământului. Vă spun și de ce! De la mine din curte, dacă mergi spre sud, în șapte ceasuri ajungi la cei mai înalți munți de la noi din țară – munții Făgăraș. Sunt aici de când lumea, țin cerul pe vârfurile lor. Așa falnici cum îi vedem, am crezut mereu că nimic nu-i poate străbate. Asta până am descoperit Oltul. Dacă mergi repede, într-o oră ești la malul lui.</p>
+      <p><span class="para-num">2</span>Dacă iei drumul spre răsărit, ajungi la Templul Ursitelor, un loc magic săpat în stâncă. Dacă mergi spre apus, ajungi la Râpa Roșie, unde, povestește Lucian Blaga, e o văgăună mare în care se adăpostește un căpcăun. În spatele grădinii joacă măiestrele, fete cu părul despletit ce se învârt în horă noaptea și binecuvântează pe toți cei care le văd și nu spun nimănui. Sigur aici este centrul lumii: locul în care joacă măiestrele, se întâlnesc ursitele și dorm căpcăunii. Mai este însă ceva, la fel de important – o fântână secretă.</p>
+      <p><span class="para-num">3</span>Cu această fântână începe povestea jocului meu. Nu l-am învățat de la nimeni. L-am inventat eu, așa, din nimic... Tovarășii mei s-au prins repede de regulile lui și am început să-l jucăm toți, toți copiii de pe ulița mea. L-am numit <em>apă vie</em>.</p>
+      <p class="highlight-last"><span class="para-num">4</span>Prin fața casei mele trecea un șanț pavat frumos cu pietre, care strângea apa ploilor. Între șanț și zidul casei era un trotuar făcut din plăci de beton. Ei bine, toți copiii stăteau în drum, la marginea șanțului, iar pe plăcile de lângă casă stătea un zmeu. Oricine dintre noi putea să fie zmeu. El trebuia să apere fântâna fermecată pe care ne-o imaginam acolo. În această fântână era <em>apă vie</em>. Când se dădea startul jocului, copiii de pe drum, cu toată puterea, săreau șanțul, ajungeau pe plăci și încercau să atingă zidul casei. Odată ce-l atingeai nu apucai să respiri, că trebuia să faci alt salt peste șanț, ca să ajungi înapoi în drum, unde erai în siguranță. Dacă reușeai să atingi zidul, însemna că ai luat o gură din <em>apă vie</em> păzită de zmeu.</p>
+      <p class="highlight-last"><span class="para-num">5</span>Zmeul care păzea fântâna imaginară se străduia să atingă pe oricine ajungea pe plăci. Acolo era tărâmul lui, de unde putea pleca cu o singură condiție: să devină om. Și o făcea atingând pe unul din copiii care îndrăzneau să fure <em>apă vie</em>. În momentul în care îl atingea, zmeul devenea om, iar omul devenea zmeu și trebuia să rămână pe plăci să păzească fântâna.</p>
+    </div>
+    <div class="reading-author">Alexandru N. Stermin</div>
+    <div class="reading-footnote">
+      <strong>Notă:</strong> <em>Apă vie</em> – lichid miraculos pe care eroii din basme îl beau pentru a-și recăpăta energia și forța, necesare în luptele epuizante contra dușmanilor. <em>(Alineatele 4 și 5, evidențiate cu albastru deschis, constituie suportul pentru rezumatul de la Itemul 3.)</em>
+    </div>
+  </div>
+
+  <!-- ===================== PARTEA I: ÎNȚELEGEREA TEXTULUI ȘI VOCABULAR ===================== -->
+  <div class="domain-banner">
+    <span>Înțelegerea textului, rezumatul și analiza lexicografică (Itemii 1–4)</span>
+    <span class="pts">15 puncte</span>
+  </div>
+
+  <!-- ITEM 1 -->
+  <div class="item-card" id="item-1">
+    <div class="item-head">
+      <span class="item-num">Item 1</span>
+      <div class="item-prompt">
+        Răspunde, <strong>în enunțuri complete</strong>, la întrebările de mai jos (pe baza textului):
+      </div>
+      <span class="item-score-badge" id="badge-1">0 / 3 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">a)</span> Care erau cei mai apropiați munți de satul naratorului?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i1_a">
+          <label class="opt-label"><input type="radio" name="i1_a" value="1"> <span>Cei mai apropiați munți de satul naratorului erau Munții Făgăraș.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_a" value="0"> <span>Munții Făgăraș. <em>(răspuns incomplet, nu este enunț complet)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i1_a" value="0"> <span>Cei mai apropiați munți de satul naratorului erau Munții Apuseni.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_a" value="0"> <span>Lângă satul naratorului se afla doar Râpa Roșie, fără munți în apropiere.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">b)</span> În cât timp se putea ajunge la Olt?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i1_b">
+          <label class="opt-label"><input type="radio" name="i1_b" value="1"> <span>La Olt se putea ajunge într-o oră, dacă mergeai repede.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_b" value="0"> <span>Într-o oră. <em>(răspuns incomplet, nu este enunț complet)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i1_b" value="0"> <span>La Olt se putea ajunge în șapte ceasuri de mers pe jos.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_b" value="0"> <span>La malul Oltului se putea ajunge abia spre apus.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">c)</span> De unde a învățat copilul jocul <em>apă vie</em>?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i1_c">
+          <label class="opt-label"><input type="radio" name="i1_c" value="1"> <span>Copilul nu a învățat jocul de la nimeni, ci l-a inventat singur, din nimic.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_c" value="0"> <span>De la nimeni. <em>(răspuns incomplet, nu este enunț complet)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i1_c" value="0"> <span>Copilul a învățat regulile jocului de la tovarășii de pe ulița sa.</span></label>
+          <label class="opt-label"><input type="radio" name="i1_c" value="0"> <span>Copilul a învățat jocul din povestirile lui Lucian Blaga despre Râpa Roșie.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(1)">Verifică Itemul 1</button>
+    </div>
+    <div class="feedback-box" id="fb-1"></div>
+  </div>
+
+  <!-- ITEM 2 -->
+  <div class="item-card" id="item-2">
+    <div class="item-head">
+      <span class="item-num">Item 2</span>
+      <div class="item-prompt">
+        Numește <strong>două</strong> personaje din basmele românești.
+      </div>
+      <span class="item-score-badge" id="badge-2">0 / 2 p.</span>
+    </div>
+
+    <div class="step-box">
+      <span class="step-label">Selectați exact 2 opțiuni</span> Bifați cele două personaje autentice din basmele populare românești:
+      <span class="step-pts">1 p. + 1 p.</span>
+      <div class="opt-stack opt-list" id="i2_opts">
+        <label class="opt-label"><input type="checkbox" name="i2_chk" value="1"> <span><strong>Făt-Frumos</strong> (erou emblematic al basmelor populare românești)</span></label>
+        <label class="opt-label"><input type="checkbox" name="i2_chk" value="1"> <span><strong>Ileana Cosânzeana</strong> (personaj feminin din basmele populare românești)</span></label>
+        <label class="opt-label"><input type="checkbox" name="i2_chk" value="0"> <span><strong>Lucian Blaga</strong> (poet și filosof român menționat în text)</span></label>
+        <label class="opt-label"><input type="checkbox" name="i2_chk" value="0"> <span><strong>Alexandru N. Stermin</strong> (biolog și scriitor contemporan, autorul textului)</span></label>
+        <label class="opt-label"><input type="checkbox" name="i2_chk" value="0"> <span><strong>Ștefan cel Mare</strong> (domnitor istoric al Moldovei)</span></label>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(2)">Verifică Itemul 2</button>
+    </div>
+    <div class="feedback-box" id="fb-2"></div>
+  </div>
+
+  <!-- ITEM 3 -->
+  <div class="item-card" id="item-3">
+    <div class="item-head">
+      <span class="item-num">Item 3</span>
+      <div class="item-prompt">
+        Rezumă, în limita a <strong>60–65 de cuvinte</strong>, ultimele două alineate ale textului (alineatele 4 și 5).
+      </div>
+      <span class="item-score-badge" id="badge-3">0 / 5 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Criteriul 1 • Fidelitatea informației</span> Alegeți enunțul care redă fidel cadrul și rolurile jocului (fără erori față de text):
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c1">
+          <label class="opt-label"><input type="radio" name="i3_c1" value="1"> <span>Copiii stăteau în drum, la marginea șanțului, iar pe plăcile dintre șanț și zidul casei stătea un zmeu care apăra fântâna imaginară cu „apă vie”.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c1" value="0"> <span>Zmeul stătea în drum și trebuia să sară șanțul pentru a bea apă din fântâna reală din spatele grădinii.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c1" value="0"> <span>Doar naratorul avea voie să fie zmeu, ceilalți copii fiind obligați să rămână mereu pe plăcile de beton.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Criteriul 2 • Secvențele esențiale</span> Alegeți enunțul care reține corect acțiunea centrală și regula schimbării rolurilor:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c2">
+          <label class="opt-label"><input type="radio" name="i3_c2" value="1"> <span>Jucătorii săreau peste șanț pentru a atinge zidul și a reveni în siguranță în drum; dacă zmeul atingea pe cineva pe plăci, rolurile se inversau și cel prins devenea noul zmeu.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c2" value="0"> <span>Jocul se încheia imediat ce primul copil sărea peste șanț, fără ca zmeul să poată deveni om.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c2" value="0"> <span>Când zmeul prindea un copil, ambii trebuiau să alerge până la malul Oltului.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Criteriul 3 • Omiterea detaliilor nesemnificative</span> Care informație din alineatul 4 este un detaliu descriptiv secundar ce trebuie OMIS din rezumat?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c3">
+          <label class="opt-label"><input type="radio" name="i3_c3" value="1"> <span>Faptul că șanțul era „pavat frumos cu pietre, care strângea apa ploilor” și că „nu apucai să respiri” la atingerea zidului.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c3" value="0"> <span>Regula prin care zmeul devenea om atingând un copil care încerca să ia „apă vie”.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c3" value="0"> <span>Scopul copiilor de a sări șanțul, a atinge zidul și a se întoarce în drum.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Criteriul 4 • Coerență gramaticală și rigorile rezumatului</span> Care formulare respectă normele gramaticale și stilistice ale rezumatului (persoana a III-a, obiectivitate, fără comentarii personale)?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c4">
+          <label class="opt-label"><input type="radio" name="i3_c4" value="1"> <span>Relatarea la persoana a III-a, cu verbe coerente temporal și enunțuri clare, fără expresii subiective de tipul „Ei bine, eu cred că era un joc super!”.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c4" value="0"> <span>Păstrarea persoanei I („Prin fața casei mele...”) și introducerea de exclamații personale despre frumusețea copilăriei.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c4" value="0"> <span>Copierea cuvânt cu cuvânt a primelor propoziții din text, întrerupte brusc la limita de cuvinte.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Criteriul 5 • Limita exactă de 60–65 de cuvinte</span> Selectați varianta de rezumat complet care se încadrează exact în limita de <strong>60–65 de cuvinte</strong>:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i3_c5">
+          <label class="opt-label"><input type="radio" name="i3_c5" value="1"> <span>În fața casei naratorului, între drum și zid, un șanț și un trotuar din plăci deveneau scena jocului „apă vie”. Un copil avea rolul zmeului și păzea o fântână imaginară lângă zid. Ceilalți săreau peste șanț ca să atingă zidul și să revină în drum. Dacă zmeul prindea un jucător pe plăci, rolurile se schimbau și acesta devenea noul paznic.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c5" value="0"> <span>Copiii jucau „apă vie” sărind un șanț ca să atingă zidul casei păzit de un zmeu. Dacă zmeul atingea un copil, ei schimbau rolurile.</span></label>
+          <label class="opt-label"><input type="radio" name="i3_c5" value="0"> <span>Prin fața casei naratorului trecea un șanț pavat foarte frumos cu pietre care strângea apa ploilor, iar între șanț și zidul casei exista un trotuar din plăci de beton. Toți copiii stăteau în drum la marginea șanțului, în timp ce un zmeu stătea pe plăci ca să apere fântâna fermecată cu apă vie. La start, copiii săreau cu toată puterea șanțul, atingeau zidul fără să apuce să respire și făceau alt salt înapoi în drum. Dacă zmeul atingea vreun copil pe plăci, zmeul devenea om, iar copilul devenea zmeu și rămânea pe plăci.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(3)">Verifică Itemul 3</button>
+    </div>
+    <div class="feedback-box" id="fb-3"></div>
+  </div>
+
+  <!-- ITEM 4 -->
+  <div class="item-card" id="item-4">
+    <div class="item-head">
+      <span class="item-num">Item 4</span>
+      <div class="item-prompt">
+        Analizează articolul lexicografic al substantivului <strong>joc</strong>, selectând în spațiile libere informațiile solicitate.
+      </div>
+      <span class="item-score-badge" id="badge-4">0 / 5 p.</span>
+    </div>
+
+    <div class="dex-box" id="dexPanel">
+      <strong>JOC, jocuri</strong>, <em>s. n.</em> <strong>1.</strong> Acțiunea de <em>a se juca</em> (1) și rezultatul ei; activitate distractivă (mai ales la copii); joacă. ◊ <em>Joc de societate</em> = distracție într-un grup de persoane care constă din întrebări și răspunsuri hazlii sau din dezlegarea unor probleme amuzante. <em>Joc de cuvinte</em> = glumă bazată pe asemănarea de sunete dintre două cuvinte cu înțeles diferit; calambur. <strong>2.</strong> Acțiunea de <em>a juca</em> (5); dans popular; <em>p. ext.</em> petrecere populară la care se dansează; horă. ♦ Melodie după care se joacă. ♦ <em>Fig.</em> Mișcare rapidă și capricioasă (a unor lucruri, imagini etc.); tremur, vibrație. <strong>3.</strong> Competiție sportivă de echipă căreia îi este proprie și lupta sportivă (baschet, fotbal, rugbi etc.). ♦ Mod specific de a juca, de a se comporta într-o întrecere sportivă. <strong>4.</strong> Acțiunea de a interpreta un rol într-o piesă de teatru; felul cum se interpretează. <em>Joc de scenă</em> = totalitatea mișcărilor și atitudinilor unui actor în timpul interpretării unui rol. <strong>5.</strong> (Și în sintagma <em>joc de noroc</em>) = distracție cu cărți, cu zaruri etc. care angajează de obicei sume de bani și care se desfășoară după anumite reguli respectate de parteneri, câștigul fiind determinat de întâmplare sau de calcul. ◊ <em>Expr. A juca un joc mare</em> (sau <em>periculos</em>) ori <em>a-și pune capul</em> (sau <em>viața, situația</em> etc.) <em>în joc</em> = a întreprinde o acțiune riscantă. <em>A descoperi</em> (sau <em>a pricepe</em>) <em>jocul cuiva</em> = a surprinde manevrele sau intențiile ascunse ale cuiva. <em>A face jocul cuiva</em> = a servi (conștient sau nu) intereselor cuiva. <em>A fi în joc</em> = a se afla într-o situație critică, a fi în primejdie. ♦ (<em>Concr.</em>) Totalitatea obiectelor care formează un ansamblu, un set folosit la practicarea unui joc (5). <strong>6.</strong> (<em>Tehn.</em>) Deplasare relativă pe o direcție dată între două piese asamblate, considerată față de poziția de contact pe direcția respectivă. <strong>7.</strong> Model simplificat și formal al unei situații, construit pentru a face posibilă analiza pe cale matematică a acestei situații. ◊ <em>Teoria jocurilor</em> = teorie matematică a situațiilor conflictuale, în care două sau mai multe părți au scopuri, tendințe contrare. <strong>8.</strong> (<em>Muz.</em>; în sintagma) <em>Joc de clopoței</em> = glockenspiel. – Lat. <strong>jocus</strong>.
+    </div>
+
+    <div class="step-box">
+      <div class="match-row">
+        <strong>a) Sinonimul pentru expresia <em>joc de cuvinte</em> este:</strong>
+        <select id="i4_a">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">calambur</option>
+          <option value="no1">glockenspiel</option>
+          <option value="no2">horă</option>
+          <option value="no3">vibrație</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>b) Sensul care se referă la arta scenică este:</strong>
+        <select id="i4_b">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">al patrulea (4) – „acțiunea de a interpreta un rol într-o piesă de teatru”</option>
+          <option value="no1">al doilea (2) – „dans popular; petrecere populară la care se dansează”</option>
+          <option value="no2">al șaselea (6) – „deplasare relativă între două piese asamblate”</option>
+          <option value="no3">al optulea (8) – „joc de clopoței = glockenspiel”</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>c) Un joc sportiv menționat în articol este:</strong>
+        <select id="i4_c">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">baschet (sunt menționate: baschet, fotbal, rugbi)</option>
+          <option value="no1">volei</option>
+          <option value="no2">tenis de câmp</option>
+          <option value="no3">hochei pe gheață</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>d) Sensul figurat, atestat în acest articol, este:</strong>
+        <select id="i4_d">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">„mișcare rapidă și capricioasă (a unor lucruri, imagini etc.); tremur, vibrație”</option>
+          <option value="no1">„model simplificat și formal al unei situații, construit pentru analiza matematică”</option>
+          <option value="no2">„totalitatea obiectelor care formează un ansamblu, un set”</option>
+          <option value="no3">„a întreprinde o acțiune riscantă”</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>e) În fragmentul de text, cuvântul <em>joc</em> este folosit cu sensul:</strong>
+        <select id="i4_e">
+          <option value="">-- Selectați răspunsul --</option>
+          <option value="ok">primul sens (1) – „acțiunea de a se juca; activitate distractivă (mai ales la copii); joacă”</option>
+          <option value="no1">al treilea sens (3) – „competiție sportivă de echipă”</option>
+          <option value="no2">al cincilea sens (5) – „joc de noroc cu cărți sau zaruri pe bani”</option>
+          <option value="no3">al șaptelea sens (7) – „teoria matematică a situațiilor conflictuale”</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(4)">Verifică Itemul 4</button>
+    </div>
+    <div class="feedback-box" id="fb-4"></div>
+  </div>
+
+  <!-- ===================== PARTEA II: ARGUMENTARE, INTERPRETARE ȘI GRAMATICĂ ===================== -->
+  <div class="domain-banner">
+    <span>Argumentare, explicare și cunoștințe de limbă (Itemii 5–10)</span>
+    <span class="pts">22 de puncte</span>
+  </div>
+
+  <!-- ITEM 5 -->
+  <div class="item-card" id="item-5">
+    <div class="item-head">
+      <span class="item-num">Item 5</span>
+      <div class="item-prompt">
+        Exprimă-ți opinia față de importanța cunoașterii geografiei, aducând <strong>trei argumente</strong>.
+      </div>
+      <span class="item-score-badge" id="badge-5">0 / 6 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Atitudinea (opinia)</span> Selectați formularea clară a atitudinii față de importanța geografiei:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i5_op">
+          <label class="opt-label"><input type="radio" name="i5_op" value="1"> <span>Consider că cunoașterea geografiei este extrem de importantă pentru fiecare om, deoarece ne ajută să înțelegem lumea în care trăim, mediul înconjurător și legătura dintre natură și societate.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_op" value="0"> <span>Geografia este o disciplină școlară pe care o învățăm la școală în clasele de gimnaziu. <em>(nu exprimă o opinie clară)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i5_op" value="0"> <span>Nu cred că este nevoie să știm unde se află munții sau râurile, deoarece avem hărți pe telefon.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Argumentul 1</span> Selectați primul argument valid:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i5_a1">
+          <label class="opt-label"><input type="radio" name="i5_a1" value="1"> <span>În primul rând, geografia ne dezvoltă capacitatea de orientare în spațiu și ne ajută să ne cunoaștem țara — formele de relief, apele și regiunile —, consolidând atașamentul față de locurile natale, așa cum își prezintă naratorul satul dintre Făgăraș și Olt.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a1" value="0"> <span>În primul rând, geografia ne învață cum să scriem dialoguri și cum să conjugăm verbele la viitor.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a1" value="0"> <span>În primul rând, geografia este utilă doar pentru că are hărți colorate în manuale.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Argumentul 2</span> Selectați al doilea argument valid:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i5_a2">
+          <label class="opt-label"><input type="radio" name="i5_a2" value="1"> <span>În al doilea rând, studiul geografiei ne explică fenomenele naturale, clima și resursele planetei, formând o atitudine responsabilă față de protejarea mediului și gestionarea riscurilor naturale.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a2" value="0"> <span>În al doilea rând, geografia ne ajută să înlocuim complet științele naturii și matematica.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a2" value="0"> <span>În al doilea rând, toți oamenii care cunosc geografie nu mai trebuie să călătorească niciodată.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Argumentul 3</span> Selectați al treilea argument valid:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i5_a3">
+          <label class="opt-label"><input type="radio" name="i5_a3" value="1"> <span>Nu în ultimul rând, cunoașterea geografiei ne lărgește cultura generală și ne permite să înțelegem diversitatea popoarelor, a culturilor, a rutelor comerciale și a evenimentelor actuale din întreaga lume.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a3" value="0"> <span>Nu în ultimul rând, geografia se ocupă exclusiv de studierea personajelor din basmele populare.</span></label>
+          <label class="opt-label"><input type="radio" name="i5_a3" value="0"> <span>Nu în ultimul rând, este un argument bun pentru că așa scrie în cerința testului.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Coerență și rigorile textului argumentativ</span> Selectați concluzia logică și structura corectă a textului argumentativ:
+        <span class="step-pts">1 p. + 1 p.</span>
+        <div class="match-row">
+          <strong>Concluzie coerentă (1 p.):</strong>
+          <select id="i5_coh">
+            <option value="">-- Selectați concluzia --</option>
+            <option value="ok">Prin urmare, geografia nu înseamnă doar memorarea unor denumiri, ci o cheie esențială pentru a ne orienta, a proteja natura și a înțelege lumea contemporană.</option>
+            <option value="no1">Așadar, jocul „apă vie” era foarte distractiv pentru copiii de pe ulița naratorului.</option>
+            <option value="no2">În concluzie, nu am alte idei și închei textul aici.</option>
+          </select>
+        </div>
+        <div class="match-row">
+          <strong>Rigorile textului argumentativ (1 p.):</strong>
+          <select id="i5_rig">
+            <option value="">-- Selectați structura corectă --</option>
+            <option value="ok">Ipoteză (opinie clară) + 3 argumente introduse prin conectori logici + concluzie, încadrate în spațiul rezervat</option>
+            <option value="no1">Listă neordonată de substantive proprii, fără conectori și fără concluzie</option>
+            <option value="no2">Dialog din patru replici între doi elevi, fără formularea unei concluzii</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(5)">Verifică Itemul 5</button>
+    </div>
+    <div class="feedback-box" id="fb-5"></div>
+    <div class="essay-preview" id="i5Preview"></div>
+  </div>
+
+  <!-- ITEM 6 -->
+  <div class="item-card" id="item-6">
+    <div class="item-head">
+      <span class="item-num">Item 6</span>
+      <div class="item-prompt">
+        Explică, în <strong>două enunțuri</strong>, cum înțelegi expresia <em>lucruri imaginare</em>.
+      </div>
+      <span class="item-score-badge" id="badge-6">0 / 4 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Sensul cuvântului „imaginar”</span> Selectați explicația corectă a adjectivului <em>imaginar</em>:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i6_cuv">
+          <label class="opt-label"><input type="radio" name="i6_cuv" value="1"> <span>Cuvântul „imaginar” desemnează ceva ireal, fabulos, care există doar în minte și în închipuire, nu în realitatea concretă.</span></label>
+          <label class="opt-label"><input type="radio" name="i6_cuv" value="0"> <span>Cuvântul „imaginar” se referă la obiecte vechi, păstrate în muzee și confirmate prin documente.</span></label>
+          <label class="opt-label"><input type="radio" name="i6_cuv" value="0"> <span>Cuvântul „imaginar” înseamnă strict o fotografie sau o ilustrație dintr-o carte.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Sensul întregii expresii</span> Selectați elucidarea deplină a expresiei <em>lucruri imaginare</em> (cu legătură la experiența copiilor):
+        <span class="step-pts">2 p.</span>
+        <div class="opt-stack opt-list" id="i6_exp">
+          <label class="opt-label"><input type="radio" name="i6_exp" value="2"> <span>Expresia „lucruri imaginare” se referă la capacitatea copiilor de a-și închipui și a inventa obiecte, ființe sau situații fabuloase (precum fântâna fermecată și zmeul din joc), cu intenția de a îmbogăți realitatea imediată și de a-și dezvolta creativitatea.</span></label>
+          <label class="opt-label"><input type="radio" name="i6_exp" value="1"> <span>Expresia se referă la obiecte inventate care nu există în realitate. <em>(explicație parțială, fără legătura cu experiența copiilor și creativitatea)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i6_exp" value="0"> <span>Expresia denumește obiectele reale dintr-o curte, precum șanțul cu pietre și trotuarul de beton.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Coerență și limita a două enunțuri</span> Selectați varianta redactată coerent în exact <strong>două enunțuri</strong>:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i6_len">
+          <label class="opt-label"><input type="radio" name="i6_len" value="1"> <span><em>(1)</em> Cuvântul „imaginar” denumește tot ceea ce este ireal și prinde viață doar în închipuire. <em>(2)</em> Prin expresia „lucruri imaginare” înțeleg elementele fabuloase inventate de copii în joacă pentru a îmbogăți realitatea obișnuită și a-și dezvolta creativitatea.</span></label>
+          <label class="opt-label"><input type="radio" name="i6_len" value="0"> <span><em>(1)</em> Lucrurile imaginare sunt ireale. <em>(un singur enunț, incomplet)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i6_len" value="0"> <span><em>(1)</em> Imaginar înseamnă ireal. <em>(2)</em> Copiii se joacă mult. <em>(3)</em> Ei inventează zmei. <em>(4)</em> Așa devin creativi. <em>(patru enunțuri, depășește limita)</em></span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(6)">Verifică Itemul 6</button>
+    </div>
+    <div class="feedback-box" id="fb-6"></div>
+  </div>
+
+  <!-- ITEM 7 -->
+  <div class="item-card" id="item-7">
+    <div class="item-head">
+      <span class="item-num">Item 7</span>
+      <div class="item-prompt">
+        Numește <strong>trei</strong> forme de relief.
+      </div>
+      <span class="item-score-badge" id="badge-7">0 / 3 p.</span>
+    </div>
+
+    <div class="step-box">
+      <span class="step-label">Selectați exact 3 opțiuni</span> Bifați cele trei substantive care denumesc forme de relief:
+      <span class="step-pts">1 p. &times; 3</span>
+      <div class="opt-grid-2 opt-list" id="i7_opts">
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="1"> <strong>munte</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="1"> <strong>podiș</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="1"> <strong>câmpie</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="0"> <strong>râu</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="0"> <strong>pădure</strong></label>
+        <label class="opt-label"><input type="checkbox" name="i7_chk" value="0"> <strong>climă</strong></label>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(7)">Verifică Itemul 7</button>
+    </div>
+    <div class="feedback-box" id="fb-7"></div>
+  </div>
+
+  <!-- ITEM 8 -->
+  <div class="item-card" id="item-8">
+    <div class="item-head">
+      <span class="item-num">Item 8</span>
+      <div class="item-prompt">
+        Transcrie enunțul plasând verbele la <strong>timpul viitor</strong> (păstrând persoana a II-a, singular):
+        <em>„Dacă <u>mergi</u> repede, într-o oră <u>ești</u> la malul lui.”</em>
+      </div>
+      <span class="item-score-badge" id="badge-8">0 / 2 p.</span>
+    </div>
+
+    <div class="step-box">
+      <span class="step-label">Transformă la viitor</span> Completați enunțul selectând formele corecte de viitor ale celor două verbe:
+      <span class="step-pts">1 p. &times; 2</span>
+      <div class="cloze-sentence">
+        Dacă
+        <select id="i8_v1" class="inline-sel">
+          <option value="">-- verb 1 --</option>
+          <option value="ok">vei merge (sau: ai să mergi)</option>
+          <option value="no1">mergeai</option>
+          <option value="no2">ai mers</option>
+          <option value="no3">voi merge</option>
+          <option value="no4">să mergi</option>
+        </select>
+        repede, într-o oră
+        <select id="i8_v2" class="inline-sel">
+          <option value="">-- verb 2 --</option>
+          <option value="ok">vei fi (sau: ai să fii)</option>
+          <option value="no1">erai</option>
+          <option value="no2">ai fost</option>
+          <option value="no3">voi fi</option>
+          <option value="no4">vei fii</option>
+        </select>
+        la malul lui.
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(8)">Verifică Itemul 8</button>
+    </div>
+    <div class="feedback-box" id="fb-8"></div>
+  </div>
+
+  <!-- ITEM 9 -->
+  <div class="item-card" id="item-9">
+    <div class="item-head">
+      <span class="item-num">Item 9</span>
+      <div class="item-prompt">
+        Scrie între paranteze <strong>partea de vorbire</strong> la care se referă cuvintele subliniate.
+      </div>
+      <span class="item-score-badge" id="badge-9">0 / 5 p.</span>
+    </div>
+
+    <div class="step-box">
+      <span class="step-label">Analiză morfologică</span> Selectați partea de vorbire corespunzătoare fiecărui cuvânt subliniat:
+      <span class="step-pts">1 p. &times; 5</span>
+      <div class="cloze-sentence">
+        <span class="u-word">Tovarășii</span> (
+        <select id="i9_1" class="inline-sel">
+          <option value="">-- alege --</option>
+          <option value="ok">substantiv</option>
+          <option value="no1">adjectiv</option>
+          <option value="no2">pronume</option>
+          <option value="no3">verb</option>
+          <option value="no4">adverb</option>
+        </select>
+        ) mei s-au prins <span class="u-word">repede</span> (
+        <select id="i9_2" class="inline-sel">
+          <option value="">-- alege --</option>
+          <option value="ok">adverb</option>
+          <option value="no1">adjectiv</option>
+          <option value="no2">substantiv</option>
+          <option value="no3">prepoziție</option>
+          <option value="no4">conjuncție</option>
+        </select>
+        ) de regulile lui <span class="u-word">și</span> (
+        <select id="i9_3" class="inline-sel">
+          <option value="">-- alege --</option>
+          <option value="ok">conjuncție</option>
+          <option value="no1">prepoziție</option>
+          <option value="no2">adverb</option>
+          <option value="no3">pronume</option>
+          <option value="no4">interjecție</option>
+        </select>
+        ) am început să-l jucăm <span class="u-word">toți</span> (
+        <select id="i9_4" class="inline-sel">
+          <option value="">-- alege --</option>
+          <option value="ok">pronume</option>
+          <option value="no1">adjectiv</option>
+          <option value="no2">numeral</option>
+          <option value="no3">adverb</option>
+          <option value="no4">substantiv</option>
+        </select>
+        ), toți copiii de <span class="u-word">pe</span> (
+        <select id="i9_5" class="inline-sel">
+          <option value="">-- alege --</option>
+          <option value="ok">prepoziție</option>
+          <option value="no1">conjuncție</option>
+          <option value="no2">adverb</option>
+          <option value="no3">pronume</option>
+          <option value="no4">articol</option>
+        </select>
+        ) ulița mea.
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(9)">Verifică Itemul 9</button>
+    </div>
+    <div class="feedback-box" id="fb-9"></div>
+  </div>
+
+  <!-- ITEM 10 -->
+  <div class="item-card" id="item-10">
+    <div class="item-head">
+      <span class="item-num">Item 10</span>
+      <div class="item-prompt">
+        Formulează o <strong>regulă de utilizare a literei inițiale majuscule</strong>, ilustrând-o cu un <strong>exemplu din text</strong>.
+      </div>
+      <span class="item-score-badge" id="badge-10">0 / 2 p.</span>
+    </div>
+
+    <div class="step-box">
+      <span class="step-label">Ortografie</span> Asociați regula corect formulată cu exemplul adecvat extras din textul dat:
+      <span class="step-pts">1 p. + 1 p.</span>
+      <div class="match-row">
+        <strong>Regula formulată (1 p.):</strong>
+        <select id="i10_reg">
+          <option value="">-- Selectați regula --</option>
+          <option value="ok">Se scriu cu literă inițială majusculă substantivele proprii (nume de persoane, ape, munți, regiuni și locuri geografice).</option>
+          <option value="no1">Se scriu cu literă inițială majusculă toate substantivele comune și adjectivele din interiorul propoziției.</option>
+          <option value="no2">Se scrie cu literă inițială majusculă fiecare cuvânt care apare după virgulă.</option>
+          <option value="no3">Se scriu cu literă inițială majusculă numai verbele la timpul viitor.</option>
+        </select>
+      </div>
+      <div class="match-row">
+        <strong>Exemplu corect din text (1 p.):</strong>
+        <select id="i10_ex">
+          <option value="">-- Selectați exemplul din text --</option>
+          <option value="ok">Transilvaniei, Făgăraș, Oltul, Lucian Blaga, Templul Ursitelor, Râpa Roșie</option>
+          <option value="no1">Fântână, Zmeu, Uliță, Șanț, Beton</option>
+          <option value="no2">Chișinău, Nistru, Mihai Eminescu (nu apar în textul dat)</option>
+          <option value="no3">măiestrele, ursitele, căpcăunii (sunt substantive comune scrise cu minusculă)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(10)">Verifică Itemul 10</button>
+    </div>
+    <div class="feedback-box" id="fb-10"></div>
+  </div>
+
+  <!-- ===================== PARTEA III: REDACTARE ȘI CORECTITUDINE ===================== -->
+  <div class="domain-banner">
+    <span>Producere de text (dialog, descriere) și corectitudine lingvistică (Itemii 11–13)</span>
+    <span class="pts">13 puncte</span>
+  </div>
+
+  <!-- ITEM 11 -->
+  <div class="item-card" id="item-11">
+    <div class="item-head">
+      <span class="item-num">Item 11</span>
+      <div class="item-prompt">
+        Construiește un <strong>dialog din patru replici</strong>, ce ar putea avea loc între un copil și un adult care vorbesc despre basme.
+      </div>
+      <span class="item-score-badge" id="badge-11">0 / 4 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Statutul interlocutorilor și tema</span> Selectați situația de comunicare care respectă cerința:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i11_stat">
+          <label class="opt-label"><input type="radio" name="i11_stat" value="1"> <span>O conversație între un copil și un adult (de exemplu, bunicul sau mama), în care cei doi își împărtășesc păreri și întrebări despre basme și personajele lor.</span></label>
+          <label class="opt-label"><input type="radio" name="i11_stat" value="0"> <span>O discuție între doi colegi de clasă despre regulile unui meci de fotbal.</span></label>
+          <label class="opt-label"><input type="radio" name="i11_stat" value="0"> <span>Un monolog al unui adult care își amintește cum a ajuns la Munții Făgăraș.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Rigorile dialogului (3–4 caracteristici distincte)</span> Alegeți dialogul care respectă toate normele de redactare (linie de dialog, adresare directă/vocativ, replici înlănțuite logic, punctuație expresivă):
+        <span class="step-pts">2 p.</span>
+        <div class="opt-stack opt-list" id="i11_rig">
+          <label class="opt-label"><input type="radio" name="i11_rig" value="2">
+            <span class="dlg-block">
+              <span class="dlg-line">— Bunicule, de ce reușește mereu Făt-Frumos să învingă zmeul în basme?</span>
+              <span class="dlg-line">— Pentru că, dragul meu, curajul și bunătatea lui sunt mai puternice decât orice forță a răului.</span>
+              <span class="dlg-line">— Crezi că și în lumea de azi ne ajută lecțiile din povești?</span>
+              <span class="dlg-line">— Cu siguranță, nepoate, fiindcă basmele ne învață să nu renunțăm niciodată la dreptate și speranță!</span>
+            </span>
+          </label>
+          <label class="opt-label"><input type="radio" name="i11_rig" value="1">
+            <span class="dlg-block">
+              <span class="dlg-line">Copilul întreabă despre basme.</span>
+              <span class="dlg-line">— Îmi plac basmele cu Făt-Frumos.</span>
+              <span class="dlg-line">— Și mie îmi plac.</span>
+              <span class="dlg-line">Apoi au vorbit despre altceva. <em>(parțial: doar 1–2 caracteristici ale dialogului)</em></span>
+            </span>
+          </label>
+          <label class="opt-label"><input type="radio" name="i11_rig" value="0">
+            <span>Basmele sunt povești frumoase pe care copiii le citesc împreună cu adulții seara înainte de culcare, aflând multe lucruri interesante despre personaje fantastice. <em>(lipsesc caracteristicile dialogului)</em></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Limita de întindere</span> Ce condiție asigură respectarea exactă a limitei de întindere cerute?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i11_lim">
+          <label class="opt-label"><input type="radio" name="i11_lim" value="1"> <span>Dialogul conține exact 4 replici (câte 2 replici ale fiecărui interlocutor), marcate fiecare la alineat nou cu linie de dialog.</span></label>
+          <label class="opt-label"><input type="radio" name="i11_lim" value="0"> <span>Dialogul are 2 replici scurte sau 8 replici lungi, fără a număra schimburile de vorbire.</span></label>
+          <label class="opt-label"><input type="radio" name="i11_lim" value="0"> <span>Toate replicile sunt scrise într-un singur paragraf compact, fără linii de dialog.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(11)">Verifică Itemul 11</button>
+    </div>
+    <div class="feedback-box" id="fb-11"></div>
+  </div>
+
+  <!-- ITEM 12 -->
+  <div class="item-card" id="item-12">
+    <div class="item-head">
+      <span class="item-num">Item 12</span>
+      <div class="item-prompt">
+        Descrie, în spațiul rezervat, <strong>curtea unei case</strong>.
+      </div>
+      <span class="item-score-badge" id="badge-12">0 / 4 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Obiectul descrierii</span> Ce elemente trebuie să constituie centrul descrierii pentru a respecta tema cerută?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i12_obj">
+          <label class="opt-label"><input type="radio" name="i12_obj" value="1"> <span>Curtea unei case: poarta, aleea pietruită, straturile de flori, bolta de viță-de-vie, fântâna și pomii din jurul locuinței.</span></label>
+          <label class="opt-label"><input type="radio" name="i12_obj" value="0"> <span>Interiorul unei săli de clasă cu bănci, tablă și dulapuri de cărți.</span></label>
+          <label class="opt-label"><input type="radio" name="i12_obj" value="0"> <span>Regulile unui joc sportiv desfășurat pe stadionul orașului.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Rigorile textului descriptiv (3–4 caracteristici distincte)</span> Alegeți textul care respectă toate exigențele unei descrieri (grupuri nominale bogate în adjective/epitete, imagini vizuale și olfactive, repere spațiale, verbe statice):
+        <span class="step-pts">2 p.</span>
+        <div class="opt-stack opt-list" id="i12_rig">
+          <label class="opt-label"><input type="radio" name="i12_rig" value="2"> <span>Dincolo de poarta de lemn sculptat, curtea casei se deschide largă, primitoare și scăldată în lumină aurie. O alee îngustă, mărginită de tufe bogate de busuioc și trandafiri roșii, conduce spre prispa umbrită de o boltă deasă de viță-de-vie. În colțul din dreapta, lângă fântâna cu ciutură veche, un nuc bătrân își întinde crengile protectoare, în timp ce aerul cald miroase a flori proaspete și a liniște de acasă.</span></label>
+          <label class="opt-label"><input type="radio" name="i12_rig" value="1"> <span>Curtea casei este mare și curată. În curte sunt niște flori și un copac. <em>(parțial: doar 1–2 caracteristici ale descrierii)</em></span></label>
+          <label class="opt-label"><input type="radio" name="i12_rig" value="0"> <span>Ieri am intrat în curte, am luat mingea, am fugit repede la poartă și am plecat pe uliță la prietenii mei. <em>(text narativ, fără caracteristici descriptive)</em></span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Coerență și limita de întindere</span> Selectați criteriul care confirmă respectarea structurii și a limitei de întindere pentru o descriere de examen:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i12_lim">
+          <label class="opt-label"><input type="radio" name="i12_lim" value="1"> <span>Text coerent de 3–5 enunțuri dezvoltate, organizate logic dinspre exterior spre detaliile curții, încadrat exact în spațiul rezervat.</span></label>
+          <label class="opt-label"><input type="radio" name="i12_lim" value="0"> <span>O simplă enumerare de 3 cuvinte izolate („poartă, iarbă, flori”), fără verb și fără coeziune.</span></label>
+          <label class="opt-label"><input type="radio" name="i12_lim" value="0"> <span>O compunere de două pagini care povestește istoria construirii satului.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(12)">Verifică Itemul 12</button>
+    </div>
+    <div class="feedback-box" id="fb-12"></div>
+  </div>
+
+  <!-- ITEM 13 -->
+  <div class="item-card" id="item-13">
+    <div class="item-head">
+      <span class="item-num">Item 13</span>
+      <div class="item-prompt">
+        <strong>Corectitudinea limbii (ortografie, punctuație, stil)</strong> — Selectați variantele impecabile ortografic, punctuațional și stilistic pentru a obține cele 5 puncte prevăzute de barem.
+      </div>
+      <span class="item-score-badge" id="badge-13">0 / 5 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">1. Cratima și pronumele</span> Alegeți enunțul ortografiat corect:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_1">
+          <label class="opt-label"><input type="radio" name="i13_1" value="1"> <span>Copilul nu l-a învățat de la nimeni, ci l-a inventat singur, iar prietenii s-au prins repede.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_1" value="0"> <span>Copilul nu la învățat de la nimeni, ci l-a inventat singur, iar prietenii sau prins repede.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_1" value="0"> <span>Copilul nu l-a învățat dela nimeni, ci la inventat singur, iar prietenii s-au prins repede.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">2. Ortografia numelor proprii și a personajelor</span> Alegeți varianta fără greșeli de scriere:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_2">
+          <label class="opt-label"><input type="radio" name="i13_2" value="1"> <span>Făt-Frumos, Ileana Cosânzeana, Prâslea-cel-Voinic, Munții Făgăraș.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_2" value="0"> <span>Făt Frumos, Ileana cosânzeana, Prâslea cel voinic, munții făgăraș.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_2" value="0"> <span>Făt-frumos, Ileana Cosînzeana, Prîslea-cel-Voinic, Munții Făgărași.</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">3. Punctuația dialogului și a vocativului</span> Alegeți replica punctată corect:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_3">
+          <label class="opt-label"><input type="radio" name="i13_3" value="1"> <span>— Bunicule, care este personajul tău preferat din basmele românești?</span></label>
+          <label class="opt-label"><input type="radio" name="i13_3" value="0"> <span>— Bunicule care este personajul tău preferat din basmele românești.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_3" value="0"> <span>Bunicule, care este personajul tău preferat, din basmele românești?</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">4. Scrierea formelor verbale și a prepozițiilor compuse</span> Alegeți varianta corectă ortografic:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_4">
+          <label class="opt-label"><input type="radio" name="i13_4" value="1"> <span>Dacă vei merge repede, într-o oră vei fi la malul lui; nu uita să fii atent!</span></label>
+          <label class="opt-label"><input type="radio" name="i13_4" value="0"> <span>Dacă vei merge repede, întro oră vei fii la malul lui; nu uita să fi atent!</span></label>
+          <label class="opt-label"><input type="radio" name="i13_4" value="0"> <span>Dacă vei merge repede, într-o oră vei fii la malul lui; nu uita să fii atent!</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">5. Corectitudine stilistică și gramaticală</span> Alegeți enunțul impecabil stilistic (fără pleonasme sau dezacorduri):
+        <span class="step-pts">1 p.</span>
+        <div class="opt-stack opt-list" id="i13_5">
+          <label class="opt-label"><input type="radio" name="i13_5" value="1"> <span>Cunoașterea geografiei ne ajută să înțelegem relieful pe care îl admirăm și să protejăm natura.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_5" value="0"> <span>Cunoașterea geografiei ne ajută să cunoaștem relieful care îl vedem și să o protejăm natura.</span></label>
+          <label class="opt-label"><input type="radio" name="i13_5" value="0"> <span>Copiii care se joacă împreună cu tovarășii lor de joacă își imaginează lucruri imaginare ireale.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(13)">Verifică Itemul 13</button>
+    </div>
+    <div class="feedback-box" id="fb-13"></div>
+  </div>
+
+  <!-- FINAL SUMMARY -->
+  <div class="final-panel" id="finalPanel">
+    <h2 style="margin-top:0;color:var(--primary);">Evaluare finală și rezultatul testului</h2>
+    <p style="color:var(--muted);max-width:700px;margin:0 auto 16px;">
+      Apăsați butonul de mai jos pentru a verifica toți cei 13 itemi conform baremului analitic oficial al Testului pentru exersare Nr. 1 la Limba și literatura română (clasa a IX-a, februarie 2026) și a calcula punctajul total din 50 de puncte.
+    </p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-final" onclick="gradeAll()">Finalizează și calculează punctajul total</button>
+      <button class="btn-reset" style="padding:12px 16px;font-size:14px;" onclick="resetAndReshuffle()">Reamestecă și resetează testul</button>
+      <button class="btn-reset" style="padding:12px 16px;font-size:14px;" onclick="window.print()">Tipărește / Salvează PDF</button>
+      <button class="btn-reset" style="padding:12px 16px;font-size:14px;" onclick="downloadReport()">Descarcă raportul (.txt)</button>
+    </div>
+
+    <div id="finalResults" style="display:none;margin-top:20px;">
+      <div class="summary-grid">
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Punctaj total acumulat</div>
+          <div class="stat-val" id="resTotal">0 / 50 p.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Notă orientativă (și procent)</div>
+          <div class="stat-val" id="resGrade">-</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Înțelegere, rezumat, DEX (1–4)</div>
+          <div class="stat-val" id="resP1">0 / 15 p.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Argumentare și limbă (5–10)</div>
+          <div class="stat-val" id="resP2">0 / 22 p.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Redactare și corectitudine (11–13)</div>
+          <div class="stat-val" id="resP3">0 / 13 p.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Modals & Content Mirroring
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    ['textModal', 'dexModal', 'scratchModal'].forEach(closeModal);
+  }
+});
+
+function updateScratchCount() {
+  const txt = document.getElementById('scratchText').value.trim();
+  const count = txt ? txt.split(/\s+/).length : 0;
+  document.getElementById('scratchWords').textContent = count;
+}
+
+// Fisher-Yates shuffle
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function shuffleAllChoices() {
+  document.querySelectorAll('.opt-list').forEach(list => {
+    const labels = Array.from(list.querySelectorAll('.opt-label'));
+    shuffleArray(labels);
+    labels.forEach(lbl => list.appendChild(lbl));
+  });
+  document.querySelectorAll('select').forEach(sel => {
+    const allOpts = Array.from(sel.querySelectorAll('option'));
+    const placeholder = allOpts.filter(o => o.value === '' || o.disabled);
+    const choices = allOpts.filter(o => o.value !== '' && !o.disabled);
+    shuffleArray(choices);
+    sel.innerHTML = '';
+    placeholder.forEach(o => sel.appendChild(o));
+    choices.forEach(o => sel.appendChild(o));
+    sel.selectedIndex = 0;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('modalTextContent').innerHTML = document.getElementById('readingPanel').innerHTML;
+  document.getElementById('modalDexContent').innerHTML = document.getElementById('dexPanel').innerHTML;
+  document.getElementById('scratchText').addEventListener('input', updateScratchCount);
+  shuffleAllChoices();
+});
+
+// Timer (120 minutes)
+let secondsLeft = 120 * 60;
+let timerRunning = true;
+setInterval(() => {
+  if (!timerRunning || secondsLeft <= 0) return;
+  secondsLeft--;
+  const m = Math.floor(secondsLeft / 60);
+  const s = secondsLeft % 60;
+  document.getElementById('timerDisplay').textContent =
+    String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}, 1000);
+
+function toggleTimer() {
+  timerRunning = !timerRunning;
+  document.getElementById('timerBtn').textContent = timerRunning ? 'Pauză' : 'Continuă';
+}
+
+// Nav pills & official barem points (sum = 50 p.)
+const maxPts = {1:3, 2:2, 3:5, 4:5, 5:6, 6:4, 7:3, 8:2, 9:5, 10:2, 11:4, 12:4, 13:5};
+const scores = {};
+const navPillsEl = document.getElementById('navPills');
+for (let i = 1; i <= 13; i++) {
+  scores[i] = 0;
+  const a = document.createElement('a');
+  a.className = 'pill';
+  a.id = 'pill-' + i;
+  a.href = '#item-' + i;
+  a.textContent = i;
+  navPillsEl.appendChild(a);
+}
+
+function markSelect(el, isOk) {
+  el.classList.remove('input-ok', 'input-err');
+  el.classList.add(isOk ? 'input-ok' : 'input-err');
+}
+
+function highlightRadioGroup(containerId, maxCorrectVal) {
+  const container = document.getElementById(containerId);
+  if (!container) return 0;
+  let earned = 0;
+  const labels = Array.from(container.querySelectorAll('.opt-label'));
+  labels.forEach(lbl => {
+    lbl.classList.remove('opt-correct', 'opt-part', 'opt-wrong');
+    const inp = lbl.querySelector('input');
+    const v = parseInt(inp.value, 10) || 0;
+    if (inp.checked) {
+      earned = v;
+      if (v === maxCorrectVal && v > 0) lbl.classList.add('opt-correct');
+      else if (v > 0) lbl.classList.add('opt-part');
+      else lbl.classList.add('opt-wrong');
+    } else if (v === maxCorrectVal && v > 0) {
+      lbl.classList.add('opt-correct');
+    }
+  });
+  return earned;
+}
+
+function gradeCheckboxGroup(containerId, maxCorrect) {
+  const container = document.getElementById(containerId);
+  const labels = Array.from(container.querySelectorAll('.opt-label'));
+  let okCount = 0, wrongCount = 0;
+  labels.forEach(lbl => {
+    lbl.classList.remove('opt-correct', 'opt-wrong');
+    const inp = lbl.querySelector('input');
+    const isTrue = inp.value === '1';
+    if (inp.checked) {
+      if (isTrue) { okCount++; lbl.classList.add('opt-correct'); }
+      else { wrongCount++; lbl.classList.add('opt-wrong'); }
+    } else if (isTrue) {
+      lbl.classList.add('opt-correct');
+    }
+  });
+  return Math.max(0, Math.min(maxCorrect, okCount - wrongCount));
+}
+
+function setFeedback(itemNum, pts, text) {
+  scores[itemNum] = pts;
+  const max = maxPts[itemNum];
+  document.getElementById('badge-' + itemNum).textContent = `${pts} / ${max} p.`;
+  const fb = document.getElementById('fb-' + itemNum);
+  fb.className = 'feedback-box show ' + (pts === max ? 'ok' : (pts > 0 ? 'part' : 'err'));
+  fb.innerHTML = `<strong>Rezultat Item ${itemNum}: ${pts} / ${max} puncte.</strong><br>${text}`;
+  const pill = document.getElementById('pill-' + itemNum);
+  pill.className = 'pill ' + (pts === max ? 'checked-ok' : (pts > 0 ? 'checked-part' : 'checked-err'));
+  updateLiveScore();
+}
+
+function updateLiveScore() {
+  let sum = 0;
+  for (let i = 1; i <= 13; i++) sum += scores[i];
+  document.getElementById('liveScore').textContent = sum;
+}
+
+function getCheckedLabelText(name) {
+  const inp = document.querySelector(`input[name="${name}"]:checked`);
+  if (!inp) return '<em>(neselectat)</em>';
+  return inp.parentElement.querySelector('span').innerHTML;
+}
+
+function gradeItem(n) {
+  if (n === 1) {
+    const pts = highlightRadioGroup('i1_a', 1) +
+                highlightRadioGroup('i1_b', 1) +
+                highlightRadioGroup('i1_c', 1);
+    setFeedback(1, pts,
+      'Barem (3 p., 1 p. &times; 3 — doar pentru enunțuri complete): ' +
+      'a) <em>Cei mai apropiați munți de satul naratorului erau Munții Făgăraș.</em> ' +
+      'b) <em>La Olt se poate ajunge într-o oră.</em> ' +
+      'c) <em>Copilul nu a învățat jocul de la nimeni, l-a inventat singur.</em>'
+    );
+  }
+  else if (n === 2) {
+    const pts = gradeCheckboxGroup('i2_opts', 2);
+    setFeedback(2, pts,
+      'Barem (2 p., 1 p. + 1 p.): Sunt acceptate oricare două personaje din basmele populare românești ortografiate corect ' +
+      '(de ex.: <strong>Făt-Frumos, Ileana Cosânzeana, Prâslea-cel-Voinic, zmeul, balaurul, Zgripsoroaica, Statu-Palmă-Barbă-Cot, Sfarmă-Piatră, Strâmbă-Lemne, Sfânta Duminică</strong>, precum și personajele din text: <em>măiestre, ursite, căpcăuni</em>).'
+    );
+  }
+  else if (n === 3) {
+    const pts = highlightRadioGroup('i3_c1', 1) +
+                highlightRadioGroup('i3_c2', 1) +
+                highlightRadioGroup('i3_c3', 1) +
+                highlightRadioGroup('i3_c4', 1) +
+                highlightRadioGroup('i3_c5', 1);
+    setFeedback(3, pts,
+      'Barem (5 p., câte 1 p. pentru fiecare criteriu): prezentare fidelă a informației, cuprinderea secvențelor esențiale, omiterea detaliilor nesemnificative, coerență gramaticală și respectarea limitei de 60–65 de cuvinte. ' +
+      'Varianta model de la Criteriul 5 are exact <strong>60 de cuvinte</strong> (varianta scurtă are 24, iar cea lungă 93).'
+    );
+  }
+  else if (n === 4) {
+    let pts = 0;
+    ['i4_a', 'i4_b', 'i4_c', 'i4_d', 'i4_e'].forEach(id => {
+      const el = document.getElementById(id);
+      const ok = el.value === 'ok';
+      if (ok) pts++;
+      markSelect(el, ok);
+    });
+    setFeedback(4, pts,
+      'Barem (5 p., 1 p. &times; 5): a) <strong>calambur</strong>; ' +
+      'b) <strong>al patrulea (4)</strong> – „acțiunea de a interpreta un rol într-o piesă de teatru”; ' +
+      'c) <strong>baschet / fotbal / rugbi</strong>; ' +
+      'd) <strong>„mișcare rapidă și capricioasă (a unor lucruri, imagini etc.)”</strong>; ' +
+      'e) <strong>primul sens (1)</strong> – „acțiunea de a se juca; activitate distractivă (mai ales la copii)”.'
+    );
+  }
+  else if (n === 5) {
+    let pts = highlightRadioGroup('i5_op', 1) +
+              highlightRadioGroup('i5_a1', 1) +
+              highlightRadioGroup('i5_a2', 1) +
+              highlightRadioGroup('i5_a3', 1);
+    ['i5_coh', 'i5_rig'].forEach(id => {
+      const el = document.getElementById(id);
+      const ok = el.value === 'ok';
+      if (ok) pts++;
+      markSelect(el, ok);
+    });
+    setFeedback(5, pts,
+      'Barem (6 p. = 1 + 3 + 1 + 1): 1 p. exprimarea clară a atitudinii, 3 p. (3 &times; 1 p.) pentru cele trei argumente valide, 1 p. coerență și logică, 1 p. respectarea rigorilor textului argumentativ.'
+    );
+    const conclSel = document.getElementById('i5_coh');
+    const conclTxt = conclSel.value ? conclSel.options[conclSel.selectedIndex].text : '<em>(neselectat)</em>';
+    const preview = document.getElementById('i5Preview');
+    preview.className = 'essay-preview show';
+    preview.innerHTML =
+      `<h4>📄 Previzualizarea textului tău argumentativ</h4>` +
+      `<p>${getCheckedLabelText('i5_op')}</p>` +
+      `<p>${getCheckedLabelText('i5_a1')} ${getCheckedLabelText('i5_a2')} ${getCheckedLabelText('i5_a3')}</p>` +
+      `<p>${conclTxt}</p>`;
+  }
+  else if (n === 6) {
+    const pts = highlightRadioGroup('i6_cuv', 1) +
+                highlightRadioGroup('i6_exp', 2) +
+                highlightRadioGroup('i6_len', 1);
+    setFeedback(6, pts,
+      'Barem (4 p. = 1 + 2 + 1): 1 p. explicarea cuvântului „imaginar”, 2 p. elucidarea sensului întregii expresii (legat de experiența copiilor de a inventa lucruri fabuloase pentru a îmbogăți realitatea și a-și dezvolta creativitatea), 1 p. coerență în limita a două enunțuri.'
+    );
+  }
+  else if (n === 7) {
+    const pts = gradeCheckboxGroup('i7_opts', 3);
+    setFeedback(7, pts,
+      'Barem (3 p., 1 p. &times; 3): Sunt acceptate oricare trei substantive care denumesc forme de relief (de ex.: <strong>munte, deal, vale, podiș, câmpie, deșert</strong> etc.). <em>Râul</em> ține de hidrografie, <em>pădurea</em> de vegetație, iar <em>clima</em> de elementele climatice.'
+    );
+  }
+  else if (n === 8) {
+    let pts = 0;
+    ['i8_v1', 'i8_v2'].forEach(id => {
+      const el = document.getElementById(id);
+      const ok = el.value === 'ok';
+      if (ok) pts++;
+      markSelect(el, ok);
+    });
+    setFeedback(8, pts,
+      'Barem (2 p., 1 p. &times; 2): <strong>„Dacă vei merge / ai să mergi repede, într-o oră vei fi / ai să fii la malul lui.”</strong> ' +
+      '(Atenție la forma corectă <em>vei fi</em> — cu un singur <em>i</em>, spre deosebire de <em>ai să fii</em> — cu doi <em>i</em>!)'
+    );
+  }
+  else if (n === 9) {
+    let pts = 0;
+    ['i9_1', 'i9_2', 'i9_3', 'i9_4', 'i9_5'].forEach(id => {
+      const el = document.getElementById(id);
+      const ok = el.value === 'ok';
+      if (ok) pts++;
+      markSelect(el, ok);
+    });
+    setFeedback(9, pts,
+      'Barem (5 p., 1 p. &times; 5): <strong>Tovarășii</strong> (substantiv), <strong>repede</strong> (adverb), <strong>și</strong> (conjuncție), <strong>toți</strong> (pronume — nehotărât, cu valoare pronominală, spre deosebire de cel de-al doilea „toți” din „toți copiii”), <strong>pe</strong> (prepoziție).'
+    );
+  }
+  else if (n === 10) {
+    let pts = 0;
+    ['i10_reg', 'i10_ex'].forEach(id => {
+      const el = document.getElementById(id);
+      const ok = el.value === 'ok';
+      if (ok) pts++;
+      markSelect(el, ok);
+    });
+    setFeedback(10, pts,
+      'Barem (2 p. = 1 + 1): 1 p. pentru formularea corectă a unei reguli de scriere cu majusculă (de ex., substantivele proprii sau începutul de propoziție) + 1 p. pentru ilustrarea cu un exemplu adecvat extras exact din text (<em>Transilvaniei, Făgăraș, Oltul, Lucian Blaga, Templul Ursitelor, Râpa Roșie</em>).'
+    );
+  }
+  else if (n === 11) {
+    const pts = highlightRadioGroup('i11_stat', 1) +
+                highlightRadioGroup('i11_rig', 2) +
+                highlightRadioGroup('i11_lim', 1);
+    setFeedback(11, pts,
+      'Barem (4 p. = 1 + 2 + 1): 1 p. respectarea statutului interlocutorilor (copil–adult) și a subiectului (basmele); 2 p. respectarea rigorilor dialogului (3–4 caracteristici distincte: linie de dialog, adresare directă, alternanța replicilor legate logic, punctuație adecvată); 1 p. respectarea limitei de 4 replici.'
+    );
+  }
+  else if (n === 12) {
+    const pts = highlightRadioGroup('i12_obj', 1) +
+                highlightRadioGroup('i12_rig', 2) +
+                highlightRadioGroup('i12_lim', 1);
+    setFeedback(12, pts,
+      'Barem (4 p. = 1 + 2 + 1): 1 p. obiectul descris este curtea unei case; 2 p. respectarea rigorilor descrierii (3–4 caracteristici distincte: adjective/epitete, imagini vizuale/olfactive, repere spațiale, verbe statice); 1 p. coerență și respectarea limitei de întindere.'
+    );
+  }
+  else if (n === 13) {
+    const pts = highlightRadioGroup('i13_1', 1) +
+                highlightRadioGroup('i13_2', 1) +
+                highlightRadioGroup('i13_3', 1) +
+                highlightRadioGroup('i13_4', 1) +
+                highlightRadioGroup('i13_5', 1);
+    setFeedback(13, pts,
+      'Barem (5 p. pentru corectitudine ortografică, punctuațională și stilistică): ' +
+      '1) cratima corectă (<em>l-a, s-au</em>); 2) nume proprii și personaje din basme (<em>Făt-Frumos, Ileana Cosânzeana, Prâslea-cel-Voinic, Munții Făgăraș</em>); ' +
+      '3) linie de dialog + virgulă după vocativ + semnul întrebării; 4) <em>într-o, vei fi, să fii</em>; 5) evitarea dezacordului (<em>pe care</em>) și a pleonasmului (<em>imaginare ireale</em>).'
+    );
+  }
+}
+
+function calcGrade(pts) {
+  const pct = Math.round((pts / 50) * 100);
+  let nota = 1;
+  if (pts >= 47) nota = 10;
+  else if (pts >= 42) nota = 9;
+  else if (pts >= 35) nota = 8;
+  else if (pts >= 28) nota = 7;
+  else if (pts >= 21) nota = 6;
+  else if (pts >= 13) nota = 5;
+  else if (pts >= 8) nota = 4;
+  else if (pts >= 4) nota = 3;
+  else if (pts >= 1) nota = 2;
+  return `Nota ${nota} (${pct}%)`;
+}
+
+function gradeAll() {
+  for (let i = 1; i <= 13; i++) gradeItem(i);
+  const p1 = scores[1] + scores[2] + scores[3] + scores[4];
+  const p2 = scores[5] + scores[6] + scores[7] + scores[8] + scores[9] + scores[10];
+  const p3 = scores[11] + scores[12] + scores[13];
+  const total = p1 + p2 + p3;
+
+  document.getElementById('resTotal').textContent = `${total} / 50 p.`;
+  document.getElementById('resGrade').textContent = calcGrade(total);
+  document.getElementById('resP1').textContent = `${p1} / 15 p.`;
+  document.getElementById('resP2').textContent = `${p2} / 22 p.`;
+  document.getElementById('resP3').textContent = `${p3} / 13 p.`;
+  document.getElementById('finalResults').style.display = 'block';
+  document.getElementById('finalResults').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetAndReshuffle() {
+  document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
+  document.querySelectorAll('select').forEach(el => {
+    el.selectedIndex = 0;
+    el.classList.remove('input-ok', 'input-err');
+  });
+  document.querySelectorAll('.opt-label').forEach(lbl => lbl.classList.remove('opt-correct', 'opt-part', 'opt-wrong'));
+  document.querySelectorAll('.feedback-box').forEach(fb => { fb.className = 'feedback-box'; fb.innerHTML = ''; });
+  document.getElementById('i5Preview').className = 'essay-preview';
+  document.getElementById('i5Preview').innerHTML = '';
+
+  for (let i = 1; i <= 13; i++) {
+    scores[i] = 0;
+    document.getElementById('badge-' + i).textContent = `0 / ${maxPts[i]} p.`;
+    document.getElementById('pill-' + i).className = 'pill';
+  }
+  updateLiveScore();
+  document.getElementById('finalResults').style.display = 'none';
+  shuffleAllChoices();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function downloadReport() {
+  gradeAll();
+  const nume = document.getElementById('st_nume').value || 'Nespecificat';
+  const scoala = document.getElementById('st_scoala').value || 'Nespecificat';
+  const localitate = document.getElementById('st_localitate').value || 'Nespecificat';
+  const raion = document.getElementById('st_raion').value || 'Nespecificat';
+  let total = 0;
+  let lines = [
+    'RAPORT EVALUARE - LIMBA ȘI LITERATURA ROMÂNĂ, TEST Nr. 1, CLASA A IX-A (februarie 2026)',
+    '=======================================================================================',
+    `Elev: ${nume}`,
+    `Instituția: ${scoala} (${localitate}, r-nul ${raion})`,
+    '---------------------------------------------------------------------------------------'
+  ];
+  for (let i = 1; i <= 13; i++) {
+    total += scores[i];
+    lines.push(`Item ${String(i).padStart(2, '0')}: ${scores[i]} / ${maxPts[i]} puncte`);
+  }
+  lines.push('---------------------------------------------------------------------------------------');
+  lines.push(`PUNCTAJ TOTAL: ${total} / 50 puncte`);
+  lines.push(`NOTĂ ORIENTATIVĂ: ${calcGrade(total)}`);
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `Rezultat_Limba_Romana_Clasa9_Test1_2026_${nume.replace(/\s+/g, '_')}.txt`;
+  a.click();
+}
+</script>
+</body>
+</html>
