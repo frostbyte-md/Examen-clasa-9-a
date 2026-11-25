@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matematică – Test pentru exersare Nr. 1, Clasa a IX-a (februarie 2026) | MEC / ANCE</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-mid: #2563eb;
+    --primary-light: #eff6ff;
+    --accent: #0f766e;
+    --accent-light: #f0fdfa;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --border: #cbd5e1;
+    --text: #0f172a;
+    --muted: #475569;
+    --ok-bg: #dcfce7;
+    --ok-border: #16a34a;
+    --ok-text: #14532d;
+    --part-bg: #fef3c7;
+    --part-border: #d97706;
+    --part-text: #78350f;
+    --err-bg: #fee2e2;
+    --err-border: #dc2626;
+    --err-text: #7f1d1d;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  /* Topbar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #0f172a;
+    color: #fff;
+    padding: 10px 18px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+  }
+  .topbar-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .brand { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge-mec { background: #2563eb; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+  .controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .timer-box {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-sm {
+    background: #334155;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 8px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .btn-sm:hover { background: #475569; }
+  .btn-tool {
+    background: #0f766e;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn-tool:hover { background: #115e59; }
+  .btn-tool.alt { background: #334155; }
+  .btn-tool.alt:hover { background: #475569; }
+
+  .nav-pills {
+    max-width: 1080px;
+    margin: 8px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .pill {
+    width: 30px;
+    height: 27px;
+    border-radius: 5px;
+    border: 1px solid #475569;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .pill:hover { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+  .pill.checked-ok { background: #16a34a; border-color: #16a34a; color: #fff; }
+  .pill.checked-part { background: #d97706; border-color: #d97706; color: #fff; }
+  .pill.checked-err { background: #dc2626; border-color: #dc2626; color: #fff; }
+
+  .container {
+    max-width: 1080px;
+    margin: 20px auto 60px;
+    padding: 0 16px;
+  }
+
+  /* Exam Header */
+  .exam-header {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 5px solid var(--primary);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .exam-header-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+  }
+  .ministry { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+  .exam-title { font-size: 22px; font-weight: 800; color: var(--primary); margin: 4px 0; }
+  .exam-meta { font-size: 13.5px; color: var(--muted); }
+  .note-strip {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    color: #1e3a8a;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .student-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .student-grid input {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13.5px;
+  }
+
+  .domain-banner {
+    background: linear-gradient(90deg, #1e3a8a, #1d4ed8);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15.5px;
+    margin: 24px 0 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .domain-banner span.pts {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* Item Cards */
+  .item-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    scroll-margin-top: 98px;
+  }
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed #e2e8f0;
+    padding-bottom: 10px;
+  }
+  .item-num {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .item-prompt { font-weight: 600; font-size: 15.5px; flex: 1; }
+  .item-score-badge {
+    font-size: 13px;
+    font-weight: 700;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* Math Typography (Pure CSS, 100% Offline) */
+  .math {
+    font-family: 'Cambria Math', 'Times New Roman', Georgia, serif;
+    font-size: 1.08em;
+    white-space: nowrap;
+  }
+  .math-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 16px;
+    margin: 10px 0 14px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: 'Cambria Math', 'Times New Roman', Georgia, serif;
+    font-size: 1.22em;
+  }
+  .frac {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0 3px;
+    line-height: 1.12;
+  }
+  .frac .num {
+    border-bottom: 1.5px solid currentColor;
+    padding: 0 4px 2px;
+    text-align: center;
+  }
+  .frac .den {
+    padding: 2px 4px 0;
+    text-align: center;
+  }
+  .sqrt-wrap {
+    display: inline-flex;
+    align-items: stretch;
+    vertical-align: middle;
+  }
+  .sqrt-sign {
+    font-size: 1.32em;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    margin-right: -1px;
+  }
+  .sqrt-radicand {
+    border-top: 1.6px solid currentColor;
+    padding: 3px 5px 1px 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .big-paren {
+    font-size: 1.45em;
+    font-weight: 300;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  /* Step Boxes */
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .step-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid var(--accent);
+    padding: 11px 14px;
+    border-radius: 7px;
+    font-size: 14.5px;
+  }
+  .step-label {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid #99f6e4;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-right: 6px;
+  }
+  .step-pts {
+    float: right;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .step-row {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Split Layout for Geometry / Graph items */
+  .split-fig {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 18px;
+    align-items: center;
+  }
+  .fig-box {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .fig-box img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .fig-caption {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* Inputs & Selects */
+  select, input[type="text"], input[type="number"] {
+    padding: 6px 10px;
+    border: 1.5px solid #94a3b8;
+    border-radius: 6px;
+    font-size: 14.5px;
+    background: #fff;
+    color: var(--text);
+    max-width: 100%;
+  }
+  input.math-in {
+    width: 82px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+  input.math-in-sm {
+    width: 60px;
+    text-align: center;
+    font-weight: 700;
+  }
+  input.math-in-md {
+    width: 105px;
+    text-align: center;
+    font-weight: 700;
+  }
+  select:focus, input:focus {
+    outline: 2px solid #3b82f6;
+    border-color: #3b82f6;
+  }
+  .input-ok { background: var(--ok-bg) !important; border-color: var(--ok-border) !important; color: var(--ok-text) !important; }
+  .input-err { background: var(--err-bg) !important; border-color: var(--err-border) !important; color: var(--err-text) !important; }
+
+  /* Choice Cards */
+  .opt-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .opt-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .opt-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 12px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 7px;
+    background: #fff;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    font-size: 14.5px;
+  }
+  .opt-label:hover { background: #eff6ff; border-color: #93c5fd; }
+  .opt-label input { accent-color: var(--primary); flex-shrink: 0; }
+  .opt-label.opt-correct { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+  .opt-label.opt-wrong { background: var(--err-bg); border-color: var(--err-border); color: var(--err-text); }
+
+  /* Sign Toggle Buttons for Item 7 */
+  .sign-group {
+    display: inline-flex;
+    gap: 6px;
+  }
+  .sign-btn {
+    width: 44px;
+    height: 40px;
+    border: 2px solid #94a3b8;
+    background: #fff;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.15s;
+  }
+  .sign-btn:hover { background: var(--primary-light); border-color: var(--primary-mid); }
+  .sign-btn.selected { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .sign-btn.ok { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+  .sign-btn.err { background: var(--err-bg); border-color: var(--err-border); color: var(--err-text); }
+
+  /* Actions & Feedback */
+  .item-actions {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn-check {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13.5px;
+  }
+  .btn-check:hover { background: #1d4ed8; }
+  .btn-reset {
+    background: #e2e8f0;
+    color: #1e293b;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .btn-reset:hover { background: #cbd5e1; }
+
+  .feedback-box {
+    margin-top: 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+    line-height: 1.65;
+  }
+  .feedback-box.show { display: block; }
+  .feedback-box.ok { background: var(--ok-bg); border-left: 4px solid var(--ok-border); color: var(--ok-text); }
+  .feedback-box.part { background: var(--part-bg); border-left: 4px solid var(--part-border); color: var(--part-text); }
+  .feedback-box.err { background: var(--err-bg); border-left: 4px solid var(--err-border); color: var(--err-text); }
+
+  /* Modals */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.72);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-box {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 560px;
+    width: 100%;
+    padding: 18px 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+  .modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .scratch-area {
+    width: 100%;
+    min-height: 210px;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    resize: vertical;
+    background: #f8fafc;
+  }
+
+  /* Final Panel */
+  .final-panel {
+    background: var(--card);
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 28px;
+    text-align: center;
+  }
+  .btn-final {
+    background: #16a34a;
+    color: #fff;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-size: 15.5px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
+  }
+  .btn-final:hover { background: #15803d; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+    text-align: left;
+  }
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .stat-val { font-size: 21px; font-weight: 800; color: var(--primary); }
+
+  @media (max-width: 780px) {
+    .split-fig { grid-template-columns: 1fr; }
+    .opt-grid-3 { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .topbar, .item-actions, .final-panel button, .btn-tool, .modal-backdrop { display: none !important; }
+    .item-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="badge-mec">MEC / ANCE • 2026</span>
+      <span>Matematică — Test de exersare Nr. 1 (Clasa a IX-a)</span>
+    </div>
+    <div class="controls">
+      <button class="btn-tool" type="button" onclick="openModal('annexModal')">📐 Anexă</button>
+      <button class="btn-tool alt" type="button" onclick="openModal('scratchModal')">📝 Ciornă</button>
+      <div class="timer-box">
+        <span>⏱ <span id="timerDisplay">120:00</span></span>
+        <button class="btn-sm" onclick="toggleTimer()" id="timerBtn">Pauză</button>
+      </div>
+      <span style="font-size:13.5px;font-weight:700;">Scor: <span id="liveScore">0</span> / 50 p.</span>
+    </div>
+  </div>
+  <div class="nav-pills" id="navPills">
+    <span style="font-size:12px;color:#94a3b8;margin-right:4px;">Itemi:</span>
+  </div>
+</div>
+
+<!-- Modal Anexă Oficială -->
+<div class="modal-backdrop" id="annexModal" onclick="if(event.target===this) closeModal('annexModal')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <strong style="color:var(--primary);">Anexă oficială — Examen de absolvire a gimnaziului</strong>
+      <button type="button" class="btn-reset" onclick="closeModal('annexModal')">✕ Închide</button>
+    </div>
+    <div class="math-display" style="margin:6px 0 10px;font-size:1.3em;">
+      <i>ax</i><sup>2</sup> + <i>bx</i> + <i>c</i> = <i>a</i>(<i>x</i> &minus; <i>x</i><sub>1</sub>)(<i>x</i> &minus; <i>x</i><sub>2</sub>), &nbsp; <i>a</i> &ne; 0
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:0;">
+      Aceasta este formula oficială inclusă în Anexa Testului Nr. 1 (februarie 2026), utilă pentru descompunerea trinomului de gradul al doilea în factori.
+    </p>
+  </div>
+</div>
+
+<!-- Modal Ciornă -->
+<div class="modal-backdrop" id="scratchModal" onclick="if(event.target===this) closeModal('scratchModal')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <strong style="color:var(--primary);">📝 Ciornă de lucru (notițe și calcule intermediare)</strong>
+      <button type="button" class="btn-reset" onclick="closeModal('scratchModal')">✕ Închide</button>
+    </div>
+    <textarea id="scratchText" class="scratch-area" placeholder="Scrie aici calculele tale intermediare (nu se punctează, rămân salvate cât timp pagina este deschisă)..."></textarea>
+    <div style="margin-top:8px;text-align:right;">
+      <button type="button" class="btn-reset" onclick="document.getElementById('scratchText').value=''">Curăță ciorna</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="exam-header">
+    <div class="exam-header-top">
+      <div>
+        <div class="ministry">Ministerul Educației și Cercetării al Republicii Moldova • Agenția Națională pentru Curriculum și Evaluare</div>
+        <div class="exam-title">MATEMATICĂ — TEST PENTRU EXERSARE Nr. 1 (CICLUL GIMNAZIAL)</div>
+        <div class="exam-meta">Clasa a IX-a • februarie 2026 • 12 itemi • Timp alocat: <strong>120 de minute</strong></div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:12px;color:var(--muted);">Punctaj maxim</div>
+        <div style="font-size:26px;font-weight:800;color:var(--primary);">50 puncte</div>
+      </div>
+    </div>
+    <div class="note-strip">
+      <span><strong>Instrucțiuni:</strong> Completează etapele de rezolvare și răspunsurile finale conform baremului oficial. Pentru fracții poți scrie forma <code>5/2</code> sau forma zecimală <code>2,5</code>.</span>
+      <button class="btn-tool" type="button" onclick="openModal('annexModal')">📐 Vezi Anexa</button>
+    </div>
+    <div class="student-grid">
+      <input type="text" id="st_raion" placeholder="Raionul / Municipiul">
+      <input type="text" id="st_localitate" placeholder="Localitatea">
+      <input type="text" id="st_scoala" placeholder="Instituția de învățământ">
+      <input type="text" id="st_nume" placeholder="Numele și prenumele elevului">
+    </div>
+  </div>
+
+  <!-- PARTEA I -->
+  <div class="domain-banner">
+    <span>Partea I — Itemii 1–6 (Calcul numeric, geometrie plană, ecuații, procente, funcții, inecuații)</span>
+    <span class="pts">19 puncte</span>
+  </div>
+
+  <!-- ITEM 1 -->
+  <div class="item-card" id="item-1">
+    <div class="item-head">
+      <span class="item-num">Itemul 1</span>
+      <div class="item-prompt">
+        Fie <span class="math"><i>a</i> = 2 &minus; 5</span> și <span class="math"><i>b</i> = (&minus;2) &middot; (&minus;6)</span>.
+        Completați casetele cu numere întregi, care reprezintă valorile expresiilor:
+      </div>
+      <span class="item-score-badge" id="badge-1">0 / 3 p.</span>
+    </div>
+
+    <div class="math-display">
+      <span><i>a</i> = <input type="text" id="i1_a" class="math-in" placeholder="?" autocomplete="off"> ,</span>
+      <span><i>b</i> = <input type="text" id="i1_b" class="math-in" placeholder="?" autocomplete="off"> ,</span>
+      <span>
+        <span class="frac"><span class="num"><i>b</i></span><span class="den"><i>a</i></span></span> =
+        <input type="text" id="i1_c" class="math-in" placeholder="?" autocomplete="off"> .
+      </span>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(1)">Verifică Itemul 1</button>
+    </div>
+    <div class="feedback-box" id="fb-1"></div>
+  </div>
+
+  <!-- ITEM 2 -->
+  <div class="item-card" id="item-2">
+    <div class="item-head">
+      <span class="item-num">Itemul 2</span>
+      <div class="item-prompt">
+        În desenul alăturat este reprezentat paralelogramul <span class="math"><i>ABCD</i></span>, în care
+        <span class="math"><i>m</i>(&ang;<i>DAB</i>) = 45&deg;</span>, <span class="math"><i>AB</i> = 3 cm</span> și <span class="math"><i>BC</i> = 5 cm</span>.
+        Scrieți în casete: măsura în grade a unghiului <span class="math"><i>ABC</i></span> și perimetrul paralelogramului <span class="math"><i>ABCD</i></span>.
+      </div>
+      <span class="item-score-badge" id="badge-2">0 / 2 p.</span>
+    </div>
+
+    <div class="split-fig">
+      <div class="step-list" style="margin-top:0;">
+        <div class="step-box">
+          <span class="step-pts">1 p.</span>
+          <div class="step-row" style="margin-top:0;">
+            <strong>a)</strong>
+            <span class="math"><i>m</i>(&ang;<i>ABC</i>) =</span>
+            <input type="text" id="i2_a" class="math-in" placeholder="?" autocomplete="off">
+            <span class="math">&deg;</span>
+          </div>
+        </div>
+        <div class="step-box">
+          <span class="step-pts">1 p.</span>
+          <div class="step-row" style="margin-top:0;">
+            <strong>b)</strong>
+            <span class="math"><i>P</i><sub><i>ABCD</i></sub> =</span>
+            <input type="text" id="i2_b" class="math-in" placeholder="?" autocomplete="off">
+            <span>cm</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fig-box">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgIAAAEFBAMAAABjhpLaAAAAMFBMVEX///////X2///v7+n62aTZ2dnquXm6zNWqra+Df3swh8VOTE1MCgAAG3gAADgAAADgFfOFAAAFLklEQVR42u2dzWobVxiGZyxFSci2DJ3d7L3x0kW6gwgiClllkRsojOgNOFBKsig4dBdoM0alpMuQYOiidK4gFTgY+w4E3gfHY6STOUcuZG2d7/CNzvMulN38vPP9POeYnC9JEEJIRqVptfqriNeB/txaYM7idSCtmiTJ5su9aB3o1Yv2d7yaRpwFp+1vbo4iduCk/c0UO/Bt1VZqwRAduHfPV2odyFypnsndIHcVYKi2DqTV8qf0oWSIundPy0YrEOTmzzZV/xP8QONlYSPto9YQKG2f7kk6YL/+N1UzUVuoLaulvxeCHts6s/xRax0cipfotLIOnKtdFpTisOqi7DtHRTqJtQkCRHpbQV/+26yBaKQVBzJJFPoaiNQ6IF8Ib2BQ7dIwwIM5IGorrlIHHi3FQcXVwLTSWgnlS3RaLhx7L7QysbgDbodov9ZaBloH5LuN05skVgd6tX3/5rlWJr6pA/lJEq1cq0rLWbwOOFzJ5kfxOtCfnxf9KuKt/CT9wW1fROxA0v/NmPOfE4QQQgiJ6s5j3fpe3IEDo1vvxEOg1m3AtfQmUfLE/P1Crw7NsbQBvVre5A1UX0+kb7Ern2cb6L75JH2LnQAmb6DKTOVNPlZswD1zGcBkzSFwYF7Kh8ClYgPumivxexzK59lGjfrlNpi8CavJN+oAebaBhiGAWHMI7NQhgFgzDe3KN+od3UBchQDi9wAxQKwZiD9vg8kA8QaNOgCrHZhnAHHcQPxUNRDvAsTXewAxQBw5EF8GCIHogfiTYgPuAsTyjfoeQKwciN8CxACxvMm6gXgin2cAsWoglv9T7q7q7UGA+BAgBogBYoAYIAaIt8BkgPj2egAQA8TyjRogBogBYoBYNxC/k8+z2IH4CUAcOxAPAWKAOHYgrgBi3UB8FSDPAGLVNHS1DSYDxLdXDyAGiDliIAQQ7wHEALFmIH62DSYDxLfX0xD/o+qzYgMA4gBAfMdwxIBuIH4vn2cAMUCsG4in8iEQPRArP3MLIA6w6gCIVQPxdYA8A4ijB+K3qoH4OECeAcSqaYgztyIHYg6hBYgBYoAYIAaIiy0wGSDeQAAxQCzfqB8AxAAxQAwQ6wbiQj7PYgdipjLEDsSMKQOIOYQWIGZMGUCsGYiZysCYMoAYIGYqQwAgZkwZQKwaiDlzK3Ig5swtgJhDaAFixpQBxNEDMWPKAgAxh9BGDsQcQstUBoAYIGZMGUCsGog5c4sxZQAxQAwQA8QAMUDcfZMB4tuLqQwAMWPKAGKAGCCOHogZU1bImwwQRw7EjCkDiDmEFiBmTFn0QHz1WLGCTGXQrQBArFvyjfr+K936NUEIIYSQpNLyogNPObBgtHwucu3+vAsOJGMHh28kLp2ZpgsO5OYo2Z+vJFaw43864cDQvvzQnAmUgde/NEUXsmA5sSeECTzroBl1xIHCVm3rg+/oOuuGA6XL1bH/QpCWs9GyAw6k1cL+M1odee+FHyadcKBXuxqY+3cgv0hGArklQC0nQg6MPyb5cqrfgYGZrXuibwd6/0674UC2fnX/lTBr+0C+6oADNw859v61xoukGw6M18Wq9F21215oA6wLDjhoSSvfBN+f2wWX//oqBUT9+cL7gqsjDtwAUbbuCD6dXbhGo9+BXn0q0gp69awjDqyByP/SMHMFduA9tCSAyH6lofnDe4FNOuKA61f9utnzfN3/y8upegfsDtF+5T0EEuPS6qG50L44TEvXtM68P6exXz9rL609DYaCe+UIIYQQQgghhOLWF/ooeL4dJPA5AAAAAElFTkSuQmCC" alt="Paralelogramul ABCD" style="max-width:290px;">
+        <div class="fig-caption">Paralelogramul ABCD (Test Nr. 1, Itemul 2)</div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(2)">Verifică Itemul 2</button>
+    </div>
+    <div class="feedback-box" id="fb-2"></div>
+  </div>
+
+  <!-- ITEM 3 -->
+  <div class="item-card" id="item-3">
+    <div class="item-head">
+      <span class="item-num">Itemul 3</span>
+      <div class="item-prompt">
+        Rezolvați în <span class="math">&Ropf;</span> ecuația <span class="math">2<i>x</i><sup>2</sup> &minus; 7<i>x</i> + 5 = 0</span>.
+      </div>
+      <span class="item-score-badge" id="badge-3">0 / 3 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Pasul 1</span> Calculați discriminantul ecuației de gradul al doilea:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span class="math">&Delta; = <i>b</i><sup>2</sup> &minus; 4<i>ac</i> =</span>
+          <input type="text" id="i3_delta" class="math-in" placeholder="?" autocomplete="off">
+        </div>
+      </div>
+      <div class="step-box">
+        <span class="step-label">Pasul 2</span> Determinați cele două soluții reale (în orice ordine; ex. <code>1</code> și <code>5/2</code> sau <code>2,5</code>):
+        <span class="step-pts">2 p.</span>
+        <div class="step-row">
+          <span class="math"><i>S</i> = {</span>
+          <input type="text" id="i3_x1" class="math-in" placeholder="x₁" autocomplete="off">
+          <span class="math">;</span>
+          <input type="text" id="i3_x2" class="math-in" placeholder="x₂" autocomplete="off">
+          <span class="math">}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(3)">Verifică Itemul 3</button>
+    </div>
+    <div class="feedback-box" id="fb-3"></div>
+  </div>
+
+  <!-- ITEM 4 -->
+  <div class="item-card" id="item-4">
+    <div class="item-head">
+      <span class="item-num">Itemul 4</span>
+      <div class="item-prompt">
+        În Republica Moldova în anul 2025 cantitatea de precipitații a fost de 600 de litri pe metru pătrat, ceea ce reprezintă cu 20% mai mult decât în anul 2024. Determinați cantitatea de precipitații în anul 2024.
+      </div>
+      <span class="item-score-badge" id="badge-4">0 / 5 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Pasul 1</span> Asociați procentele corespunzătoare din regula de trei simplă (notând cu <span class="math"><i>x</i></span> cantitatea din anul 2024):
+        <span class="step-pts">1 p. + 2 p.</span>
+        <div class="step-row">
+          <span>Anul 2024 (<span class="math"><i>x</i> l/m<sup>2</sup></span>):</span>
+          <input type="text" id="i4_p1" class="math-in-sm" placeholder="?" autocomplete="off"> <strong>%</strong>
+          &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+          <span>Anul 2025 (<span class="math">600 l/m<sup>2</sup></span>):</span>
+          <input type="text" id="i4_p2" class="math-in-sm" placeholder="?" autocomplete="off"> <strong>%</strong>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 2</span> Alegeți relația corectă de calcul al necunoscutei <span class="math"><i>x</i></span>:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-grid-2 opt-list" id="i4_eq">
+          <label class="opt-label"><input type="radio" name="i4_eq" value="1"> <span class="math"><i>x</i> = <span class="frac"><span class="num">100 &middot; 600</span><span class="den">120</span></span></span></label>
+          <label class="opt-label"><input type="radio" name="i4_eq" value="0"> <span class="math"><i>x</i> = <span class="frac"><span class="num">120 &middot; 600</span><span class="den">100</span></span></span></label>
+          <label class="opt-label"><input type="radio" name="i4_eq" value="0"> <span class="math"><i>x</i> = 600 &minus; <span class="frac"><span class="num">20 &middot; 600</span><span class="den">100</span></span></span></label>
+          <label class="opt-label"><input type="radio" name="i4_eq" value="0"> <span class="math"><i>x</i> = <span class="frac"><span class="num">20 &middot; 600</span><span class="den">120</span></span></span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 3</span> Răspuns final — cantitatea de precipitații în anul 2024:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span class="math"><i>x</i> =</span>
+          <input type="text" id="i4_ans" class="math-in-md" placeholder="?" autocomplete="off">
+          <span class="math">l/m<sup>2</sup></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(4)">Verifică Itemul 4</button>
+    </div>
+    <div class="feedback-box" id="fb-4"></div>
+  </div>
+
+  <!-- ITEM 5 -->
+  <div class="item-card" id="item-5">
+    <div class="item-head">
+      <span class="item-num">Itemul 5</span>
+      <div class="item-prompt">
+        În desenul alăturat este reprezentat graficul funcției <span class="math"><i>f</i> : &Ropf; &rarr; &Ropf;</span>,
+        <span class="math"><i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup> + <i>px</i> + <i>q</i></span>.
+        Scrieți în casetă un număr întreg, astfel încât punctul <span class="math"><i>M</i>(&#9633; ; 3)</span> să aparțină graficului funcției <span class="math"><i>f</i></span>.
+      </div>
+      <span class="item-score-badge" id="badge-5">0 / 2 p.</span>
+    </div>
+
+    <div class="split-fig">
+      <div class="step-box">
+        <span class="step-pts">2 p.</span>
+        <div>Citiți din rețeaua graficului abscisa întreagă corespunzătoare ordonatei <span class="math"><i>y</i> = 3</span>:</div>
+        <div class="step-row" style="margin-top:12px;">
+          <span class="math" style="font-size:1.25em;"><i>M</i> (</span>
+          <input type="text" id="i5_x" class="math-in" placeholder="?" autocomplete="off">
+          <span class="math" style="font-size:1.25em;">; 3 ) &isin; <i>G</i><sub><i>f</i></sub></span>
+        </div>
+      </div>
+
+      <div class="fig-box">
+        <img src="data:image/png;base64,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YzS9SV1B23NTPiua+/Vh/diDiu80FXQIfALgI6Us/StBehRQGiWh20B274or53/mU/PnN9xjLF+nITcw+R6F6ZArHYtNo5y+zWofSB94Oj2cNX/bVRUUTY00NMrcdd7GoZH7sX6DydPU5ZcGEp1GUe7JuhqY9t04PTiahfmZEuLTKGVb7Q/OyC8mujNzUTRdALXy0Cgzv/T4sN7oms0euO9KJTCauTfpxRpag3+kXg4aete3dDzW98hqMxcPhia5c2RRibG97Qz6VklC465eBkFTQWpOpcaA/jo6IT+iydGcRvLtacaWJj20vSOiydGQSuUGknd/SNvRDisRjY1mIYzXbqH1hJKVestqRGOrXu66WiXJ8Px/UMeUiMZOU65qqna9CllV+9eIxlmuactmf67cm81mn1QiGldpOFFP//v5WiWiYVQUbCGiiWgimogmooloIpqIpiCa0ps77yA0N99887KIxnWclMv1ps3sUETjOp5rD49oXCHVse4RYzBqd0TjTYaxmIgmooloIpqIJqKJaCIa32jmIOHCH2AxjV9lHr66Y63W0XEFM65tMfZhvVjEBT9CIs7tw06ZuxuLWXA7EnH+6+j3b1WQaVcd9/8Si7GKts6wxhggs6eAU2h4Ab3+r5GINa9gp6zZW9gt01OwaWcdnd1KLxI2bcditj7POrrRoNlXwCk07MAinkavfwCL2Lgf/TLY9TfuQ095Bp1geO2DWMwNNzEP/3PvZq239zpmXNt12If1YhHXPIvF9GERf7sbnS24Aom4ahf6/VujZDjKoSKaiCaiiWgimogmooloIpqIJqKJaCKaiCaiiWgimogmooloIpqIJqKJaCKaiCaiiWgimogmooloIpqIJqKJaCKaiCaiiWgimogmooloIpqIJqKJaCIa0WiqkXDO97GYxi8wD89dslRbsoR9Stvl2If1YhFnP4FEzOzDTjljNxYz60Yk4tOvod9/mfIoEh7vw2LWPcU8TBeZzmb3MuM2YZ/16A70+i9jMa9gEY/tK/CWySl70VM2FDHBEJmtZ0ww/C17gmGvjxMM0VNOMVuwqAmGvqU1benh8XR6UZQMe0Os+qy3q6ujHIoZUgejzDuiiWgimogmooloIhp+NP8PAaetO07H0V0AAAAASUVORK5CYII=" alt="Graficul funcției f(x) = x^2 + px + q" style="max-width:290px;">
+        <div class="fig-caption">Graficul funcției f (Test Nr. 1, Itemul 5)</div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(5)">Verifică Itemul 5</button>
+    </div>
+    <div class="feedback-box" id="fb-5"></div>
+  </div>
+
+  <!-- ITEM 6 -->
+  <div class="item-card" id="item-6">
+    <div class="item-head">
+      <span class="item-num">Itemul 6</span>
+      <div class="item-prompt">
+        Determinați cel mai mic număr întreg care verifică inegalitatea
+        <span class="math"><i>x</i><sup>2</sup> &minus; 5<i>x</i> &le; (<i>x</i> + 2)(<i>x</i> + 1)</span>.
+      </div>
+      <span class="item-score-badge" id="badge-6">0 / 4 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Pasul 1</span> Desfaceți parantezele din membrul drept pentru a obține inecuația echivalentă:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span class="math"><i>x</i><sup>2</sup> &minus; 5<i>x</i> &le; <i>x</i><sup>2</sup> +</span>
+          <input type="text" id="i6_p1" class="math-in-sm" placeholder="?" autocomplete="off">
+          <span class="math"><i>x</i> +</span>
+          <input type="text" id="i6_p2" class="math-in-sm" placeholder="?" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 2</span> Rezolvați inecuația obținută în <span class="math">&Ropf;</span> și selectați mulțimea soluțiilor:
+        <span class="step-pts">2 p.</span>
+        <div class="opt-grid-2 opt-list" id="i6_sol">
+          <label class="opt-label"><input type="radio" name="i6_sol" value="2"> <span class="math"><i>x</i> &isin; [&minus;<span class="frac"><span class="num">1</span><span class="den">4</span></span> ; +&infin;)</span></label>
+          <label class="opt-label"><input type="radio" name="i6_sol" value="0"> <span class="math"><i>x</i> &isin; (&minus;&infin; ; &minus;<span class="frac"><span class="num">1</span><span class="den">4</span></span>]</span></label>
+          <label class="opt-label"><input type="radio" name="i6_sol" value="0"> <span class="math"><i>x</i> &isin; [<span class="frac"><span class="num">1</span><span class="den">4</span></span> ; +&infin;)</span></label>
+          <label class="opt-label"><input type="radio" name="i6_sol" value="0"> <span class="math"><i>x</i> &isin; [&minus;4 ; +&infin;)</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 3</span> Răspuns final — cel mai mic număr întreg care verifică inegalitatea:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span>Cel mai mic număr întreg:</span>
+          <input type="text" id="i6_ans" class="math-in" placeholder="?" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(6)">Verifică Itemul 6</button>
+    </div>
+    <div class="feedback-box" id="fb-6"></div>
+  </div>
+
+  <!-- PARTEA II -->
+  <div class="domain-banner">
+    <span>Partea II — Itemii 7–12 (Puteri și radicali, romb, probleme cu sisteme, piramidă, fracții algebrice, funcții)</span>
+    <span class="pts">31 puncte</span>
+  </div>
+
+  <!-- ITEM 7 -->
+  <div class="item-card" id="item-7">
+    <div class="item-head">
+      <span class="item-num">Itemul 7</span>
+      <div class="item-prompt">
+        Scrieți în casetă unul dintre semnele: „&lt;”, „&gt;” sau „=”, astfel încât propoziția obținută să fie adevărată, completând etapele de calcul.
+      </div>
+      <span class="item-score-badge" id="badge-7">0 / 6 p.</span>
+    </div>
+
+    <div class="math-display">
+      <span class="sqrt-wrap">
+        <span class="sqrt-sign">&radic;</span>
+        <span class="sqrt-radicand">
+          <span class="big-paren">(</span><span class="frac"><span class="num">3</span><span class="den">2</span></span><span class="big-paren">)</span><sup>&minus;4</sup>
+          &middot;
+          <span class="big-paren">(</span><span class="frac"><span class="num">3</span><span class="den">2</span></span><span class="big-paren">)</span><sup>2</sup>
+          &minus;
+          <span class="frac"><span class="num">5</span><span class="den">12</span></span>
+        </span>
+      </span>
+      <span id="i7_preview" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:2px solid #1e3a8a;border-radius:6px;background:#fff;font-weight:800;color:#1e3a8a;">?</span>
+      <span class="frac"><span class="num">1</span><span class="den">5</span></span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Pasul 1</span> Aplicați regula înmulțirii puterilor cu aceeași bază:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span class="math"><span class="big-paren">(</span><span class="frac"><span class="num">3</span><span class="den">2</span></span><span class="big-paren">)</span><sup>&minus;4</sup> &middot; <span class="big-paren">(</span><span class="frac"><span class="num">3</span><span class="den">2</span></span><span class="big-paren">)</span><sup>2</sup> = <span class="big-paren">(</span><span class="frac"><span class="num">3</span><span class="den">2</span></span><span class="big-paren">)</span></span>
+          <sup style="margin-top:-14px;"><input type="text" id="i7_exp" class="math-in-sm" placeholder="exp" autocomplete="off"></sup>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 2</span> Calculați puterea cu exponent negativ sub formă de fracție ordinară:
+        <span class="step-pts">2 p.</span>
+        <div class="step-row">
+          <span class="math"><span class="big-paren">(</span><span class="frac"><span class="num">3</span><span class="den">2</span></span><span class="big-paren">)</span><sup>&minus;2</sup> =</span>
+          <input type="text" id="i7_pow" class="math-in-md" placeholder="ex. a/b" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 3</span> Efectuați scăderea de sub radical:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span class="math">Rezultatul de sub radical =</span>
+          <input type="text" id="i7_sub" class="math-in-md" placeholder="ex. a/b" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 4</span> Extrageți rădăcina pătrată:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span class="math">Valoarea radicalului =</span>
+          <input type="text" id="i7_rad" class="math-in-md" placeholder="ex. a/b" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 5</span> Comparați valoarea obținută cu <span class="math"><span class="frac"><span class="num">1</span><span class="den">5</span></span></span> și selectați semnul corect:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <div class="sign-group" id="i7_signs">
+            <button type="button" class="sign-btn" onclick="selectSign('<')">&lt;</button>
+            <button type="button" class="sign-btn" onclick="selectSign('=')">=</button>
+            <button type="button" class="sign-btn" onclick="selectSign('>')">&gt;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(7)">Verifică Itemul 7</button>
+    </div>
+    <div class="feedback-box" id="fb-7"></div>
+  </div>
+
+  <!-- ITEM 8 -->
+  <div class="item-card" id="item-8">
+    <div class="item-head">
+      <span class="item-num">Itemul 8</span>
+      <div class="item-prompt">
+        Determinați lungimea diagonalei mari a unui romb, știind că aceasta formează cu latura rombului un unghi de <span class="math">30&deg;</span>, iar perimetrul rombului este egal cu <span class="math">16 cm</span>.
+      </div>
+      <span class="item-score-badge" id="badge-8">0 / 5 p.</span>
+    </div>
+
+    <div class="split-fig">
+      <div class="step-list" style="margin-top:0;">
+        <div class="step-box">
+          <span class="step-label">Pasul 1</span> Determinați lungimea laturii rombului:
+          <span class="step-pts">1 p.</span>
+          <div class="step-row">
+            <span class="math"><i>a</i> =</span>
+            <input type="text" id="i8_a" class="math-in" placeholder="?" autocomplete="off">
+            <span>cm</span>
+          </div>
+        </div>
+
+        <div class="step-box">
+          <span class="step-label">Pasul 2</span> Determinați lungimea jumătății diagonalei mici (cateta opusă unghiului de <span class="math">30&deg;</span>):
+          <span class="step-pts">1 p.</span>
+          <div class="step-row">
+            <span class="math"><span class="frac"><span class="num"><i>d</i><sub>1</sub></span><span class="den">2</span></span> =</span>
+            <input type="text" id="i8_h1" class="math-in" placeholder="?" autocomplete="off">
+            <span>cm</span>
+          </div>
+        </div>
+
+        <div class="step-box">
+          <span class="step-label">Pasul 3</span> Determinați lungimea jumătății diagonalei mari (<span class="math"><span class="frac"><span class="num"><i>d</i><sub>2</sub></span><span class="den">2</span></span></span>):
+          <span class="step-pts">2 p.</span>
+          <div class="step-row">
+            <select id="i8_h2" style="width:220px;">
+              <option value="">-- Selectați valoarea --</option>
+              <option value="ok">2&radic;3 cm</option>
+              <option value="no1">2&radic;2 cm</option>
+              <option value="no2">4&radic;3 cm</option>
+              <option value="no3">3&radic;2 cm</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="step-box">
+          <span class="step-label">Pasul 4</span> Răspuns final — lungimea diagonalei mari (<span class="math"><i>d</i><sub>2</sub></span>):
+          <span class="step-pts">1 p.</span>
+          <div class="step-row">
+            <span class="math"><i>d</i><sub>2</sub> =</span>
+            <input type="text" id="i8_k" class="math-in-sm" placeholder="k" autocomplete="off">
+            <span class="math" style="font-size:1.3em;">&radic;</span>
+            <input type="text" id="i8_r" class="math-in-sm" placeholder="n" autocomplete="off">
+            <span>cm</span>
+            <span style="font-size:12px;color:var(--muted);">(forma <span class="math"><i>k</i>&radic;<i>n</i></span>)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fig-box">
+        <img src="data:image/png;base64,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" alt="Romb cu diagonalele sale" style="max-width:190px;">
+        <div class="fig-caption">Rombul și diagonalele (Test Nr. 1, Itemul 8)</div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(8)">Verifică Itemul 8</button>
+    </div>
+    <div class="feedback-box" id="fb-8"></div>
+  </div>
+
+  <!-- ITEM 9 -->
+  <div class="item-card" id="item-9">
+    <div class="item-head">
+      <span class="item-num">Itemul 9</span>
+      <div class="item-prompt">
+        Două autobuze pleacă simultan din punctul <span class="math"><i>A</i></span> în punctul <span class="math"><i>B</i></span>. Primul autobuz se deplasează cu o viteză mai mare cu <span class="math">15 km/h</span> decât viteza celui de-al doilea autobuz. Determinați viteza fiecărui autobuz, dacă se cunoaște că primul autobuz a ajuns în punctul <span class="math"><i>B</i></span> peste <span class="math">4</span> ore, iar al doilea autobuz – peste <span class="math">5</span> ore.
+      </div>
+      <span class="item-score-badge" id="badge-9">0 / 5 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Pasul 1</span> Alcătuiți sistemul de ecuații (notând cu <span class="math"><i>v</i><sub>1</sub></span> viteza primului autobuz și cu <span class="math"><i>v</i><sub>2</sub></span> viteza celui de-al doilea):
+        <span class="step-pts">2 p.</span>
+        <div class="step-row">
+          <span>Ecuația 1 (diferența vitezelor):</span>
+          <select id="i9_eq1" style="width:220px;">
+            <option value="">-- Selectați ecuația 1 --</option>
+            <option value="ok">v₁ &minus; v₂ = 15</option>
+            <option value="no1">v₁ + v₂ = 15</option>
+            <option value="no2">v₂ &minus; v₁ = 15</option>
+            <option value="no3">v₁ = 15 &middot; v₂</option>
+          </select>
+        </div>
+        <div class="step-row">
+          <span>Ecuația 2 (distanța <span class="math"><i>AB</i></span> este egală):</span>
+          <select id="i9_eq2" style="width:220px;">
+            <option value="">-- Selectați ecuația 2 --</option>
+            <option value="ok">4v₁ = 5v₂</option>
+            <option value="no1">5v₁ = 4v₂</option>
+            <option value="no2">4v₁ + 5v₂ = 15</option>
+            <option value="no3">4v₁ &minus; 5v₂ = 15</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 2</span> Rezolvați sistemul și scrieți viteza fiecărui autobuz:
+        <span class="step-pts">2 p. + 1 p. răspuns</span>
+        <div class="step-row">
+          <span>Primul autobuz: <span class="math"><i>v</i><sub>1</sub> =</span></span>
+          <input type="text" id="i9_v1" class="math-in" placeholder="?" autocomplete="off">
+          &nbsp;&nbsp;
+          <span>Al doilea autobuz: <span class="math"><i>v</i><sub>2</sub> =</span></span>
+          <input type="text" id="i9_v2" class="math-in" placeholder="?" autocomplete="off">
+          <select id="i9_unit" style="width:110px;">
+            <option value="">-- u.m. --</option>
+            <option value="ok">km/h</option>
+            <option value="no1">km</option>
+            <option value="no2">m/s</option>
+            <option value="no3">ore</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(9)">Verifică Itemul 9</button>
+    </div>
+    <div class="feedback-box" id="fb-9"></div>
+  </div>
+
+  <!-- ITEM 10 -->
+  <div class="item-card" id="item-10">
+    <div class="item-head">
+      <span class="item-num">Itemul 10</span>
+      <div class="item-prompt">
+        Podul unei case are forma unei piramide patrulatere regulate cu muchia bazei de <span class="math">12 m</span> și muchia laterală de <span class="math">9 m</span>. Determinați înălțimea podului.
+      </div>
+      <span class="item-score-badge" id="badge-10">0 / 5 p.</span>
+    </div>
+
+    <div class="split-fig">
+      <div class="step-list" style="margin-top:0;">
+        <div class="step-box">
+          <span class="step-label">Pasul 1</span> Determinați lungimea diagonalei pătratului din baza piramidei:
+          <span class="step-pts">2 p.</span>
+          <div class="step-row">
+            <span class="math"><i>d</i> =</span>
+            <select id="i10_d" style="width:210px;">
+              <option value="">-- Selectați diagonala --</option>
+              <option value="ok">12&radic;2 m</option>
+              <option value="no1">6&radic;2 m</option>
+              <option value="no2">12&radic;3 m</option>
+              <option value="no3">24 m</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="step-box">
+          <span class="step-label">Pasul 2</span> Determinați lungimea jumătății diagonalei pătratului din bază:
+          <span class="step-pts">1 p.</span>
+          <div class="step-row">
+            <span class="math"><span class="frac"><span class="num"><i>d</i></span><span class="den">2</span></span> =</span>
+            <select id="i10_hd" style="width:210px;">
+              <option value="">-- Selectați jumătatea --</option>
+              <option value="ok">6&radic;2 m</option>
+              <option value="no1">6 m</option>
+              <option value="no2">3&radic;2 m</option>
+              <option value="no3">6&radic;3 m</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="step-box">
+          <span class="step-label">Pasul 3</span> Determinați înălțimea podului (piramidei):
+          <span class="step-pts">2 p.</span>
+          <div class="step-row">
+            <span class="math"><i>h</i> =</span>
+            <input type="text" id="i10_h" class="math-in" placeholder="?" autocomplete="off">
+            <span>m</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fig-box">
+        <img src="data:image/png;base64,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" alt="Piramida patrulateră regulată" style="max-width:240px;">
+        <div class="fig-caption">Piramida patrulateră regulată (Test Nr. 1, Itemul 10)</div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(10)">Verifică Itemul 10</button>
+    </div>
+    <div class="feedback-box" id="fb-10"></div>
+  </div>
+
+  <!-- ITEM 11 -->
+  <div class="item-card" id="item-11">
+    <div class="item-head">
+      <span class="item-num">Itemul 11</span>
+      <div class="item-prompt">
+        Determinați DVA și simplificați fracția
+        <span class="math">
+          <span class="frac">
+            <span class="num">2<i>x</i><sup>3</sup> &minus; <i>x</i><sup>2</sup> + 6<i>x</i> &minus; 3</span>
+            <span class="den">2<i>x</i><sup>2</sup> + <i>x</i> &minus; 1</span>
+          </span>
+        </span>.
+      </div>
+      <span class="item-score-badge" id="badge-11">0 / 6 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Pasul 1</span> Descompuneți numărătorul <span class="math">2<i>x</i><sup>3</sup> &minus; <i>x</i><sup>2</sup> + 6<i>x</i> &minus; 3</span> în factori (prin metoda grupării):
+        <span class="step-pts">2 p.</span>
+        <div class="opt-grid-2 opt-list" id="i11_num">
+          <label class="opt-label"><input type="radio" name="i11_num" value="2"> <span class="math">(<i>x</i><sup>2</sup> + 3)(2<i>x</i> &minus; 1)</span></label>
+          <label class="opt-label"><input type="radio" name="i11_num" value="0"> <span class="math">(<i>x</i><sup>2</sup> &minus; 3)(2<i>x</i> + 1)</span></label>
+          <label class="opt-label"><input type="radio" name="i11_num" value="0"> <span class="math">(<i>x</i><sup>2</sup> + 3)(2<i>x</i> + 1)</span></label>
+          <label class="opt-label"><input type="radio" name="i11_num" value="0"> <span class="math">(2<i>x</i><sup>2</sup> + 3)(<i>x</i> &minus; 1)</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 2</span> Rezolvați ecuația <span class="math">2<i>x</i><sup>2</sup> + <i>x</i> &minus; 1 = 0</span> (în orice ordine; ex. <code>-1</code> și <code>1/2</code> sau <code>0,5</code>):
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span class="math"><i>x</i><sub>1</sub> =</span>
+          <input type="text" id="i11_x1" class="math-in" placeholder="?" autocomplete="off">
+          <span class="math">, &nbsp; <i>x</i><sub>2</sub> =</span>
+          <input type="text" id="i11_x2" class="math-in" placeholder="?" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 3</span> Scrieți descompunerea numitorului <span class="math">2<i>x</i><sup>2</sup> + <i>x</i> &minus; 1</span> în factori (folosind Anexa):
+        <span class="step-pts">1 p.</span>
+        <div class="opt-grid-2 opt-list" id="i11_den">
+          <label class="opt-label"><input type="radio" name="i11_den" value="1"> <span class="math">(2<i>x</i> &minus; 1)(<i>x</i> + 1)</span></label>
+          <label class="opt-label"><input type="radio" name="i11_den" value="0"> <span class="math">(2<i>x</i> + 1)(<i>x</i> &minus; 1)</span></label>
+          <label class="opt-label"><input type="radio" name="i11_den" value="0"> <span class="math">(2<i>x</i> &minus; 1)(<i>x</i> &minus; 1)</span></label>
+          <label class="opt-label"><input type="radio" name="i11_den" value="0"> <span class="math">(<i>x</i> + 1)(<i>x</i> &minus; <span class="frac"><span class="num">1</span><span class="den">2</span></span>)</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 4</span> Selectați Domeniul de Valori Admisibile (DVA):
+        <span class="step-pts">1 p.</span>
+        <div class="opt-grid-2 opt-list" id="i11_dva">
+          <label class="opt-label"><input type="radio" name="i11_dva" value="1"> <span class="math">&Ropf; \ {&minus;1 ; <span class="frac"><span class="num">1</span><span class="den">2</span></span>}</span></label>
+          <label class="opt-label"><input type="radio" name="i11_dva" value="0"> <span class="math">&Ropf; \ {1 ; &minus;<span class="frac"><span class="num">1</span><span class="den">2</span></span>}</span></label>
+          <label class="opt-label"><input type="radio" name="i11_dva" value="0"> <span class="math">&Ropf; \ {&minus;1 ; 1}</span></label>
+          <label class="opt-label"><input type="radio" name="i11_dva" value="0"> <span class="math">&Ropf; \ {<span class="frac"><span class="num">1</span><span class="den">2</span></span>}</span></label>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 5</span> Selectați forma simplificată a fracției:
+        <span class="step-pts">1 p.</span>
+        <div class="opt-grid-2 opt-list" id="i11_simp">
+          <label class="opt-label"><input type="radio" name="i11_simp" value="1"> <span class="math"><span class="frac"><span class="num"><i>x</i><sup>2</sup> + 3</span><span class="den"><i>x</i> + 1</span></span></span></label>
+          <label class="opt-label"><input type="radio" name="i11_simp" value="0"> <span class="math"><span class="frac"><span class="num"><i>x</i><sup>2</sup> + 3</span><span class="den"><i>x</i> &minus; 1</span></span></span></label>
+          <label class="opt-label"><input type="radio" name="i11_simp" value="0"> <span class="math"><span class="frac"><span class="num"><i>x</i><sup>2</sup> &minus; 3</span><span class="den"><i>x</i> + 1</span></span></span></label>
+          <label class="opt-label"><input type="radio" name="i11_simp" value="0"> <span class="math"><span class="frac"><span class="num">2<i>x</i> &minus; 1</span><span class="den"><i>x</i> + 1</span></span></span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(11)">Verifică Itemul 11</button>
+    </div>
+    <div class="feedback-box" id="fb-11"></div>
+  </div>
+
+  <!-- ITEM 12 -->
+  <div class="item-card" id="item-12">
+    <div class="item-head">
+      <span class="item-num">Itemul 12</span>
+      <div class="item-prompt">
+        Dănuț și Ionela merg la antrenamente de înot la bazine diferite. Suma în lei achitată de Dănuț se calculează după formula <span class="math"><i>f</i>(<i>x</i>) = 200<i>x</i> + 500</span>, iar suma achitată de Ionela – de formula <span class="math"><i>g</i>(<i>x</i>) = <i>mx</i></span>, unde <span class="math"><i>x</i> &ge; 0</span> reprezintă numărul de antrenamente. Se cunoaște că sumele achitate de ei pentru 10 antrenamente sunt egale. Determinați cine achită mai mult pentru 8 antrenamente.
+      </div>
+      <span class="item-score-badge" id="badge-12">0 / 4 p.</span>
+    </div>
+
+    <div class="step-list">
+      <div class="step-box">
+        <span class="step-label">Pasul 1</span> Egalați sumele pentru <span class="math"><i>x</i> = 10</span> antrenamente (<span class="math"><i>f</i>(10) = <i>g</i>(10)</span>):
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <input type="text" id="i12_f10" class="math-in-md" placeholder="f(10)" autocomplete="off">
+          <span class="math">= 10<i>m</i></span>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 2</span> Determinați valoarea parametrului <span class="math"><i>m</i></span>:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span class="math"><i>m</i> =</span>
+          <input type="text" id="i12_m" class="math-in-md" placeholder="?" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 3</span> Calculați sumele achitate pentru 8 antrenamente și comparați-le:
+        <span class="step-pts">1 p.</span>
+        <div class="step-row">
+          <span class="math"><i>f</i>(8) =</span>
+          <input type="text" id="i12_f8" class="math-in-md" placeholder="lei" autocomplete="off"> <span>lei</span>
+          &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+          <span class="math"><i>g</i>(8) =</span>
+          <input type="text" id="i12_g8" class="math-in-md" placeholder="lei" autocomplete="off"> <span>lei</span>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-label">Pasul 4</span> Răspuns final — cine achită mai mult pentru 8 antrenamente?
+        <span class="step-pts">1 p.</span>
+        <div class="opt-grid-3 opt-list" id="i12_who">
+          <label class="opt-label"><input type="radio" name="i12_who" value="1"> <strong>Dănuț</strong></label>
+          <label class="opt-label"><input type="radio" name="i12_who" value="0"> <strong>Ionela</strong></label>
+          <label class="opt-label"><input type="radio" name="i12_who" value="0"> <strong>Achită sume egale</strong></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-actions">
+      <button class="btn-check" onclick="gradeItem(12)">Verifică Itemul 12</button>
+    </div>
+    <div class="feedback-box" id="fb-12"></div>
+  </div>
+
+  <!-- FINAL SUMMARY -->
+  <div class="final-panel" id="finalPanel">
+    <h2 style="margin-top:0;color:var(--primary);">Evaluare finală și rezultatul testului</h2>
+    <p style="color:var(--muted);max-width:680px;margin:0 auto 16px;">
+      Apăsați butonul de mai jos pentru a verifica toți cei 12 itemi conform baremului oficial al Testului pentru exersare Nr. 1 la Matematică (clasa a IX-a, februarie 2026) și a calcula punctajul total din 50 de puncte.
+    </p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-final" onclick="gradeAll()">Finalizează și calculează punctajul total</button>
+      <button class="btn-reset" style="padding:12px 16px;font-size:14px;" onclick="resetAndReshuffle()">Reamestecă și resetează testul</button>
+      <button class="btn-reset" style="padding:12px 16px;font-size:14px;" onclick="window.print()">Tipărește / Salvează PDF</button>
+      <button class="btn-reset" style="padding:12px 16px;font-size:14px;" onclick="downloadReport()">Descarcă raportul (.txt)</button>
+    </div>
+
+    <div id="finalResults" style="display:none;margin-top:20px;">
+      <div class="summary-grid">
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Punctaj total acumulat</div>
+          <div class="stat-val" id="resTotal">0 / 50 p.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Notă orientativă (și procent)</div>
+          <div class="stat-val" id="resGrade">-</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Algebră și funcții (9 itemi)</div>
+          <div class="stat-val" id="resAlg">0 / 38 p.</div>
+        </div>
+        <div class="stat-card">
+          <div style="font-size:12.5px;color:var(--muted);">Geometrie (Itemii 2, 8, 10)</div>
+          <div class="stat-val" id="resGeo">0 / 12 p.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Modals
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModal('annexModal');
+    closeModal('scratchModal');
+  }
+});
+
+// Fisher-Yates shuffle
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function shuffleAllChoices() {
+  document.querySelectorAll('.opt-list').forEach(list => {
+    const labels = Array.from(list.querySelectorAll('.opt-label'));
+    shuffleArray(labels);
+    labels.forEach(lbl => list.appendChild(lbl));
+  });
+  document.querySelectorAll('select').forEach(sel => {
+    const allOpts = Array.from(sel.querySelectorAll('option'));
+    const placeholder = allOpts.filter(o => o.value === '' || o.disabled);
+    const choices = allOpts.filter(o => o.value !== '' && !o.disabled);
+    shuffleArray(choices);
+    sel.innerHTML = '';
+    placeholder.forEach(o => sel.appendChild(o));
+    choices.forEach(o => sel.appendChild(o));
+    sel.selectedIndex = 0;
+  });
+}
+document.addEventListener('DOMContentLoaded', shuffleAllChoices);
+
+// Timer (120 minutes)
+let secondsLeft = 120 * 60;
+let timerRunning = true;
+setInterval(() => {
+  if (!timerRunning || secondsLeft <= 0) return;
+  secondsLeft--;
+  const m = Math.floor(secondsLeft / 60);
+  const s = secondsLeft % 60;
+  document.getElementById('timerDisplay').textContent =
+    String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}, 1000);
+
+function toggleTimer() {
+  timerRunning = !timerRunning;
+  document.getElementById('timerBtn').textContent = timerRunning ? 'Pauză' : 'Continuă';
+}
+
+// Nav pills & official barem points (sum = 50 p.)
+const maxPts = {1:3, 2:2, 3:3, 4:5, 5:2, 6:4, 7:6, 8:5, 9:5, 10:5, 11:6, 12:4};
+const scores = {};
+const navPillsEl = document.getElementById('navPills');
+for (let i = 1; i <= 12; i++) {
+  scores[i] = 0;
+  const a = document.createElement('a');
+  a.className = 'pill';
+  a.id = 'pill-' + i;
+  a.href = '#item-' + i;
+  a.textContent = i;
+  navPillsEl.appendChild(a);
+}
+
+// Item 7 sign selection state
+let i7SelectedSign = '';
+function selectSign(sign) {
+  i7SelectedSign = sign;
+  document.getElementById('i7_preview').textContent = sign;
+  document.querySelectorAll('#i7_signs .sign-btn').forEach(btn => {
+    btn.classList.remove('ok', 'err');
+    btn.classList.toggle('selected', btn.textContent === sign);
+  });
+}
+
+// Smart math number / fraction parser (handles integers, decimals with ',' or '.', fractions '5/2', '-1/2', optional '°' or '%')
+function parseMathVal(raw) {
+  if (raw === null || raw === undefined) return NaN;
+  let s = String(raw).trim()
+    .replace(/\s+/g, '')
+    .replace(/,/g, '.')
+    .replace(/−/g, '-')
+    .replace(/[°%]/g, '');
+  if (!s) return NaN;
+  if (/^[+-]?\d+(\.\d+)?\/[+-]?\d+(\.\d+)?$/.test(s)) {
+    const parts = s.split('/');
+    const den = parseFloat(parts[1]);
+    if (den === 0) return NaN;
+    return parseFloat(parts[0]) / den;
+  }
+  if (/^[+-]?\d+(\.\d+)?$/.test(s)) {
+    return parseFloat(s);
+  }
+  return NaN;
+}
+
+function approxEq(a, b, eps = 1e-6) {
+  return !isNaN(a) && Math.abs(a - b) <= eps;
+}
+
+function markField(el, isOk) {
+  el.classList.remove('input-ok', 'input-err');
+  el.classList.add(isOk ? 'input-ok' : 'input-err');
+}
+
+function highlightRadioGroup(containerId, maxCorrectVal = null) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const labels = Array.from(container.querySelectorAll('.opt-label'));
+  const vals = labels.map(l => parseFloat(l.querySelector('input').value) || 0);
+  const bestVal = maxCorrectVal !== null ? maxCorrectVal : Math.max(...vals);
+  labels.forEach(lbl => {
+    lbl.classList.remove('opt-correct', 'opt-wrong');
+    const inp = lbl.querySelector('input');
+    const v = parseFloat(inp.value) || 0;
+    if (inp.checked) {
+      lbl.classList.add((v === bestVal && v > 0) ? 'opt-correct' : 'opt-wrong');
+    } else if (v === bestVal && v > 0) {
+      lbl.classList.add('opt-correct');
+    }
+  });
+}
+
+function setFeedback(itemNum, pts, text) {
+  scores[itemNum] = pts;
+  const max = maxPts[itemNum];
+  document.getElementById('badge-' + itemNum).textContent = `${pts} / ${max} p.`;
+  const fb = document.getElementById('fb-' + itemNum);
+  fb.className = 'feedback-box show ' + (pts === max ? 'ok' : (pts > 0 ? 'part' : 'err'));
+  fb.innerHTML = `<strong>Rezultat Itemul ${itemNum}: ${pts} / ${max} puncte.</strong><br>${text}`;
+  const pill = document.getElementById('pill-' + itemNum);
+  pill.className = 'pill ' + (pts === max ? 'checked-ok' : (pts > 0 ? 'checked-part' : 'checked-err'));
+  updateLiveScore();
+}
+
+function updateLiveScore() {
+  let sum = 0;
+  for (let i = 1; i <= 12; i++) sum += scores[i];
+  document.getElementById('liveScore').textContent = sum;
+}
+
+// Grade unordered pair of roots (returns 0, 1, or 2 matched roots)
+function checkUnorderedPair(id1, id2, target1, target2) {
+  const el1 = document.getElementById(id1);
+  const el2 = document.getElementById(id2);
+  const v1 = parseMathVal(el1.value);
+  const v2 = parseMathVal(el2.value);
+
+  let ok1 = false, ok2 = false;
+  if ((approxEq(v1, target1) && approxEq(v2, target2)) || (approxEq(v1, target2) && approxEq(v2, target1))) {
+    ok1 = true; ok2 = true;
+  } else if (approxEq(v1, target1) || approxEq(v1, target2)) {
+    ok1 = true;
+  } else if (approxEq(v2, target1) || approxEq(v2, target2)) {
+    ok2 = true;
+  }
+  markField(el1, ok1);
+  markField(el2, ok2);
+  return (ok1 ? 1 : 0) + (ok2 ? 1 : 0);
+}
+
+// Official Barem Grading (50 points total)
+function gradeItem(n) {
+  if (n === 1) {
+    let pts = 0;
+    const checks = [['i1_a', -3], ['i1_b', 12], ['i1_c', -4]];
+    checks.forEach(([id, exp]) => {
+      const el = document.getElementById(id);
+      const ok = approxEq(parseMathVal(el.value), exp);
+      if (ok) pts++;
+      markField(el, ok);
+    });
+    setFeedback(1, pts,
+      'Rezolvare: a = 2 &minus; 5 = <strong>&minus;3</strong>; b = (&minus;2)&middot;(&minus;6) = <strong>12</strong>; b/a = 12/(&minus;3) = <strong>&minus;4</strong> (câte 1 p. pentru fiecare casetă).'
+    );
+  }
+  else if (n === 2) {
+    let pts = 0;
+    const eA = document.getElementById('i2_a');
+    const okA = approxEq(parseMathVal(eA.value), 135);
+    if (okA) pts++;
+    markField(eA, okA);
+
+    const eB = document.getElementById('i2_b');
+    const okB = approxEq(parseMathVal(eB.value), 16);
+    if (okB) pts++;
+    markField(eB, okB);
+
+    setFeedback(2, pts,
+      'Rezolvare: a) Unghiurile alăturate ale paralelogramului sunt suplementare: m(&ang;ABC) = 180&deg; &minus; 45&deg; = <strong>135&deg;</strong> (1 p.); ' +
+      'b) P<sub>ABCD</sub> = 2&middot;(AB + BC) = 2&middot;(3 + 5) = <strong>16 cm</strong> (1 p.).'
+    );
+  }
+  else if (n === 3) {
+    let pts = 0;
+    const eD = document.getElementById('i3_delta');
+    const okD = approxEq(parseMathVal(eD.value), 9);
+    if (okD) pts += 1;
+    markField(eD, okD);
+
+    const matched = checkUnorderedPair('i3_x1', 'i3_x2', 1, 2.5);
+    pts += matched; // 1 p. each -> 2 p. for both correct
+
+    setFeedback(3, pts,
+      'Rezolvare: &Delta; = (&minus;7)<sup>2</sup> &minus; 4&middot;2&middot;5 = 49 &minus; 40 = <strong>9</strong> (1 p.); ' +
+      'x<sub>1</sub> = (7 &minus; 3)/4 = <strong>1</strong>, x<sub>2</sub> = (7 + 3)/4 = <strong>5/2</strong> (sau 2,5). Răspuns: <strong>S = {1; 5/2}</strong> (2 p.).'
+    );
+  }
+  else if (n === 4) {
+    let pts = 0;
+    const p1 = document.getElementById('i4_p1');
+    const okP1 = approxEq(parseMathVal(p1.value), 100);
+    if (okP1) pts += 1;
+    markField(p1, okP1);
+
+    const p2 = document.getElementById('i4_p2');
+    const okP2 = approxEq(parseMathVal(p2.value), 120);
+    if (okP2) pts += 2;
+    markField(p2, okP2);
+
+    const eqSel = document.querySelector('input[name="i4_eq"]:checked');
+    if (eqSel && eqSel.value === '1') pts += 1;
+    highlightRadioGroup('i4_eq', 1);
+
+    const ans = document.getElementById('i4_ans');
+    const okAns = approxEq(parseMathVal(ans.value), 500);
+    if (okAns) pts += 1;
+    markField(ans, okAns);
+
+    setFeedback(4, pts,
+      'Rezolvare: 100% &mdash; x l/m<sup>2</sup> (1 p.); 120% &mdash; 600 l/m<sup>2</sup> (2 p.); ' +
+      'x = (100 &middot; 600) / 120 (1 p.) = <strong>500 l/m<sup>2</sup></strong> (1 p.).'
+    );
+  }
+  else if (n === 5) {
+    let pts = 0;
+    const el = document.getElementById('i5_x');
+    const ok = approxEq(parseMathVal(el.value), 5);
+    if (ok) pts = 2;
+    markField(el, ok);
+
+    setFeedback(5, pts,
+      'Rezolvare: Pe grafic, pentru ordonata y = 3, ramura dreaptă a parabolei trece exact prin punctul de coordonate întregi (<strong>5</strong>; 3). Punctele (2 p.) se acordă numai pentru completarea corectă a casetei cu <strong>5</strong>.'
+    );
+  }
+  else if (n === 6) {
+    let pts = 0;
+    const p1 = document.getElementById('i6_p1');
+    const p2 = document.getElementById('i6_p2');
+    const okP1 = approxEq(parseMathVal(p1.value), 3);
+    const okP2 = approxEq(parseMathVal(p2.value), 2);
+    markField(p1, okP1);
+    markField(p2, okP2);
+    if (okP1 && okP2) pts += 1;
+
+    const solSel = document.querySelector('input[name="i6_sol"]:checked');
+    if (solSel) pts += parseInt(solSel.value, 10);
+    highlightRadioGroup('i6_sol', 2);
+
+    const ans = document.getElementById('i6_ans');
+    const okAns = approxEq(parseMathVal(ans.value), 0);
+    if (okAns) pts += 1;
+    markField(ans, okAns);
+
+    setFeedback(6, pts,
+      'Rezolvare: x<sup>2</sup> &minus; 5x &le; x<sup>2</sup> + 3x + 2 (1 p.) &hArr; &minus;8x &le; 2 &hArr; x &ge; &minus;1/4, adică x &isin; [&minus;1/4; +&infin;) (2 p.). ' +
+      'Cel mai mic număr întreg din acest interval este <strong>0</strong> (1 p.).'
+    );
+  }
+  else if (n === 7) {
+    let pts = 0;
+    const e1 = document.getElementById('i7_exp');
+    const ok1 = approxEq(parseMathVal(e1.value), -2);
+    if (ok1) pts += 1;
+    markField(e1, ok1);
+
+    const e2 = document.getElementById('i7_pow');
+    const ok2 = approxEq(parseMathVal(e2.value), 4 / 9);
+    if (ok2) pts += 2;
+    markField(e2, ok2);
+
+    const e3 = document.getElementById('i7_sub');
+    const ok3 = approxEq(parseMathVal(e3.value), 1 / 36);
+    if (ok3) pts += 1;
+    markField(e3, ok3);
+
+    const e4 = document.getElementById('i7_rad');
+    const ok4 = approxEq(parseMathVal(e4.value), 1 / 6);
+    if (ok4) pts += 1;
+    markField(e4, ok4);
+
+    const ok5 = (i7SelectedSign === '<');
+    if (ok5) pts += 1;
+    document.querySelectorAll('#i7_signs .sign-btn').forEach(btn => {
+      btn.classList.remove('ok', 'err');
+      if (btn.textContent === '<') btn.classList.add('ok');
+      else if (btn.textContent === i7SelectedSign) btn.classList.add('err');
+    });
+
+    setFeedback(7, pts,
+      'Rezolvare: (3/2)<sup>&minus;4</sup>&middot;(3/2)<sup>2</sup> = (3/2)<sup>&minus;2</sup> (1 p.) = <strong>4/9</strong> (2 p.); ' +
+      '4/9 &minus; 5/12 = (16 &minus; 15)/36 = <strong>1/36</strong> (1 p.); &radic;(1/36) = <strong>1/6</strong> (1 p.); ' +
+      'deoarece 1/6 &lt; 1/5, semnul din casetă este <strong>&lt;</strong> (1 p.).'
+    );
+  }
+  else if (n === 8) {
+    let pts = 0;
+    const eA = document.getElementById('i8_a');
+    const okA = approxEq(parseMathVal(eA.value), 4);
+    if (okA) pts += 1;
+    markField(eA, okA);
+
+    const eH1 = document.getElementById('i8_h1');
+    const okH1 = approxEq(parseMathVal(eH1.value), 2);
+    if (okH1) pts += 1;
+    markField(eH1, okH1);
+
+    const eH2 = document.getElementById('i8_h2');
+    const okH2 = (eH2.value === 'ok');
+    if (okH2) pts += 2;
+    markField(eH2, okH2);
+
+    const eK = document.getElementById('i8_k');
+    const eR = document.getElementById('i8_r');
+    const okK = approxEq(parseMathVal(eK.value), 4);
+    const okR = approxEq(parseMathVal(eR.value), 3);
+    markField(eK, okK);
+    markField(eR, okR);
+    if (okK && okR) pts += 1;
+
+    setFeedback(8, pts,
+      'Rezolvare: Latura rombului a = 16 / 4 = <strong>4 cm</strong> (1 p.); ' +
+      'în triunghiul dreptunghic format de semidiagonale și latură, cateta opusă unghiului de 30&deg; este d<sub>1</sub>/2 = 4 / 2 = <strong>2 cm</strong> (1 p.); ' +
+      'prin teorema lui Pitagora, d<sub>2</sub>/2 = &radic;(4<sup>2</sup> &minus; 2<sup>2</sup>) = &radic;12 = <strong>2&radic;3 cm</strong> (2 p.); ' +
+      'diagonala mare d<sub>2</sub> = 2 &middot; 2&radic;3 = <strong>4&radic;3 cm</strong> (1 p.).'
+    );
+  }
+  else if (n === 9) {
+    let pts = 0;
+    const eq1 = document.getElementById('i9_eq1');
+    const okEq1 = (eq1.value === 'ok');
+    if (okEq1) pts += 1;
+    markField(eq1, okEq1);
+
+    const eq2 = document.getElementById('i9_eq2');
+    const okEq2 = (eq2.value === 'ok');
+    if (okEq2) pts += 1;
+    markField(eq2, okEq2);
+
+    const v1 = document.getElementById('i9_v1');
+    const okV1 = approxEq(parseMathVal(v1.value), 75);
+    if (okV1) pts += 1;
+    markField(v1, okV1);
+
+    const v2 = document.getElementById('i9_v2');
+    const okV2 = approxEq(parseMathVal(v2.value), 60);
+    if (okV2) pts += 1;
+    markField(v2, okV2);
+
+    const u = document.getElementById('i9_unit');
+    const okUnit = (u.value === 'ok');
+    markField(u, okUnit);
+    if (okV1 && okV2 && okUnit) pts += 1;
+
+    setFeedback(9, pts,
+      'Rezolvare: Sistemul { v<sub>1</sub> &minus; v<sub>2</sub> = 15 ; 4v<sub>1</sub> = 5v<sub>2</sub> } (2 p.). ' +
+      'Substituind v<sub>1</sub> = v<sub>2</sub> + 15 &rArr; 4(v<sub>2</sub> + 15) = 5v<sub>2</sub> &rArr; v<sub>2</sub> = <strong>60 km/h</strong>, v<sub>1</sub> = <strong>75 km/h</strong> (2 p. + 1 p. răspuns corect).'
+    );
+  }
+  else if (n === 10) {
+    let pts = 0;
+    const eD = document.getElementById('i10_d');
+    const okD = (eD.value === 'ok');
+    if (okD) pts += 2;
+    markField(eD, okD);
+
+    const eHd = document.getElementById('i10_hd');
+    const okHd = (eHd.value === 'ok');
+    if (okHd) pts += 1;
+    markField(eHd, okHd);
+
+    const eH = document.getElementById('i10_h');
+    const okH = approxEq(parseMathVal(eH.value), 3);
+    if (okH) pts += 2;
+    markField(eH, okH);
+
+    setFeedback(10, pts,
+      'Rezolvare: Diagonala pătratului de la bază d = 12&radic;2 m (2 p.); jumătatea diagonalei d/2 = 6&radic;2 m (1 p.); ' +
+      'prin teorema lui Pitagora în triunghiul format de înălțime, semidiagonală și muchia laterală: h = &radic;(9<sup>2</sup> &minus; (6&radic;2)<sup>2</sup>) = &radic;(81 &minus; 72) = &radic;9 = <strong>3 m</strong> (2 p.).'
+    );
+  }
+  else if (n === 11) {
+    let pts = 0;
+    const sNum = document.querySelector('input[name="i11_num"]:checked');
+    if (sNum) pts += parseInt(sNum.value, 10);
+    highlightRadioGroup('i11_num', 2);
+
+    const matchedRoots = checkUnorderedPair('i11_x1', 'i11_x2', -1, 0.5);
+    if (matchedRoots === 2) pts += 1;
+
+    const sDen = document.querySelector('input[name="i11_den"]:checked');
+    if (sDen) pts += parseInt(sDen.value, 10);
+    highlightRadioGroup('i11_den', 1);
+
+    const sDva = document.querySelector('input[name="i11_dva"]:checked');
+    if (sDva) pts += parseInt(sDva.value, 10);
+    highlightRadioGroup('i11_dva', 1);
+
+    const sSimp = document.querySelector('input[name="i11_simp"]:checked');
+    if (sSimp) pts += parseInt(sSimp.value, 10);
+    highlightRadioGroup('i11_simp', 1);
+
+    setFeedback(11, pts,
+      'Rezolvare: Numărătorul: 2x<sup>3</sup> &minus; x<sup>2</sup> + 6x &minus; 3 = x<sup>2</sup>(2x &minus; 1) + 3(2x &minus; 1) = <strong>(x<sup>2</sup> + 3)(2x &minus; 1)</strong> (2 p.). ' +
+      'Numitorul: 2x<sup>2</sup> + x &minus; 1 = 0 &rArr; x<sub>1</sub> = &minus;1, x<sub>2</sub> = 1/2 (1 p.) &rArr; 2x<sup>2</sup> + x &minus; 1 = <strong>(2x &minus; 1)(x + 1)</strong> (1 p.). ' +
+      '<strong>DVA: &Ropf; \\ {&minus;1; 1/2}</strong> (1 p.). După simplificarea prin (2x &minus; 1): <strong>(x<sup>2</sup> + 3)/(x + 1)</strong> (1 p.).'
+    );
+  }
+  else if (n === 12) {
+    let pts = 0;
+    const eF10 = document.getElementById('i12_f10');
+    const okF10 = approxEq(parseMathVal(eF10.value), 2500);
+    if (okF10) pts += 1;
+    markField(eF10, okF10);
+
+    const eM = document.getElementById('i12_m');
+    const okM = approxEq(parseMathVal(eM.value), 250);
+    if (okM) pts += 1;
+    markField(eM, okM);
+
+    const eF8 = document.getElementById('i12_f8');
+    const eG8 = document.getElementById('i12_g8');
+    const okF8 = approxEq(parseMathVal(eF8.value), 2100);
+    const okG8 = approxEq(parseMathVal(eG8.value), 2000);
+    markField(eF8, okF8);
+    markField(eG8, okG8);
+    if (okF8 && okG8) pts += 1;
+
+    const sWho = document.querySelector('input[name="i12_who"]:checked');
+    if (sWho) pts += parseInt(sWho.value, 10);
+    highlightRadioGroup('i12_who', 1);
+
+    setFeedback(12, pts,
+      'Rezolvare: f(10) = 200&middot;10 + 500 = 2500, g(10) = 10m &rArr; <strong>2500 = 10m</strong> (1 p.) &rArr; <strong>m = 250</strong> (1 p.). ' +
+      'Pentru 8 antrenamente: f(8) = 200&middot;8 + 500 = <strong>2100 lei</strong>, g(8) = 250&middot;8 = <strong>2000 lei</strong>. Deoarece 2100 &gt; 2000, achită mai mult <strong>Dănuț</strong> (2 p.).'
+    );
+  }
+}
+
+function calcGrade(pts) {
+  const pct = Math.round((pts / 50) * 100);
+  let nota = 1;
+  if (pts >= 47) nota = 10;
+  else if (pts >= 42) nota = 9;
+  else if (pts >= 35) nota = 8;
+  else if (pts >= 28) nota = 7;
+  else if (pts >= 21) nota = 6;
+  else if (pts >= 13) nota = 5;
+  else if (pts >= 8) nota = 4;
+  else if (pts >= 4) nota = 3;
+  else if (pts >= 1) nota = 2;
+  return `Nota ${nota} (${pct}%)`;
+}
+
+function gradeAll() {
+  for (let i = 1; i <= 12; i++) gradeItem(i);
+  const geo = scores[2] + scores[8] + scores[10];
+  let total = 0;
+  for (let i = 1; i <= 12; i++) total += scores[i];
+  const alg = total - geo;
+
+  document.getElementById('resTotal').textContent = `${total} / 50 p.`;
+  document.getElementById('resGrade').textContent = calcGrade(total);
+  document.getElementById('resAlg').textContent = `${alg} / 38 p.`;
+  document.getElementById('resGeo').textContent = `${geo} / 12 p.`;
+  document.getElementById('finalResults').style.display = 'block';
+  document.getElementById('finalResults').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetAndReshuffle() {
+  document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
+  document.querySelectorAll('input[type="text"], input[type="number"]').forEach(el => {
+    if (!el.id.startsWith('st_')) {
+      el.value = '';
+      el.classList.remove('input-ok', 'input-err');
+    }
+  });
+  document.querySelectorAll('select').forEach(el => {
+    el.selectedIndex = 0;
+    el.classList.remove('input-ok', 'input-err');
+  });
+  document.querySelectorAll('.opt-label').forEach(lbl => lbl.classList.remove('opt-correct', 'opt-wrong'));
+  document.querySelectorAll('.feedback-box').forEach(fb => { fb.className = 'feedback-box'; fb.innerHTML = ''; });
+
+  i7SelectedSign = '';
+  document.getElementById('i7_preview').textContent = '?';
+  document.querySelectorAll('#i7_signs .sign-btn').forEach(btn => btn.classList.remove('selected', 'ok', 'err'));
+
+  for (let i = 1; i <= 12; i++) {
+    scores[i] = 0;
+    document.getElementById('badge-' + i).textContent = `0 / ${maxPts[i]} p.`;
+    document.getElementById('pill-' + i).className = 'pill';
+  }
+  updateLiveScore();
+  document.getElementById('finalResults').style.display = 'none';
+  shuffleAllChoices();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function downloadReport() {
+  gradeAll();
+  const nume = document.getElementById('st_nume').value || 'Nespecificat';
+  const scoala = document.getElementById('st_scoala').value || 'Nespecificat';
+  const localitate = document.getElementById('st_localitate').value || 'Nespecificat';
+  const raion = document.getElementById('st_raion').value || 'Nespecificat';
+  let total = 0;
+  let lines = [
+    'RAPORT EVALUARE - MATEMATICĂ, TEST PENTRU EXERSARE Nr. 1, CLASA A IX-A (februarie 2026)',
+    '========================================================================================',
+    `Elev: ${nume}`,
+    `Instituția: ${scoala} (${localitate}, r-nul ${raion})`,
+    '----------------------------------------------------------------------------------------'
+  ];
+  for (let i = 1; i <= 12; i++) {
+    total += scores[i];
+    lines.push(`Itemul ${String(i).padStart(2, '0')}: ${scores[i]} / ${maxPts[i]} puncte`);
+  }
+  lines.push('----------------------------------------------------------------------------------------');
+  lines.push(`PUNCTAJ TOTAL: ${total} / 50 puncte`);
+  lines.push(`NOTĂ ORIENTATIVĂ: ${calcGrade(total)}`);
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `Rezultat_Matematica_Clasa9_Test1_2026_${nume.replace(/\s+/g, '_')}.txt`;
+  a.click();
+}
+</script>
+</body>
+</html>
