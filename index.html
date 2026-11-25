@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Clasa a IX-a — Teste PDF cu Bareme & Teste Digitale Interactive (Matematică, Limba română, Istorie)</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-mid: #2563eb;
+    --primary-light: #eff6ff;
+    --accent: #0f766e;
+    --accent-mid: #0d9488;
+    --accent-light: #f0fdfa;
+    --amber: #b45309;
+    --amber-light: #fef3c7;
+    --hist: #9a3412;
+    --hist-light: #fff7ed;
+    --math: #047857;
+    --math-light: #ecfdf5;
+    --ok: #16a34a;
+    --ok-light: #dcfce7;
+    --bg: #f1f5f9;
+    --card: #ffffff;
+    --border: #cbd5e1;
+    --border-soft: #e2e8f0;
+    --text: #0f172a;
+    --muted: #475569;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* Sticky Topbar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #0f172a;
+    color: #fff;
+    padding: 11px 20px;
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.25);
+  }
+  .topbar-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 15.5px;
+    flex-wrap: wrap;
+  }
+  .badge-top {
+    background: #2563eb;
+    color: #fff;
+    padding: 3px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+  .progress-track {
+    width: 135px;
+    height: 8px;
+    background: #334155;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #22c55e;
+    border-radius: 999px;
+    transition: width 0.25s ease;
+  }
+
+  /* Main Container */
+  .container {
+    max-width: 1320px;
+    margin: 20px auto 52px;
+    padding: 0 18px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 56%, #0f766e 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 24px rgba(30, 58, 138, 0.16);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .hero-main { max-width: 780px; }
+  .hero-kicker {
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    opacity: 0.88;
+    font-weight: 700;
+  }
+  .hero h1 {
+    margin: 5px 0 8px;
+    font-size: 25px;
+    line-height: 1.22;
+    font-weight: 800;
+  }
+  .hero p {
+    margin: 0;
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.92);
+  }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hero-chip {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Discipline Selector Bar */
+  .nav-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .subject-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1;
+  }
+  .subject-tab {
+    border: 1.5px solid var(--border);
+    background: #f8fafc;
+    color: var(--text);
+    padding: 9px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.16s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 155px;
+  }
+  .subject-tab:hover {
+    border-color: #60a5fa;
+    background: var(--primary-light);
+  }
+  .subject-tab.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.22);
+  }
+  .subject-tab.active[data-subj="matematica"] {
+    background: var(--math);
+    border-color: var(--math);
+    box-shadow: 0 4px 12px rgba(4, 120, 87, 0.22);
+  }
+  .subject-tab.active[data-subj="istorie"] {
+    background: var(--hist);
+    border-color: var(--hist);
+    box-shadow: 0 4px 12px rgba(154, 52, 18, 0.22);
+  }
+  .tab-label {
+    font-size: 14.5px;
+    font-weight: 800;
+  }
+  .tab-sub {
+    font-size: 11.5px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .subject-tab.active .tab-sub {
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .search-box {
+    position: relative;
+    min-width: 220px;
+    width: 270px;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 9px 12px 9px 34px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-size: 13.5px;
+    background: #f8fafc;
+    color: var(--text);
+  }
+  .search-box input:focus {
+    outline: 2px solid #3b82f6;
+    background: #fff;
+    border-color: #3b82f6;
+  }
+  .search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  /* Subject Block */
+  .subject-block {
+    margin-bottom: 32px;
+  }
+  .subject-banner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 0 2px;
+  }
+  .subject-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .subject-banner h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .subject-block[data-theme="matematica"] .subject-banner h2 { color: var(--math); }
+  .subject-block[data-theme="istorie"] .subject-banner h2 { color: var(--hist); }
+
+  .subject-topic-pill {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid #bfdbfe;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 3px 11px;
+    border-radius: 999px;
+  }
+  .subject-block[data-theme="matematica"] .subject-topic-pill {
+    background: var(--math-light);
+    color: var(--math);
+    border-color: #a7f3d0;
+  }
+  .subject-block[data-theme="istorie"] .subject-topic-pill {
+    background: var(--hist-light);
+    color: var(--hist);
+    border-color: #fed7aa;
+  }
+
+  .banner-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    align-items: center;
+  }
+  .btn-drive-folder {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--muted);
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+  .btn-drive-folder:hover {
+    border-color: var(--primary-mid);
+    color: var(--primary);
+    background: var(--primary-light);
+  }
+  .btn-drive-folder.bonus {
+    color: var(--math);
+    border-color: #a7f3d0;
+    background: var(--math-light);
+  }
+  .btn-drive-folder.bonus:hover {
+    background: var(--math);
+    color: #fff;
+    border-color: var(--math);
+  }
+
+  /* Asymmetric 2-Column Workspace: Left = PDFs+Barems (~39%), Right = Larger Digital Interactive Tests (~61%) */
+  .workspace-grid {
+    display: grid;
+    grid-template-columns: minmax(340px, 0.95fr) minmax(450px, 1.45fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* Left Column: Physical Format (PDF + Barems) */
+  .panel-pdf {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 4px solid #475569;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  }
+  .panel-head {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: #f8fafc;
+    flex-wrap: wrap;
+  }
+  .panel-head h3 {
+    margin: 0;
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .panel-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    background: #e2e8f0;
+    padding: 2px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .pdf-year-bar {
+    padding: 9px 14px;
+    background: #ffffff;
+    border-bottom: 1px dashed var(--border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .year-pills {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .year-pill-btn {
+    border: 1px solid var(--border);
+    background: #f8fafc;
+    color: var(--muted);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.14s ease;
+  }
+  .year-pill-btn:hover {
+    border-color: var(--primary-mid);
+    color: var(--primary);
+  }
+  .year-pill-btn.active {
+    background: #1e293b;
+    border-color: #1e293b;
+    color: #fff;
+  }
+  .year-divider {
+    padding: 6px 16px;
+    background: #f1f5f9;
+    font-size: 12px;
+    font-weight: 800;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .year-divider a {
+    color: #1d4ed8;
+    text-decoration: none;
+    font-size: 11.5px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .year-divider a:hover { text-decoration: underline; }
+
+  .pdf-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .pdf-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.14s ease;
+  }
+  .pdf-row:last-child { border-bottom: none; }
+  .pdf-row:hover { background: #f8fafc; }
+
+  .pdf-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .pdf-line1 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .pdf-year {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 1px 7px;
+    border-radius: 5px;
+  }
+  .pdf-stage {
+    font-size: 13.3px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .pdf-date {
+    font-size: 11.8px;
+    color: var(--muted);
+  }
+  .mini-game-dot {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid #99f6e4;
+    padding: 0 6px;
+    border-radius: 999px;
+  }
+
+  .pdf-btns {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .btn-pdf, .btn-barem {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12.2px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.14s ease;
+  }
+  .btn-pdf {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+  }
+  .btn-pdf:hover {
+    background: #1d4ed8;
+    color: #fff;
+    border-color: #1d4ed8;
+  }
+  .btn-barem {
+    background: #f0fdfa;
+    color: #0f766e;
+    border: 1px solid #99f6e4;
+  }
+  .btn-barem:hover {
+    background: #0f766e;
+    color: #fff;
+    border-color: #0f766e;
+  }
+
+  /* Right Column: Larger Digital Interactive Tests */
+  .panel-digital {
+    background: var(--card);
+    border: 1.5px solid #93c5fd;
+    border-top: 5px solid var(--primary-mid);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(30, 58, 138, 0.08);
+  }
+  .subject-block[data-theme="matematica"] .panel-digital {
+    border-color: #6ee7b7;
+    border-top-color: var(--math);
+    box-shadow: 0 6px 20px rgba(4, 120, 87, 0.08);
+  }
+  .subject-block[data-theme="istorie"] .panel-digital {
+    border-color: #fdba74;
+    border-top-color: var(--hist);
+    box-shadow: 0 6px 20px rgba(154, 52, 18, 0.08);
+  }
+
+  .panel-digital .panel-head {
+    background: linear-gradient(90deg, #eff6ff 0%, #f0fdfa 100%);
+    padding: 16px 20px;
+    border-bottom: 1px solid #dbeafe;
+  }
+  .subject-block[data-theme="matematica"] .panel-digital .panel-head {
+    background: linear-gradient(90deg, #ecfdf5 0%, #f0fdfa 100%);
+    border-bottom-color: #d1fae5;
+  }
+  .subject-block[data-theme="istorie"] .panel-digital .panel-head {
+    background: linear-gradient(90deg, #fff7ed 0%, #fefce8 100%);
+    border-bottom-color: #fed7aa;
+  }
+  .panel-digital .panel-head h3 {
+    font-size: 17.5px;
+    color: var(--primary);
+  }
+  .subject-block[data-theme="matematica"] .panel-digital .panel-head h3 { color: var(--math); }
+  .subject-block[data-theme="istorie"] .panel-digital .panel-head h3 { color: var(--hist); }
+
+  .panel-digital .panel-count {
+    background: var(--primary);
+    color: #fff;
+    font-size: 12.5px;
+    padding: 3px 11px;
+  }
+  .subject-block[data-theme="matematica"] .panel-digital .panel-count { background: var(--math); }
+  .subject-block[data-theme="istorie"] .panel-digital .panel-count { background: var(--hist); }
+
+  .digital-intro {
+    padding: 10px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+  .digital-intro span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+  }
+
+  .digital-grid {
+    padding: 18px 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .game-card {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    min-height: 222px;
+  }
+  .game-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-mid);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.12);
+  }
+  .subject-block[data-theme="matematica"] .game-card:hover {
+    border-color: var(--math);
+    box-shadow: 0 10px 24px rgba(4, 120, 87, 0.12);
+  }
+  .subject-block[data-theme="istorie"] .game-card:hover {
+    border-color: var(--hist);
+    box-shadow: 0 10px 24px rgba(154, 52, 18, 0.12);
+  }
+  .game-card.done {
+    border-color: var(--ok);
+    background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%);
+  }
+
+  .game-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .tag-examen {
+    background: var(--amber-light);
+    color: var(--amber);
+    border: 1px solid #fcd34d;
+  }
+  .tag-suplimentara {
+    background: #fce7f3;
+    color: #9d174d;
+    border: 1px solid #f9a8d4;
+  }
+  .tag-pretestare {
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid #99f6e4;
+  }
+  .tag-exersare {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid #bfdbfe;
+  }
+  .year-chip {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 2px 9px;
+    border-radius: 6px;
+  }
+
+  .game-title {
+    margin: 10px 0 6px;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .game-desc {
+    margin: 0;
+    font-size: 13.4px;
+    color: var(--muted);
+  }
+
+  .game-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .feat-chip {
+    font-size: 11.8px;
+    font-weight: 600;
+    color: #334155;
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 5px;
+  }
+
+  .game-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border-soft);
+  }
+  .btn-play {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.22);
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .subject-block[data-theme="matematica"] .btn-play {
+    background: linear-gradient(90deg, #065f46, #059669);
+    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.24);
+  }
+  .subject-block[data-theme="istorie"] .btn-play {
+    background: linear-gradient(90deg, #7c2d12, #c2410c);
+    box-shadow: 0 3px 10px rgba(194, 65, 12, 0.24);
+  }
+  .btn-play:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+  .btn-done {
+    border: 1.5px solid var(--border);
+    background: #f8fafc;
+    color: var(--muted);
+    padding: 9px 12px;
+    border-radius: 9px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+  }
+  .btn-done:hover {
+    border-color: var(--ok);
+    color: var(--ok);
+  }
+  .game-card.done .btn-done {
+    background: var(--ok-light);
+    border-color: var(--ok);
+    color: #14532d;
+  }
+
+  .empty-state {
+    background: var(--card);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 34px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  /* Tips & Footer */
+  .tips-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 8px;
+    font-size: 13.5px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .tips-box strong { color: var(--text); }
+
+  .footer-note {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .link-reset {
+    background: none;
+    border: none;
+    color: #dc2626;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+  }
+
+  @media (max-width: 1060px) {
+    .workspace-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 680px) {
+    .hero { padding: 18px; }
+    .hero h1 { font-size: 21px; }
+    .digital-grid { grid-template-columns: 1fr; padding: 14px; }
+    .search-box { width: 100%; }
+    .subject-tab { flex: 1 1 145px; }
+    .pdf-row { flex-direction: column; align-items: flex-start; }
+    .pdf-btns { width: 100%; }
+    .btn-pdf, .btn-barem { flex: 1; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="badge-top">EXAMEN CLASA A IX-A</span>
+      <span>Portal de pregătire — Teste PDF cu Bareme & Teste Digitale Interactive</span>
+    </div>
+    <div class="progress-wrap" title="Progresul testelor digitale salvat local în browser">
+      <span>Teste digitale rezolvate: <strong id="doneCount" style="color:#fff;">0 / 15</strong></span>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero-main">
+      <div class="hero-kicker">Ministerul Educației și Cercetării • Examen național de absolvire a gimnaziului (Clasa a IX-a)</div>
+      <h1>Alege disciplina și pregătește-te pentru examenele de clasa a IX-a</h1>
+      <p>
+        Pentru fiecare disciplină de examen ai în stânga <strong>arhiva oficială de teste în format PDF cu bareme (2024–2026)</strong>,
+        iar în dreapta <strong>testele digitale interactive din sesiunea 2026</strong> cu verificare automată, cronometru de 120 de minute și raport descărcabil.
+      </p>
+    </div>
+    <div class="hero-stats">
+      <span class="hero-chip">📄 45 teste PDF + 45 bareme</span>
+      <span class="hero-chip">🎮 15 teste digitale interactive</span>
+      <span class="hero-chip">🎯 50 p. / 120 min</span>
+    </div>
+  </section>
+
+  <section class="nav-card" aria-label="Selectare disciplină">
+    <div class="subject-tabs" id="subjectTabs"></div>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Caută an (2026, 2025), sesiune, temă..." autocomplete="off">
+    </div>
+  </section>
+
+  <div id="portalRoot"></div>
+
+  <section class="tips-box">
+    <div>
+      <strong>Sfaturi rapide pentru pregătire:</strong>
+      Testele PDF se deschid direct din arhiva Google Drive (ideale pentru tipărire sau rezolvare pe caiet și verificare după barem), iar testele digitale interactive amestecă automat variantele la fiecare încercare și permit descărcarea raportului <code>.txt</code> cu punctajul final.
+    </div>
+  </section>
+
+  <footer class="footer-note">
+    <span>Portal Examen Național Clasa a IX-a • Arhivă PDF (2024–2026) + Teste Digitale Interactive (2026)</span>
+    <span>•</span>
+    <a href="https://drive.google.com/drive/folders/1OpFLEbOcGHHO2Xup32HT31AhuacNMkVj" target="_blank" rel="noopener" style="color:#1d4ed8;font-weight:700;text-decoration:none;">📁 Mapa principală Google Drive ↗</a>
+    <span>•</span>
+    <button type="button" class="link-reset" onclick="resetProgress()">Resetează progresul bifat</button>
+  </footer>
+</main>
+
+<script>
+const GITHUB_BASE = 'https://frostbyte-md.github.io/Examen-clasa-9-a/';
+const driveFileUrl = id => `https://drive.google.com/file/d/${id}/view`;
+const driveFolderUrl = id => `https://drive.google.com/drive/folders/${id}`;
+
+const DATA = {
+  matematica: {
+    key: 'matematica',
+    icon: '📐',
+    label: 'Matematică',
+    shortLabel: 'Matematică',
+    topic: 'Algebră, funcții și geometrie • 12 itemi (50 p.)',
+    driveFolderId: '14QuszNJCajhCbEUmmA0FvXy1cB97COns',
+    yearFolders: {
+      2026: '1EBzUT4WhrwdXtYjZ9Wuqn5m7hnsHLYvg',
+      2025: '1H6ffFtgzqmEjacJo-g8mnXdfc2aaGPQL',
+      2024: '1MCXQRj21wrmwxYYxphkQzJrqnSyhY_-f'
+    },
+    bonusFolders: [
+      { label: '📝 Fișe cu explicații', id: '1pum91Y4ao83yeQNPJDM-FGozDISiupf3' },
+      { label: '🎬 Tutoriale video', id: '1g-2cCscIdaJB1Jyf5xrkQye2xaN1_35m' }
+    ],
+    pdfs: [
+      // 2026
+      { year: 2026, stage: 'Sesiunea de bază',       date: '08 iunie 2026',     testId: '1pFKVGyX7q1egnRKoH53v3dBA8EK51f6f', baremId: '1XHR_Wctm3M0JBxJYHv2BjoRY1M_1NrfY', hasGame: true },
+      { year: 2026, stage: 'Sesiunea suplimentară',  date: '08 iulie 2026',     testId: '1C8NbkGTCTRoDe4ExL486n60gs9-bAgg4', baremId: '1i4MzkKFRlFUVIP1ulYBIManoCi3YWeYS', hasGame: true },
+      { year: 2026, stage: 'Pretestare',             date: '24 februarie 2026', testId: '1sr8ugDPNRoQvi06RK6WjMZSptnpMQ6Dq', baremId: '1_c_3b9AoH7DnWB1QGPp7U54B07ujRcS9', hasGame: true },
+      { year: 2026, stage: 'Test de exersare Nr. 1', date: 'februarie 2026',    testId: '12vKM9asu5qGyeJ1JLkcTVgQu4C_WlUYc', baremId: '1czW_L3BqH9iDrs7BavVjDG1Z2Z4yY_Xr', hasGame: true },
+      { year: 2026, stage: 'Test de exersare Nr. 2', date: 'februarie 2026',    testId: '1olM4vAilnLA1A14SPzwEeYx-Uoi7yE5H', baremId: '1_16T_OlDDX4nzL1ckqUGNqBzvXDrOtP0', hasGame: true },
+      // 2025
+      { year: 2025, stage: 'Sesiunea de bază',       date: 'sesiunea 2025',     testId: '1WABjnewKchItZLxB8NsmFXFEwp8M666e', baremId: '1gtVylcLNpqMuZMaauDFHGM7qRTC0y4u6' },
+      { year: 2025, stage: 'Sesiunea suplimentară',  date: 'sesiunea 2025',     testId: '1XDSQGpXcgmx5N4Pv4OlK8n41lsm-bOjW', baremId: '1hvp2atNzsmZT_DKQhEI-Ebk5pR01GtFu' },
+      { year: 2025, stage: 'Pretestare',             date: 'primăvara 2025',    testId: '1qwTTDLsHJt_DkbcUD9Fu0KWouvM4ZphT', baremId: '1ddx87rRvPb5HNuv1NZ5SP6hf0q9ENkRd' },
+      { year: 2025, stage: 'Test de exersare Nr. 1', date: 'exersare 2025',     testId: '1Ymx14GpHRvnG4ttcqM9cLVgZeW3ITuob', baremId: '1bYVtD9ismIcuvLVYDWuD6RGGu1SU6wyj' },
+      { year: 2025, stage: 'Test de exersare Nr. 2', date: 'exersare 2025',     testId: '1XREr35IUmMHfcYD6g9eJ3HCTF1exUnFq', baremId: '1BFimXOn_kOss6_B8_9VNtdDG7438cdy6' },
+      // 2024
+      { year: 2024, stage: 'Sesiunea de bază',       date: 'sesiunea 2024',     testId: '1xvdBS_HyCp1A8MYyEHUYCtHDcMzkI_4N', baremId: '1fNDo4kvgwlvfkZbJsuwI2nTgLjH2Q_Kk' },
+      { year: 2024, stage: 'Sesiunea suplimentară',  date: 'sesiunea 2024',     testId: '1pyujVhekDIvelceF2I6t21k-1IKhJlF0', baremId: '19dikQzxxc_bkXXyTdxIo7nAKFEDrZ8fl' },
+      { year: 2024, stage: 'Pretestare',             date: 'primăvara 2024',    testId: '1CpQIczQ9_LyXG-Bm3Y2JElwmyUfd6_hK', baremId: '1TCnCzgiJTwd9hCJMP4kIPuucbS18TC5X' },
+      { year: 2024, stage: 'Test de exersare Nr. 1', date: 'exersare 2024',     testId: '1WpYeRVQ32C2qrHG6VejACdztHrCsKoi2', baremId: '1moqx5e4TOYySLVImlKDirCHSqe1WmyVA' },
+      { year: 2024, stage: 'Test de exersare Nr. 2', date: 'exersare 2024',     testId: '1AqB5Y3YJ9cEmcCqDyuIZLobtVabc7zov', baremId: '1RWkGIjfb_K9GMciWAiCaHDkYY-XkRju6' }
+    ],
+    games: [
+      {
+        id: 'mate_examen_2026',
+        year: 2026,
+        stageType: 'examen',
+        stageLabel: 'Sesiunea de bază',
+        title: 'Examen 2026 — Sesiunea de bază',
+        desc: '08 iunie 2026 • 12 itemi compleți de algebră, funcții, ecuații, probabilități și geometrie, cu verificare pas cu pas.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📐 12 itemi'],
+        file: 'test_matematica_clasa9_examen_2026.html'
+      },
+      {
+        id: 'mate_suplimentara_2026',
+        year: 2026,
+        stageType: 'suplimentara',
+        stageLabel: 'Sesiunea suplimentară',
+        title: 'Examen 2026 — Sesiunea suplimentară',
+        desc: '08 iulie 2026 • 12 itemi oficiali cu evaluare automată, fișă de formule și ciornă de calcul integrată.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📐 12 itemi'],
+        file: 'test_matematica_clasa9_suplimentara_2026.html'
+      },
+      {
+        id: 'mate_pretestare_2026',
+        year: 2026,
+        stageType: 'pretestare',
+        stageLabel: 'Pretestare',
+        title: 'Pretestare 2026 — Matematică',
+        desc: '24 februarie 2026 • Simulare oficială ANCE cu 12 itemi, rezolvare ghidată pe etape și punctaj parțial.',
+        features: ['⏱ 120 min', '🎯 50 p.', '🔀 Variante aleatorii'],
+        file: 'test_matematica_clasa9_pretestare_2026.html'
+      },
+      {
+        id: 'mate_test1_2026',
+        year: 2026,
+        stageType: 'exersare',
+        stageLabel: 'Test de exersare Nr. 1',
+        title: 'Test pentru exersare Nr. 1 (2026)',
+        desc: 'februarie 2026 • Antrenament structurat pe toți cei 12 itemi din programa de examen, cu feedback conform baremului.',
+        features: ['⏱ 120 min', '🎯 50 p.', '🔀 Variante aleatorii'],
+        file: 'test_matematica_clasa9_test1_2026.html'
+      },
+      {
+        id: 'mate_test2_2026',
+        year: 2026,
+        stageType: 'exersare',
+        stageLabel: 'Test de exersare Nr. 2',
+        title: 'Test pentru exersare Nr. 2 (2026)',
+        desc: 'februarie 2026 • A doua variantă oficială de exersare, cu diagrame, ecuații, probleme de geometrie și barem integrat.',
+        features: ['⏱ 120 min', '🎯 50 p.', '🔀 Variante aleatorii'],
+        file: 'test_matematica_clasa9_test2_2026.html'
+      }
+    ]
+  },
+
+  romana: {
+    key: 'romana',
+    icon: '📖',
+    label: 'Limba și literatura română',
+    shortLabel: 'Limba română',
+    topic: 'Înțelegerea textului, DEX, gramatică și redactare • 13 itemi (50 p.)',
+    driveFolderId: '1v5hKVwv-4Il53Vv1H4756UfylW2_cJqG',
+    yearFolders: {
+      2026: '1v0x1ST7JeeytIhT29NyAhd84thfV6IEI',
+      2025: '1jbQKqV0rrw6S9moUEbymupLt3YIlQK94',
+      2024: '1mS3ZWbpu0RCtOIucEJ8pAjfuD6QZ4E0P'
+    },
+    bonusFolders: [],
+    pdfs: [
+      // 2026
+      { year: 2026, stage: 'Sesiunea de bază',       date: '11 iunie 2026',   testId: '1wJ5TE0xs8C9UeRm52GNQVI7epmG7q-o8', baremId: '1nutXDVXwAUc5v-pzoHOgRMDhjTzkhBN9', hasGame: true },
+      { year: 2026, stage: 'Sesiunea suplimentară',  date: '09 iulie 2026',   testId: '1lqr7a_YRmfN_FmKY596buCbNIy7W3T5y', baremId: '13cYjk5N5qxAm_cYDZfUnoBAQ9cWQXm33', hasGame: true },
+      { year: 2026, stage: 'Pretestare',             date: '26 martie 2026',  testId: '1_BxDYtUSI7KKINwqiaNSI_TzSfq-23n3', baremId: '1v7GhssAkwImMwQ03veEtPmGQMMZyJ0s_', hasGame: true },
+      { year: 2026, stage: 'Test de exersare Nr. 1', date: 'februarie 2026',  testId: '1bYA2hRJBkV7KnFVs4Io6DLEv5zEr_kyv', baremId: '1aJM9F2Vh2nrvvl9s5BpfzHE2sjxWDSts', hasGame: true },
+      { year: 2026, stage: 'Test de exersare Nr. 2', date: 'februarie 2026',  testId: '1dM1sZALYjf7v-Z8QHttKos_rGcF7_km-', baremId: '1kBax1jqcwIUeL0K8fZxfy0YxlA8yLBbi', hasGame: true },
+      // 2025
+      { year: 2025, stage: 'Sesiunea de bază',       date: 'sesiunea 2025',   testId: '1cUocchaTWVAICOaV_S0ctVt2ozEGR03W', baremId: '12g3D9qwsloBxnk6plG3uTGSnBPXDTSvD' },
+      { year: 2025, stage: 'Sesiunea suplimentară',  date: 'sesiunea 2025',   testId: '1iaOSm33xg_4d-8-HBpCcHkCU75JVteBY', baremId: '1wkKE3llq1X92ThiWv8GFuE_8pTolRLXl' },
+      { year: 2025, stage: 'Pretestare',             date: 'primăvara 2025',  testId: '1KkGHGpCU9Ec6jvLWysxvHJtA_a5va7dq', baremId: '13BvroNLUvPpM5341FSSxCwhe1e4wQ_fh' },
+      { year: 2025, stage: 'Test de exersare Nr. 1', date: 'exersare 2025',   testId: '1bW4o4pZOMoSLkfEdOiE9oqOXSca8blpB', baremId: '1B6i-lt3ZplKXFMyb_mIMdCIRslMSVGGF' },
+      { year: 2025, stage: 'Test de exersare Nr. 2', date: 'exersare 2025',   testId: '1kKA3kXBEAC-SsT7lp1mamr49I-C2-gRu', baremId: '1MzobaXw4Km93E2Bktx5JYYenuKC9eM_e' },
+      // 2024
+      { year: 2024, stage: 'Sesiunea de bază',       date: 'sesiunea 2024',   testId: '1qCKj8LTmYF5VvzJD5oGKxsLsc67nMdWw', baremId: '1wxuCQ_8Jur6F1dpK3P5lZRXyVyPFsrzr' },
+      { year: 2024, stage: 'Sesiunea suplimentară',  date: 'sesiunea 2024',   testId: '1K7u2_-y3hV_roVqKHjdxydb5gOkGXTu7', baremId: '1nEBpDYLP2HoZG4wmU6MBozgj5aNz1HFM' },
+      { year: 2024, stage: 'Pretestare',             date: 'primăvara 2024',  testId: '1V-A6oCP55C4Ze6a9fArPKO6oCN7ebM1v', baremId: '1Hw31K5HGWrbQqakLYRifYlORkskXW--Z' },
+      { year: 2024, stage: 'Test de exersare Nr. 1', date: 'exersare 2024',   testId: '1Xq_kdJ0jw93tI085DfTMuFhMd-TGCcTi', baremId: '1a17uG8L3Zvx85QG5XgD36ZOQdPfyVrv7' },
+      { year: 2024, stage: 'Test de exersare Nr. 2', date: 'exersare 2024',   testId: '18XpaW86mmscaQfb6VYF31vlERMUj-9MB', baremId: '1l49ha2KtLkupXjcJ7YB58f-U19uztR5_' }
+    ],
+    games: [
+      {
+        id: 'rom_baza_2026',
+        year: 2026,
+        stageType: 'examen',
+        stageLabel: 'Sesiunea de bază',
+        title: 'Examen 2026 — Sesiunea de bază',
+        desc: '11 iunie 2026 • Text suport: Ioana Pârvulescu („Aurul pisicii”), NODEX „punct”, anunț, analiză sintactică, descriere.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📖 13 itemi'],
+        file: 'test_limba_romana_clasa9_baza_2026.html'
+      },
+      {
+        id: 'rom_suplimentara_2026',
+        year: 2026,
+        stageType: 'suplimentara',
+        stageLabel: 'Sesiunea suplimentară',
+        title: 'Examen 2026 — Sesiunea suplimentară',
+        desc: '09 iulie 2026 • Interviu cu Ana Blandiana, DEX „construcție”, comparația, numerale, delimitarea frazei și abrevieri.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📖 13 itemi'],
+        file: 'test_limba_romana_clasa9_suplimentara_2026.html'
+      },
+      {
+        id: 'rom_pretestare_2026',
+        year: 2026,
+        stageType: 'pretestare',
+        stageLabel: 'Pretestare',
+        title: 'Pretestare 2026 — Limba română',
+        desc: '26 martie 2026 • Text suport: Simona Popescu („Leagănul pisicii”), DEX „direct”, antiteză, cerere, conversiune și frază.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📚 DEX integrat'],
+        file: 'test_limba_romana_clasa9_pretestare_2026.html'
+      },
+      {
+        id: 'rom_test1_2026',
+        year: 2026,
+        stageType: 'exersare',
+        stageLabel: 'Test de exersare Nr. 1',
+        title: 'Test pentru exersare Nr. 1 (2026)',
+        desc: 'februarie 2026 • Text suport: Alexandru N. Stermin („apă vie”), DEX „joc”, rezumat 60–65 cuv., părți de vorbire, dialog.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📚 DEX integrat'],
+        file: 'test_limba_romana_clasa9_test1_2026.html'
+      },
+      {
+        id: 'rom_test2_2026',
+        year: 2026,
+        stageType: 'exersare',
+        stageLabel: 'Test de exersare Nr. 2',
+        title: 'Test pentru exersare Nr. 2 (2026)',
+        desc: 'februarie 2026 • Text suport: Gabriel Liiceanu („Scrisori către fiul meu”), DEX „prag”, scrisoare, delimitare frază.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📚 DEX integrat'],
+        file: 'test_limba_romana_clasa9_test2_2026.html'
+      }
+    ]
+  },
+
+  istorie: {
+    key: 'istorie',
+    icon: '🏛️',
+    label: 'Istoria românilor și universală',
+    shortLabel: 'Istorie',
+    topic: 'Surse vizuale și scrise, repere cronologice și eseu • 3 Subiecte (50 p.)',
+    driveFolderId: '1Q1_TVivfCPwQdqF2L0FmyBcN7ZlWjLsZ',
+    yearFolders: {
+      2026: '17029W3AF6Slre38fvUs5aECNcqkmBfa8',
+      2025: '1_Osu0BLYmsYzvFbrMOanNMNp1EQcycbh',
+      2024: '1MNiYjqXAjd5Kidm7yXnbZNC0A-BrpZli'
+    },
+    bonusFolders: [],
+    pdfs: [
+      // 2026
+      { year: 2026, stage: 'Sesiunea de bază',       date: '04 iunie 2026',   testId: '1ZisDuXyv18QEnZpNAt4iWAt_7D7T05hV', baremId: '1l-sfX0tieZ4fa7Nc6XuYR8kYFBBApALK', hasGame: true },
+      { year: 2026, stage: 'Sesiunea suplimentară',  date: '07 iulie 2026',   testId: '1GH7iutsvH-3zmUuJVIQfZDsiQQhrCiJC', baremId: '1-gfVII1rJdW3xDVJnhAJcD2Lk0XtOh1-', hasGame: true },
+      { year: 2026, stage: 'Pretestare',             date: '24 martie 2026',  testId: '1AwiwuaeNmGLxBlocyuk5UQJrPT-go6Mj', baremId: '1_1dNieI1mXKeHtQkk2Zskp_D4YAGXbK5', hasGame: true },
+      { year: 2026, stage: 'Test de exersare Nr. 1', date: 'februarie 2026',  testId: '1Z1gtnXmm3jDc08hvravGSDFDpobuy9wI', baremId: '1TqxAAlU9dDK1FizmvS8MHOjmkTI0DOQl', hasGame: true },
+      { year: 2026, stage: 'Test de exersare Nr. 2', date: 'februarie 2026',  testId: '1UKKH4a2xmMHW2EZvc0VHCJ30APDmWkna', baremId: '1Da-C8T3Oqq2jj22_Hsu31sgMfB8szuxh', hasGame: true },
+      // 2025
+      { year: 2025, stage: 'Sesiunea de bază',       date: 'sesiunea 2025',   testId: '12p1gp4-WiILWsoLC6zrDfKi9MBVtAh7a', baremId: '1GfHLKAjRO2jM9SvkXl_DlDI3z1_HcY_K' },
+      { year: 2025, stage: 'Sesiunea suplimentară',  date: 'sesiunea 2025',   testId: '1u2IQlKs8JSw2S4YQmLnrijCKCe4zw7zm', baremId: '1MC3laaLBReV2i8tCwJUphkR5s-cOyJ2m' },
+      { year: 2025, stage: 'Pretestare',             date: 'primăvara 2025',  testId: '1m5clWOh_yLeaZvTtu7QfS_xXWqJRq-yV', baremId: '1ApKaqFvlsWNjuKQNosdjwfOB6_DoaROm' },
+      { year: 2025, stage: 'Test de exersare Nr. 1', date: 'exersare 2025',   testId: '1Tn23MlVzNzi-G29Yldshbv6Hl57OvgEv', baremId: '1QhYGKyIkdj-p8tgWqPgWP5NZ429joayt' },
+      { year: 2025, stage: 'Test de exersare Nr. 2', date: 'exersare 2025',   testId: '1XPMVTuNCQJVoRW86MhmQOhmG62SPIbi4', baremId: '1pdXSsvOogpt4XHpg6ydOlPfqzH3im0Yw' },
+      // 2024
+      { year: 2024, stage: 'Sesiunea de bază',       date: 'sesiunea 2024',   testId: '1tMPTgHfFO0S7vyN0nZc3EZKduLTz1WFP', baremId: '1x3644OD36FOdpXg4TQ02GJMnZo2ocAFu' },
+      { year: 2024, stage: 'Sesiunea suplimentară',  date: 'sesiunea 2024',   testId: '1d-HkDBIWHfCM_AJe71gS-wX3EgPSrPo0', baremId: '1bHgyBUNUFSVRnSO1zQS8WM_JN5OSc11R' },
+      { year: 2024, stage: 'Pretestare',             date: 'primăvara 2024',  testId: '13617HsVQrhtWILayuQYs5LpQDCZ0spP9', baremId: '1qMoTfpD8r7dPptye66nFKpYryM5k9VlY' },
+      { year: 2024, stage: 'Test de exersare Nr. 1', date: 'exersare 2024',   testId: '1jjuC5GSx5DNumjO552lr-5Nk5tMSOHn7', baremId: '13Ut8SwylJ4Mi9077z7uaGW2H8VPHKnHN' },
+      { year: 2024, stage: 'Test de exersare Nr. 2', date: 'exersare 2024',   testId: '1EeBPOhjAPcyAEl4_6qFplxeJBA6dWAfz', baremId: '1zvhNyfuRUTUIl-agd1dZfjQ9GdQn57gM' }
+    ],
+    games: [
+      {
+        id: 'ist_examen_2026',
+        year: 2026,
+        stageType: 'examen',
+        stageLabel: 'Sesiunea de bază',
+        title: 'Examen 2026 — Sesiunea de bază',
+        desc: '04 iunie 2026 • Surse vizuale (hărți, fotografii), Conferința de pace de la Paris & politica externă a României, eseu Marea Criză Economică.',
+        features: ['⏱ 120 min', '🎯 50 p.', '🖼️ Surse cu zoom'],
+        file: 'test_istorie_clasa9_examen_2026.html'
+      },
+      {
+        id: 'ist_suplimentara_2026',
+        year: 2026,
+        stageType: 'suplimentara',
+        stageLabel: 'Sesiunea suplimentară',
+        title: 'Examen 2026 — Sesiunea suplimentară',
+        desc: '07 iulie 2026 • Învățământul în Basarabia, Liga Națiunilor, economia SUA, Dumitru Matcovschi, colectivizarea în RSSM, eseu Războiul Rece.',
+        features: ['⏱ 120 min', '🎯 50 p.', '🖼️ Surse cu zoom'],
+        file: 'test_istorie_clasa9_suplimentara_2026.html'
+      },
+      {
+        id: 'ist_pretestare_2026',
+        year: 2026,
+        stageType: 'pretestare',
+        stageLabel: 'Pretestare',
+        title: 'Pretestare 2026 — Istorie',
+        desc: '24 martie 2026 • Analiză de surse, Marea criză economică din 1929–1933 și eseu despre diplomația românească și recunoașterea Marii Uniri.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📜 Atelier eseu'],
+        file: 'test_istorie_clasa9_pretestare_2026.html'
+      },
+      {
+        id: 'ist_test1_2026',
+        year: 2026,
+        stageType: 'exersare',
+        stageLabel: 'Test de exersare Nr. 1',
+        title: 'Test pentru exersare Nr. 1 (2026)',
+        desc: 'februarie 2026 • Surse vizuale și scrise, România Mare și Constituția din 1923, atelier de eseu argumentativ structurat pe 5 criterii.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📜 Atelier eseu'],
+        file: 'test_istorie_clasa9_test1_2026.html'
+      },
+      {
+        id: 'ist_test2_2026',
+        year: 2026,
+        stageType: 'exersare',
+        stageLabel: 'Test de exersare Nr. 2',
+        title: 'Test pentru exersare Nr. 2 (2026)',
+        desc: 'februarie 2026 • Regimurile totalitare în perioada interbelică și eseu despre afirmarea culturii românești prin învățământ, literatură și artă.',
+        features: ['⏱ 120 min', '🎯 50 p.', '📜 Atelier eseu'],
+        file: 'test_istorie_clasa9_test2_2026.html'
+      }
+    ]
+  }
+};
+
+const SUBJECTS = ['matematica', 'romana', 'istorie'];
+const STORAGE_KEY = 'examen_clasa9_done_v1';
+
+// Support optional ?disciplina=matematica|romana|istorie|toate query parameter
+function getInitialSubject() {
+  const p = (new URLSearchParams(window.location.search).get('disciplina') || '').toLowerCase();
+  if (p === 'toate' || p === 'all') return 'all';
+  if (SUBJECTS.includes(p)) return p;
+  return 'matematica';
+}
+
+let activeSubject = getInitialSubject();
+let searchTerm = '';
+const pdfYearFilter = { matematica: 'all', romana: 'all', istorie: 'all' };
+
+function loadDoneSet() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return new Set(raw ? JSON.parse(raw) : []);
+  } catch (e) {
+    return new Set();
+  }
+}
+
+function saveDoneSet(setObj) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(setObj)));
+  } catch (e) {}
+}
+
+let doneSet = loadDoneSet();
+
+function allGameIds() {
+  return SUBJECTS.flatMap(s => DATA[s].games.map(x => x.id));
+}
+
+function toggleDone(id) {
+  if (doneSet.has(id)) doneSet.delete(id);
+  else doneSet.add(id);
+  saveDoneSet(doneSet);
+  updateProgress();
+  renderPortal();
+}
+
+function resetProgress() {
+  if (doneSet.size === 0) return;
+  if (!confirm('Sigur vrei să ștergi marcajele de teste digitale rezolvate?')) return;
+  doneSet.clear();
+  saveDoneSet(doneSet);
+  updateProgress();
+  renderPortal();
+}
+
+function updateProgress() {
+  const ids = allGameIds();
+  const total = ids.length;
+  const done = ids.filter(id => doneSet.has(id)).length;
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  document.getElementById('doneCount').textContent = `${done} / ${total}`;
+  document.getElementById('progressFill').style.width = `${pct}%`;
+}
+
+function normalizeText(str) {
+  return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function stageTagClass(stageType) {
+  if (stageType === 'examen') return 'tag-examen';
+  if (stageType === 'suplimentara') return 'tag-suplimentara';
+  if (stageType === 'pretestare') return 'tag-pretestare';
+  return 'tag-exersare';
+}
+
+function selectSubject(s) {
+  activeSubject = s;
+  renderTabs();
+  renderPortal();
+}
+
+function setYearFilter(subjKey, yearVal) {
+  pdfYearFilter[subjKey] = yearVal;
+  renderPortal();
+}
+
+function renderTabs() {
+  const tabsEl = document.getElementById('subjectTabs');
+  const totalPdfs = SUBJECTS.reduce((s, k) => s + DATA[k].pdfs.length, 0);
+  const totalGames = SUBJECTS.reduce((s, k) => s + DATA[k].games.length, 0);
+
+  let out = SUBJECTS.map(k => {
+    const d = DATA[k];
+    const isActive = activeSubject === k;
+    return `
+      <button type="button" class="subject-tab ${isActive ? 'active' : ''}" data-subj="${k}" onclick="selectSubject('${k}')">
+        <span class="tab-label">${d.icon} ${d.shortLabel}</span>
+        <span class="tab-sub">${d.pdfs.length} PDF • ${d.games.length} digitale</span>
+      </button>
+    `;
+  }).join('');
+
+  out += `
+    <button type="button" class="subject-tab ${activeSubject === 'all' ? 'active' : ''}" data-subj="all" onclick="selectSubject('all')">
+      <span class="tab-label">📚 Toate disciplinele</span>
+      <span class="tab-sub">${totalPdfs} PDF • ${totalGames} digitale</span>
+    </button>
+  `;
+
+  tabsEl.innerHTML = out;
+}
+
+function renderSubjectSection(subjKey, queryNorm) {
+  const d = DATA[subjKey];
+  const yrFilter = pdfYearFilter[subjKey] || 'all';
+
+  const pdfs = d.pdfs.filter(p => {
+    if (yrFilter !== 'all' && String(p.year) !== String(yrFilter)) return false;
+    if (!queryNorm) return true;
+    const hay = normalizeText(`${d.label} ${d.topic} ${p.year} ${p.stage} ${p.date} pdf barem`);
+    return hay.includes(queryNorm);
+  });
+
+  const games = d.games.filter(t => {
+    if (!queryNorm) return true;
+    const hay = normalizeText(`${d.label} ${d.topic} ${t.year} ${t.stageLabel} ${t.title} ${t.desc} digital joc interactiv`);
+    return hay.includes(queryNorm);
+  });
+
+  if (pdfs.length === 0 && games.length === 0 && yrFilter === 'all') return '';
+
+  // Group PDFs by year (2026, 2025, 2024)
+  const yearsOrder = [2026, 2025, 2024];
+  let pdfListHtml = '';
+  yearsOrder.forEach(yr => {
+    const grp = pdfs.filter(p => p.year === yr);
+    if (!grp.length) return;
+    pdfListHtml += `
+      <div class="year-divider">
+        <span>Sesiunea ${yr} (${grp.length} teste)</span>
+        <a href="${driveFolderUrl(d.yearFolders[yr])}" target="_blank" rel="noopener">Mapa ${yr} ↗</a>
+      </div>
+      ${grp.map(p => `
+        <div class="pdf-row">
+          <div class="pdf-info">
+            <div class="pdf-line1">
+              <span class="pdf-year">${p.year}</span>
+              <span class="pdf-stage">${p.stage}</span>
+              ${p.hasGame ? '<span class="mini-game-dot" title="Disponibil și ca test digital interactiv în dreapta">🎮 și digital</span>' : ''}
+            </div>
+            <span class="pdf-date">${p.date}</span>
+          </div>
+          <div class="pdf-btns">
+            <a class="btn-pdf" href="${driveFileUrl(p.testId)}" target="_blank" rel="noopener" title="Deschide testul oficial PDF">
+              📄 Test
+            </a>
+            <a class="btn-barem" href="${driveFileUrl(p.baremId)}" target="_blank" rel="noopener" title="Deschide baremul de verificare PDF">
+              ✅ Barem
+            </a>
+          </div>
+        </div>
+      `).join('')}
+    `;
+  });
+
+  if (!pdfListHtml) {
+    pdfListHtml = `<div style="padding:18px;color:var(--muted);font-size:13.5px;text-align:center;">Niciun fișier PDF nu corespunde filtrului curent.</div>`;
+  }
+
+  const gamesHtml = games.length
+    ? games.map(t => {
+        const isDone = doneSet.has(t.id);
+        return `
+          <article class="game-card ${isDone ? 'done' : ''}">
+            <div>
+              <div class="game-top">
+                <span class="tag ${stageTagClass(t.stageType)}">${t.stageLabel}</span>
+                <span class="year-chip">${t.year}</span>
+              </div>
+              <h4 class="game-title">${t.title}</h4>
+              <p class="game-desc">${t.desc}</p>
+              <div class="game-features">
+                ${t.features.map(f => `<span class="feat-chip">${f}</span>`).join('')}
+              </div>
+            </div>
+            <div class="game-actions">
+              <a class="btn-play" href="${GITHUB_BASE + t.file}" target="_blank" rel="noopener">
+                ▶ Începe testul
+              </a>
+              <button type="button" class="btn-done" onclick="toggleDone('${t.id}')" title="Marchează testul ca rezolvat">
+                ${isDone ? '✓ Rezolvat' : 'Marchează'}
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('')
+    : `<div style="grid-column:1/-1;padding:24px;color:var(--muted);font-size:14px;text-align:center;">Niciun test digital nu corespunde căutării.</div>`;
+
+  const bonusHtml = (d.bonusFolders || []).map(b => `
+    <a class="btn-drive-folder bonus" href="${driveFolderUrl(b.id)}" target="_blank" rel="noopener">
+      ${b.label} ↗
+    </a>
+  `).join('');
+
+  return `
+    <section class="subject-block" data-theme="${subjKey}">
+      <div class="subject-banner">
+        <div class="subject-banner-left">
+          <h2>${d.icon} ${d.label}</h2>
+          <span class="subject-topic-pill">${d.topic}</span>
+        </div>
+        <div class="banner-links">
+          ${bonusHtml}
+          <a class="btn-drive-folder" href="${driveFolderUrl(d.driveFolderId)}" target="_blank" rel="noopener">
+            📁 Mapa Drive (${d.shortLabel}) ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="workspace-grid">
+        <!-- STÂNGA: Teste format fizic (PDF) + Bareme (2024–2026) -->
+        <div class="panel-pdf">
+          <div class="panel-head">
+            <h3>📄 Teste format fizic (PDF) & Bareme</h3>
+            <span class="panel-count">${pdfs.length} ${pdfs.length === 1 ? 'test' : 'teste'}</span>
+          </div>
+          <div class="pdf-year-bar">
+            <span style="font-size:12px;color:var(--muted);font-weight:600;">Filtrează anul:</span>
+            <div class="year-pills">
+              ${['all', 2026, 2025, 2024].map(y => `
+                <button type="button" class="year-pill-btn ${String(yrFilter) === String(y) ? 'active' : ''}" onclick="setYearFilter('${subjKey}', '${y}')">
+                  ${y === 'all' ? 'Toți (2024–2026)' : y}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+          <div class="pdf-list">
+            ${pdfListHtml}
+          </div>
+        </div>
+
+        <!-- DREAPTA (dimensiune mai mare): Teste digitale interactive 2026 -->
+        <div class="panel-digital">
+          <div class="panel-head">
+            <h3>🎮 Teste digitale interactive (Exersare online)</h3>
+            <span class="panel-count">${games.length} ${games.length === 1 ? 'test interactiv' : 'teste interactive'}</span>
+          </div>
+          <div class="digital-intro">
+            <span>✅ Verificare automată</span>
+            <span>🔀 Variante amestecate</span>
+            <span>⏱ Cronometru 120 min</span>
+            <span>📥 Export raport .txt</span>
+          </div>
+          <div class="digital-grid">
+            ${gamesHtml}
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderPortal() {
+  const q = normalizeText(searchTerm.trim());
+  const listToShow = activeSubject === 'all' ? SUBJECTS : [activeSubject];
+  const htmlOut = listToShow.map(s => renderSubjectSection(s, q)).filter(Boolean).join('');
+
+  const root = document.getElementById('portalRoot');
+  if (!htmlOut) {
+    root.innerHTML = `<div class="empty-state">Nu au fost găsite teste pentru „${searchTerm}”. Încearcă alt an (ex. 2026, 2025, 2024) sau schimbă disciplina.</div>`;
+    return;
+  }
+  root.innerHTML = htmlOut;
+}
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  searchTerm = e.target.value;
+  renderPortal();
+});
+
+renderTabs();
+updateProgress();
+renderPortal();
+</script>
+</body>
+</html>
